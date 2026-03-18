@@ -1,5 +1,409 @@
-# Kona production connector — mutations (minimal for schema-phase SDK generate)
+# Kona production connector — mutations
+# @auth: USER (tenant), platform expr, PUBLIC (bot only), NO_ACCESS (Admin SDK / webhook)
+# @transaction where plan requires (e.g. webhook Create Client + Config)
 
+# --- Platform owner profile (AuthGuard / first login) ---
 mutation UpsertPlatformOwner($email: String, $displayName: String) @auth(level: USER) {
   platformOwner_upsert(data: { id_expr: "auth.uid", email: $email, displayName: $displayName })
+}
+
+# --- Tenant: create client (linkedAuthUid = auth.uid) ---
+mutation CreateClient(
+  $companyName: String
+  $clientName: String
+  $email: String
+  $industry: String
+) @auth(level: USER) {
+  client_insert(
+    data: {
+      linkedAuthUid_expr: "auth.uid"
+      companyName: $companyName
+      clientName: $clientName
+      email: $email
+      industry: $industry
+      subscriptionStatus: "inactive"
+    }
+  )
+}
+
+# --- Tenant: update client (only if owner) ---
+mutation UpdateClient(
+  $id: UUID!
+  $companyName: String
+  $clientName: String
+  $email: String
+  $industry: String
+  $subscriptionStatus: String
+  $paddleSubscriptionId: String
+) @auth(level: USER) {
+  client_update(
+    first: { where: { id: { eq: $id }, linkedAuthUid: { eq_expr: "auth.uid" } } }
+    data: {
+      companyName: $companyName
+      clientName: $clientName
+      email: $email
+      industry: $industry
+      subscriptionStatus: $subscriptionStatus
+      paddleSubscriptionId: $paddleSubscriptionId
+    }
+  )
+}
+
+# --- Tenant: create bot config (verify client ownership in transaction) ---
+mutation CreateClientAiBotConfig(
+  $clientId: UUID!
+  $botName: String
+  $accessToken: String!
+  $aiModelApiKey: String
+  $schedulingApiKey: String
+  $knowledgeBaseJson: Any
+  $welcomeMessage: String
+  $customInstructions: String
+) @auth(level: USER) @transaction {
+  query @redact {
+    client(id: $clientId) @check(expr: "this != null && this.linkedAuthUid == auth.uid", message: "Forbidden") {
+      id
+    }
+  }
+  clientAiBotConfig_insert(
+    data: {
+      clientId: $clientId
+      botName: $botName
+      accessToken: $accessToken
+      aiModelApiKey: $aiModelApiKey
+      schedulingApiKey: $schedulingApiKey
+      knowledgeBaseJson: $knowledgeBaseJson
+      welcomeMessage: $welcomeMessage
+      customInstructions: $customInstructions
+    }
+  )
+}
+
+# --- Tenant: update bot config (only if client owned) ---
+mutation UpdateClientAiBotConfig(
+  $id: UUID!
+  $botName: String
+  $aiModelApiKey: String
+  $schedulingApiKey: String
+  $knowledgeBaseJson: Any
+  $welcomeMessage: String
+  $customInstructions: String
+) @auth(level: USER) {
+  clientAiBotConfig_update(
+    first: {
+      where: {
+        id: { eq: $id }
+        client: { linkedAuthUid: { eq_expr: "auth.uid" } }
+      }
+    }
+    data: {
+      botName: $botName
+      aiModelApiKey: $aiModelApiKey
+      schedulingApiKey: $schedulingApiKey
+      knowledgeBaseJson: $knowledgeBaseJson
+      welcomeMessage: $welcomeMessage
+      customInstructions: $customInstructions
+    }
+  )
+}
+
+# --- Public (bot/embed): capture lead ---
+mutation CreateClientInboundContact(
+  $clientId: UUID!
+  $companyName: String
+  $websiteUrl: String
+  $contactEmail: String
+  $contactStatus: String
+  $initialPitchDraft: String
+  $identifiedPainPoints: String
+) @auth(level: PUBLIC, insecureReason: "Bot/embed captures lead; clientId from validated config.") {
+  clientInboundContact_insert(
+    data: {
+      clientId: $clientId
+      companyName: $companyName
+      websiteUrl: $websiteUrl
+      contactEmail: $contactEmail
+      contactStatus: $contactStatus
+      initialPitchDraft: $initialPitchDraft
+      identifiedPainPoints: $identifiedPainPoints
+    }
+  )
+}
+
+# --- Tenant: update inbound contact (only if client owned) ---
+mutation UpdateClientInboundContact(
+  $id: UUID!
+  $companyName: String
+  $websiteUrl: String
+  $contactStatus: String
+  $contactEmail: String
+  $initialPitchDraft: String
+  $identifiedPainPoints: String
+) @auth(level: USER) {
+  clientInboundContact_update(
+    first: {
+      where: { id: { eq: $id }, client: { linkedAuthUid: { eq_expr: "auth.uid" } } }
+    }
+    data: {
+      companyName: $companyName
+      websiteUrl: $websiteUrl
+      contactStatus: $contactStatus
+      contactEmail: $contactEmail
+      initialPitchDraft: $initialPitchDraft
+      identifiedPainPoints: $identifiedPainPoints
+    }
+  )
+}
+
+# --- Platform: create platform inbound contact ---
+mutation CreatePlatformInboundContact(
+  $companyName: String
+  $websiteUrl: String
+  $contactStatus: String
+  $contactEmail: String
+  $initialPitchDraft: String
+  $identifiedPainPoints: String
+  $nativeAgent: Boolean
+) @auth(expr: "auth.uid != nil && auth.token.email == 'jakwakwa@gmail.com'") {
+  platformInboundContact_insert(
+    data: {
+      companyName: $companyName
+      websiteUrl: $websiteUrl
+      contactStatus: $contactStatus
+      contactEmail: $contactEmail
+      initialPitchDraft: $initialPitchDraft
+      identifiedPainPoints: $identifiedPainPoints
+      nativeAgent: $nativeAgent
+    }
+  )
+}
+
+# --- Platform: create platform outbound contact ---
+mutation CreatePlatformOutboundContact(
+  $scrapedData: Any
+  $hasExistingAI: Boolean
+  $auditDate: Date
+  $aiDetectionDetails: Any
+) @auth(expr: "auth.uid != nil && auth.token.email == 'jakwakwa@gmail.com'") {
+  platformOutboundContact_insert(
+    data: {
+      scrapedData: $scrapedData
+      hasExistingAI: $hasExistingAI
+      auditDate: $auditDate
+      aiDetectionDetails: $aiDetectionDetails
+    }
+  )
+}
+
+# --- Platform: create platform outbound outreach event ---
+mutation CreatePlatformOutboundOutreachEvent(
+  $platformOutboundContactId: UUID!
+  $outreachType: String
+  $status: String
+  $sendDate: Date
+  $messageContent: String
+  $adminNotes: String
+) @auth(expr: "auth.uid != nil && auth.token.email == 'jakwakwa@gmail.com'") {
+  platformOutboundOutreachEvent_insert(
+    data: {
+      platformOutboundContactId: $platformOutboundContactId
+      outreachType: $outreachType
+      status: $status
+      sendDate: $sendDate
+      messageContent: $messageContent
+      adminNotes: $adminNotes
+    }
+  )
+}
+
+# --- Platform: create platform agent activity (metrics) ---
+mutation CreatePlatformAgentActivity(
+  $agentType: String
+  $action: String
+  $targetUrl: String
+  $outcome: String
+  $tokensUsed: Int
+  $durationMs: Int
+  $metadata: Any
+  $platformOutboundContactId: UUID
+  $platformInboundContactId: UUID
+  $platformOutboundOutreachEventId: UUID
+) @auth(expr: "auth.uid != nil && auth.token.email == 'jakwakwa@gmail.com'") {
+  platformAgentActivity_insert(
+    data: {
+      agentType: $agentType
+      action: $action
+      targetUrl: $targetUrl
+      outcome: $outcome
+      tokensUsed: $tokensUsed
+      durationMs: $durationMs
+      metadata: $metadata
+      platformOutboundContactId: $platformOutboundContactId
+      platformInboundContactId: $platformInboundContactId
+      platformOutboundOutreachEventId: $platformOutboundOutreachEventId
+    }
+  )
+}
+
+# --- Server/Admin SDK: create client bot performance event ---
+mutation CreateClientAiBotPerformanceEvent(
+  $clientId: UUID!
+  $eventType: String
+  $sessionDurationMs: Int
+  $messageCount: Int
+  $tokensUsed: Int
+  $metadata: Any
+  $clientInboundContactId: UUID
+) @auth(level: NO_ACCESS) {
+  clientAiBotPerformanceEvent_insert(
+    data: {
+      clientId: $clientId
+      eventType: $eventType
+      sessionDurationMs: $sessionDurationMs
+      messageCount: $messageCount
+      tokensUsed: $tokensUsed
+      metadata: $metadata
+      clientInboundContactId: $clientInboundContactId
+    }
+  )
+}
+
+# --- Public (bot): create conversation ---
+mutation CreateClientConversation($clientId: UUID!, $accessToken: String!, $messages: Any) @auth(level: PUBLIC, insecureReason: "Bot creates conversation; restricted by clientId and accessToken.") {
+  clientConversation_insert(
+    data: {
+      clientId: $clientId
+      accessToken: $accessToken
+      messages: $messages
+    }
+  )
+}
+
+# --- Public (bot): update conversation (by id + accessToken) ---
+mutation UpdateClientConversation($id: UUID!, $accessToken: String!, $messages: Any) @auth(level: PUBLIC, insecureReason: "Bot updates conversation; restricted by id and accessToken.") {
+  clientConversation_update(
+    first: { where: { id: { eq: $id }, accessToken: { eq: $accessToken } } }
+    data: { messages: $messages, updatedAt_expr: "request.time" }
+  )
+}
+
+# --- Admin SDK only: create client (webhook path when no client exists) ---
+mutation CreateClientAdmin(
+  $linkedAuthUid: String!
+  $companyName: String
+  $clientName: String
+  $email: String
+  $industry: String
+  $subscriptionStatus: String
+  $paddleSubscriptionId: String
+) @auth(level: NO_ACCESS) {
+  client_insert(
+    data: {
+      linkedAuthUid: $linkedAuthUid
+      companyName: $companyName
+      clientName: $clientName
+      email: $email
+      industry: $industry
+      subscriptionStatus: $subscriptionStatus
+      paddleSubscriptionId: $paddleSubscriptionId
+    }
+  )
+}
+
+# --- Admin SDK only: update client (webhook path) ---
+mutation UpdateClientAdmin(
+  $id: UUID!
+  $companyName: String
+  $clientName: String
+  $email: String
+  $subscriptionStatus: String
+  $paddleSubscriptionId: String
+) @auth(level: NO_ACCESS) {
+  client_update(
+    id: $id
+    data: {
+      companyName: $companyName
+      clientName: $clientName
+      email: $email
+      subscriptionStatus: $subscriptionStatus
+      paddleSubscriptionId: $paddleSubscriptionId
+    }
+  )
+}
+
+# --- Admin SDK only: create client + bot config in one transaction (webhook) ---
+mutation WebhookCreateClientWithConfig(
+  $linkedAuthUid: String!
+  $companyName: String
+  $clientName: String
+  $email: String
+  $subscriptionStatus: String!
+  $paddleSubscriptionId: String
+  $botName: String
+  $accessToken: String!
+  $aiModelApiKey: String
+  $welcomeMessage: String
+  $customInstructions: String
+) @auth(level: NO_ACCESS) @transaction {
+  client_insert(
+    data: {
+      linkedAuthUid: $linkedAuthUid
+      companyName: $companyName
+      clientName: $clientName
+      email: $email
+      subscriptionStatus: $subscriptionStatus
+      paddleSubscriptionId: $paddleSubscriptionId
+    }
+  )
+  clientAiBotConfig_insert(
+    data: {
+      clientId_expr: "response.client_insert.id"
+      botName: $botName
+      accessToken: $accessToken
+      aiModelApiKey: $aiModelApiKey
+      welcomeMessage: $welcomeMessage
+      customInstructions: $customInstructions
+    }
+  )
+}
+
+# --- Admin SDK only: create bot config (webhook when client already exists) ---
+mutation CreateClientAiBotConfigAdmin(
+  $clientId: UUID!
+  $botName: String
+  $accessToken: String!
+  $aiModelApiKey: String
+  $schedulingApiKey: String
+  $welcomeMessage: String
+  $customInstructions: String
+) @auth(level: NO_ACCESS) {
+  clientAiBotConfig_insert(
+    data: {
+      clientId: $clientId
+      botName: $botName
+      accessToken: $accessToken
+      aiModelApiKey: $aiModelApiKey
+      schedulingApiKey: $schedulingApiKey
+      welcomeMessage: $welcomeMessage
+      customInstructions: $customInstructions
+    }
+  )
+}
+
+# --- Admin SDK only: update bot config (webhook) ---
+mutation UpdateClientAiBotConfigAdmin(
+  $id: UUID!
+  $botName: String
+  $aiModelApiKey: String
+  $schedulingApiKey: String
+  $welcomeMessage: String
+  $customInstructions: String
+) @auth(level: NO_ACCESS) {
+  clientAiBotConfig_update(id: $id, data: {
+    botName: $botName
+    aiModelApiKey: $aiModelApiKey
+    schedulingApiKey: $schedulingApiKey
+    welcomeMessage: $welcomeMessage
+    customInstructions: $customInstructions
+  })
 }

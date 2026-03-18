@@ -12,12 +12,28 @@ For each operation, there is a wrapper hook that can be used to call the operati
 
 Here are all of the hooks that get generated:
 ```ts
-import { useGetClientByLinkedAuthUid, useUpsertPlatformOwner } from '@dataconnect/generated/react';
+import { useUpsertPlatformOwner, useCreateClient, useUpdateClient, useCreateClientAiBotConfig, useUpdateClientAiBotConfig, useCreateClientInboundContact, useUpdateClientInboundContact, useCreatePlatformInboundContact, useCreatePlatformOutboundContact, useCreatePlatformOutboundOutreachEvent } from '@dataconnect/generated/react';
 // The types of these hooks are available in react/index.d.ts
 
-const { data, isPending, isSuccess, isError, error } = useGetClientByLinkedAuthUid(getClientByLinkedAuthUidVars);
-
 const { data, isPending, isSuccess, isError, error } = useUpsertPlatformOwner(upsertPlatformOwnerVars);
+
+const { data, isPending, isSuccess, isError, error } = useCreateClient(createClientVars);
+
+const { data, isPending, isSuccess, isError, error } = useUpdateClient(updateClientVars);
+
+const { data, isPending, isSuccess, isError, error } = useCreateClientAiBotConfig(createClientAiBotConfigVars);
+
+const { data, isPending, isSuccess, isError, error } = useUpdateClientAiBotConfig(updateClientAiBotConfigVars);
+
+const { data, isPending, isSuccess, isError, error } = useCreateClientInboundContact(createClientInboundContactVars);
+
+const { data, isPending, isSuccess, isError, error } = useUpdateClientInboundContact(updateClientInboundContactVars);
+
+const { data, isPending, isSuccess, isError, error } = useCreatePlatformInboundContact(createPlatformInboundContactVars);
+
+const { data, isPending, isSuccess, isError, error } = useCreatePlatformOutboundContact(createPlatformOutboundContactVars);
+
+const { data, isPending, isSuccess, isError, error } = useCreatePlatformOutboundOutreachEvent(createPlatformOutboundOutreachEventVars);
 
 ```
 
@@ -56,14 +72,38 @@ If a user is not using a supported framework, they can use the generated SDK dir
 Here's an example of how to use it with the first 5 operations:
 
 ```js
-import { getClientByLinkedAuthUid, upsertPlatformOwner } from '@dataconnect/generated';
+import { upsertPlatformOwner, createClient, updateClient, createClientAiBotConfig, updateClientAiBotConfig, createClientInboundContact, updateClientInboundContact, createPlatformInboundContact, createPlatformOutboundContact, createPlatformOutboundOutreachEvent } from '@dataconnect/generated';
 
-
-// Operation GetClientByLinkedAuthUid:  For variables, look at type GetClientByLinkedAuthUidVars in ../index.d.ts
-const { data } = await GetClientByLinkedAuthUid(dataConnect, getClientByLinkedAuthUidVars);
 
 // Operation UpsertPlatformOwner:  For variables, look at type UpsertPlatformOwnerVars in ../index.d.ts
 const { data } = await UpsertPlatformOwner(dataConnect, upsertPlatformOwnerVars);
+
+// Operation CreateClient:  For variables, look at type CreateClientVars in ../index.d.ts
+const { data } = await CreateClient(dataConnect, createClientVars);
+
+// Operation UpdateClient:  For variables, look at type UpdateClientVars in ../index.d.ts
+const { data } = await UpdateClient(dataConnect, updateClientVars);
+
+// Operation CreateClientAiBotConfig:  For variables, look at type CreateClientAiBotConfigVars in ../index.d.ts
+const { data } = await CreateClientAiBotConfig(dataConnect, createClientAiBotConfigVars);
+
+// Operation UpdateClientAiBotConfig:  For variables, look at type UpdateClientAiBotConfigVars in ../index.d.ts
+const { data } = await UpdateClientAiBotConfig(dataConnect, updateClientAiBotConfigVars);
+
+// Operation CreateClientInboundContact:  For variables, look at type CreateClientInboundContactVars in ../index.d.ts
+const { data } = await CreateClientInboundContact(dataConnect, createClientInboundContactVars);
+
+// Operation UpdateClientInboundContact:  For variables, look at type UpdateClientInboundContactVars in ../index.d.ts
+const { data } = await UpdateClientInboundContact(dataConnect, updateClientInboundContactVars);
+
+// Operation CreatePlatformInboundContact:  For variables, look at type CreatePlatformInboundContactVars in ../index.d.ts
+const { data } = await CreatePlatformInboundContact(dataConnect, createPlatformInboundContactVars);
+
+// Operation CreatePlatformOutboundContact:  For variables, look at type CreatePlatformOutboundContactVars in ../index.d.ts
+const { data } = await CreatePlatformOutboundContact(dataConnect, createPlatformOutboundContactVars);
+
+// Operation CreatePlatformOutboundOutreachEvent:  For variables, look at type CreatePlatformOutboundOutreachEventVars in ../index.d.ts
+const { data } = await CreatePlatformOutboundOutreachEvent(dataConnect, createPlatformOutboundOutreachEventVars);
 
 
 ```

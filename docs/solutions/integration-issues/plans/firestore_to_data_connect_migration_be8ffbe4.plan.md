@@ -7,7 +7,7 @@ todos:
     status: completed
   - id: todo-1773870829615-xmbyuowd4
     content: Connector — Add production connector with queries/mutations and @auth; generate SDK.
-    status: in_progress
+    status: completed
   - id: todo-1773870835815-sasf8vran
     content: Data — If needed, one-time Firestore export and map into Data Connect (or start fresh).
     status: pending

@@ -1,6 +1,198 @@
-# Kona production connector — queries (minimal for schema-phase SDK generate)
+# Kona production connector — queries
+# @auth: platform (CEO), tenant (USER + linkedAuthUid), PUBLIC (bot only), NO_ACCESS (Admin SDK / webhook)
 
+# --- Tenant: client by linked auth UID (logged-in tenant) ---
 query GetClientByLinkedAuthUid($authUid: String!) @auth(level: USER) {
+  clients(where: { linkedAuthUid: { eq: $authUid } }, limit: 1) {
+    id
+    companyName
+    clientName
+    email
+    industry
+    subscriptionStatus
+    paddleSubscriptionId
+    linkedAuthUid
+    createdAt
+  }
+}
+
+# --- Tenant: client by ID (must own the client) ---
+query GetClientById($id: UUID!) @auth(level: USER) {
+  client(id: $id) @check(expr: "this != null && this.linkedAuthUid == auth.uid", message: "Forbidden") {
+    id
+    companyName
+    clientName
+    email
+    industry
+    subscriptionStatus
+    paddleSubscriptionId
+    linkedAuthUid
+    createdAt
+  }
+}
+
+# --- Public (bot widget): config by access token (read-only for config + subscription) ---
+query GetClientAiBotConfigByAccessToken($accessToken: String!) @auth(level: PUBLIC, insecureReason: "Bot widget loads config by token; restrict by accessToken.") {
+  clientAiBotConfigs(where: { accessToken: { eq: $accessToken } }, limit: 1) {
+    id
+    botName
+    accessToken
+    aiModelApiKey
+    schedulingApiKey
+    knowledgeBaseJson
+    welcomeMessage
+    customInstructions
+    client {
+      id
+      subscriptionStatus
+      companyName
+    }
+  }
+}
+
+# --- Tenant: inbound contacts for a client (must own client) ---
+query ListClientInboundContactsByClient($clientId: UUID!) @auth(level: USER) {
+  clientInboundContacts(
+    where: { client: { id: { eq: $clientId }, linkedAuthUid: { eq_expr: "auth.uid" } } }
+    orderBy: [{ createdAt: DESC }]
+  ) {
+    id
+    companyName
+    websiteUrl
+    contactStatus
+    contactEmail
+    initialPitchDraft
+    identifiedPainPoints
+    createdAt
+  }
+}
+
+# --- Platform (CEO): list all clients ---
+query ListClients @auth(expr: "auth.uid != nil && auth.token.email == 'jakwakwa@gmail.com'") {
+  clients(orderBy: [{ createdAt: DESC }]) {
+    id
+    linkedAuthUid
+    companyName
+    clientName
+    email
+    industry
+    subscriptionStatus
+    paddleSubscriptionId
+    createdAt
+  }
+}
+
+# --- Platform: list platform inbound contacts ---
+query ListPlatformInboundContacts @auth(expr: "auth.uid != nil && auth.token.email == 'jakwakwa@gmail.com'") {
+  platformInboundContacts(orderBy: [{ createdAt: DESC }]) {
+    id
+    companyName
+    websiteUrl
+    contactStatus
+    contactEmail
+    initialPitchDraft
+    identifiedPainPoints
+    nativeAgent
+    createdAt
+  }
+}
+
+# --- Platform: list platform outbound contacts ---
+query ListPlatformOutboundContacts @auth(expr: "auth.uid != nil && auth.token.email == 'jakwakwa@gmail.com'") {
+  platformOutboundContacts(orderBy: [{ createdAt: DESC }]) {
+    id
+    scrapedData
+    hasExistingAI
+    auditDate
+    aiDetectionDetails
+    createdAt
+  }
+}
+
+# --- Platform: list platform outbound outreach events ---
+query ListPlatformOutboundOutreachEvents @auth(expr: "auth.uid != nil && auth.token.email == 'jakwakwa@gmail.com'") {
+  platformOutboundOutreachEvents(orderBy: [{ createdAt: DESC }]) {
+    id
+    outreachType
+    status
+    sendDate
+    messageContent
+    adminNotes
+    createdAt
+    platformOutboundContact { id }
+  }
+}
+
+# --- Platform: list platform agent activities (metrics) ---
+query ListPlatformAgentActivities @auth(expr: "auth.uid != nil && auth.token.email == 'jakwakwa@gmail.com'") {
+  platformAgentActivities(orderBy: [{ occurredAt: DESC }]) {
+    id
+    occurredAt
+    agentType
+    action
+    targetUrl
+    outcome
+    tokensUsed
+    durationMs
+    metadata
+  }
+}
+
+# --- Tenant: list client bot performance events (must own client) ---
+query ListClientAiBotPerformanceEvents($clientId: UUID!) @auth(level: USER) {
+  clientAiBotPerformanceEvents(
+    where: { client: { id: { eq: $clientId }, linkedAuthUid: { eq_expr: "auth.uid" } } }
+    orderBy: [{ occurredAt: DESC }]
+  ) {
+    id
+    occurredAt
+    eventType
+    sessionDurationMs
+    messageCount
+    tokensUsed
+    metadata
+  }
+}
+
+# --- Get single conversation by ID (tenant: must own client; bot: use with accessToken) ---
+query GetClientConversation($id: UUID!, $accessToken: String!) @auth(level: PUBLIC, insecureReason: "Bot loads conversation by id and token; restricted by vars.") {
+  clientConversations(where: { id: { eq: $id }, accessToken: { eq: $accessToken } }, limit: 1) {
+    id
+    accessToken
+    messages
+    createdAt
+    updatedAt
+    client { id }
+  }
+}
+
+# --- List conversations by client + accessToken (tenant: by clientId; bot: by accessToken) ---
+query ListClientConversationsByClientAndToken($clientId: UUID!, $accessToken: String!) @auth(level: USER) {
+  clientConversations(
+    where: { client: { id: { eq: $clientId }, linkedAuthUid: { eq_expr: "auth.uid" } }, accessToken: { eq: $accessToken } }
+    orderBy: [{ updatedAt: DESC }]
+  ) {
+    id
+    accessToken
+    messages
+    createdAt
+    updatedAt
+  }
+}
+
+# --- Bot: list conversations by accessToken only (PUBLIC for widget) ---
+query ListClientConversationsByAccessToken($accessToken: String!) @auth(level: PUBLIC, insecureReason: "Bot lists conversations by token; restricted by accessToken.") {
+  clientConversations(where: { accessToken: { eq: $accessToken } }, orderBy: [{ updatedAt: DESC }]) {
+    id
+    accessToken
+    messages
+    createdAt
+    updatedAt
+  }
+}
+
+# --- Admin SDK only (webhook): get client by linkedAuthUid ---
+query GetClientByLinkedAuthUidAdmin($authUid: String!) @auth(level: NO_ACCESS) {
   clients(where: { linkedAuthUid: { eq: $authUid } }, limit: 1) {
     id
     companyName
@@ -9,5 +201,15 @@ query GetClientByLinkedAuthUid($authUid: String!) @auth(level: USER) {
     subscriptionStatus
     paddleSubscriptionId
     linkedAuthUid
+  }
+}
+
+# --- Admin SDK only: get client by paddle subscription ID ---
+query GetClientByPaddleSubscriptionIdAdmin($paddleSubscriptionId: String!) @auth(level: NO_ACCESS) {
+  clients(where: { paddleSubscriptionId: { eq: $paddleSubscriptionId } }, limit: 1) {
+    id
+    linkedAuthUid
+    subscriptionStatus
+    paddleSubscriptionId
   }
 }
