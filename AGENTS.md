@@ -37,6 +37,8 @@ Next Step: Once you've added this, you can drop in the first "Sprint 1: The Prox
 - Never declare success until verified in compile time (bun run build) and runtime (browser when applicable)
 - Re-read the user's message before responding. Verify your response matches their exact words
 - Continual learning: run only when the user explicitly invokes /continual-learning. Never run it automatically
+- When the app is not in production, prefer full migration with no fallbacks or legacy code over incremental or parallel approaches
+- When details are missing, ask the user rather than infer or hallucinate
 
 ## Learned Workspace Facts
 

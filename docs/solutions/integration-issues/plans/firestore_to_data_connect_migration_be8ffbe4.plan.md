@@ -29,6 +29,7 @@ isProject: false
 
 **Firestore collections in use:**
 
+Make use of the skill when implementing the migration: [firebase-data-connect](.agents/skills/firebase-data-connect/SKILL.md) 
 
 | Collection                  | Used in                                                                      | Purpose                                                                 |
 | --------------------------- | ---------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
