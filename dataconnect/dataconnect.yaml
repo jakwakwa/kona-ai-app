@@ -1,0 +1,14 @@
+specVersion: "v1"
+serviceId: "jacobkotzee"
+# europe-west1 (Belgium) — closest to South Africa; Data Connect has no africa-south1
+location: "europe-west1"
+schemas:
+  - source: "./schema"
+    datasource:
+      postgresql:
+        database: "fdcdb"
+        cloudSql:
+          instanceId: "jacobkotzee-fdc"
+          # schemaValidation: "STRICT"     # STRICT mode makes Postgres schema match Data Connect exactly.
+          # schemaValidation: "COMPATIBLE" # COMPATIBLE mode makes Postgres schema compatible with Data Connect.
+connectorDirs: ["./example"]

@@ -1,0 +1,154 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    // Collection: users
+    // Document ID: userId
+    // Fields:
+    //   - email: string (required)
+    //   - role: string (required, 'tenant' or 'admin')
+    //   - createdAt: timestamp (immutable)
+    //
+    // Collection: clients
+    // Document ID: clientId
+    // Fields:
+    //   - name: string (required)
+    //   - ownerId: string (required, immutable)
+    //   - subscriptionActive: boolean (required)
+    //   - createdAt: timestamp (immutable)
+    //
+    // Collection: clients/{clientId}/config
+    // Document ID: agent
+    // Fields:
+    //   - geminiApiKey: string (required)
+    //   - systemInstruction: string (required)
+    //   - updatedAt: timestamp
+    //
+    // Collection: leads
+    // Document ID: leadId
+    // Fields:
+    //   - clientId: string (required, immutable)
+    //   - name: string (required)
+    //   - email: string (optional)
+    //   - phone: string (optional)
+    //   - status: string (required, 'new', 'contacted', 'qualified')
+    //   - createdAt: timestamp (immutable)
+    // ===============================================================
+
+    // Helper Functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() &&
+        (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+          (request.auth.token.email == /PROCESS.ENV.FIREBASE_ADMIN_OWNER && request.auth.token.email_verified == true));
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isClientOwner(clientId) {
+      return isAuthenticated() && get(/databases/$(database)/documents/clients/$(clientId)).data.ownerId == request.auth.uid;
+    }
+
+    function hasOnlyAllowedFields(fields) {
+      return request.resource.data.keys().hasOnly(fields);
+    }
+
+    function isValidEmail(email) {
+      return email is string && email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+    }
+
+    // Domain Validators
+    function isValidUser(data) {
+      return hasOnlyAllowedFields(['email', 'role', 'createdAt']) &&
+             data.email is string && isValidEmail(data.email) &&
+             data.role in ['tenant', 'admin'] &&
+             data.createdAt is timestamp;
+    }
+
+    function isValidClient(data) {
+      return hasOnlyAllowedFields(['name', 'ownerId', 'subscriptionActive', 'createdAt']) &&
+             data.name is string && data.name.size() > 0 && data.name.size() < 100 &&
+             data.ownerId is string && data.ownerId.size() > 0 && data.ownerId.size() < 50 &&
+             data.subscriptionActive is bool &&
+             data.createdAt is timestamp;
+    }
+
+    function isValidAgentConfig(data) {
+      return hasOnlyAllowedFields(['geminiApiKey', 'systemInstruction', 'updatedAt']) &&
+             data.geminiApiKey is string && data.geminiApiKey.size() > 0 && data.geminiApiKey.size() < 200 &&
+             data.systemInstruction is string && data.systemInstruction.size() < 10000 &&
+             data.updatedAt is timestamp;
+    }
+
+    function isValidLead(data) {
+      return hasOnlyAllowedFields(['clientId', 'name', 'email', 'phone', 'status', 'createdAt']) &&
+             data.clientId is string && data.clientId.size() > 0 && data.clientId.size() < 50 &&
+             data.name is string && data.name.size() > 0 && data.name.size() < 100 &&
+             (!('email' in data) || (data.email is string && isValidEmail(data.email))) &&
+             (!('phone' in data) || (data.phone is string && data.phone.size() < 20)) &&
+             data.status in ['new', 'contacted', 'qualified'] &&
+             data.createdAt is timestamp;
+    }
+
+    // Rules
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow create: if isAuthenticated() && isOwner(userId) && isValidUser(request.resource.data) &&
+                    (request.resource.data.role == 'tenant' || isAdmin());
+      allow update: if isAdmin() && isValidUser(request.resource.data) &&
+                    request.resource.data.createdAt == resource.data.createdAt;
+    }
+
+    match /clients/{clientId} {
+      // Widget needs to read subscriptionActive.
+      // API route needs to read it too.
+      // We allow public get to check subscription, but not list.
+      allow get: if true;
+      allow list: if isClientOwner(clientId) || isAdmin();
+      allow create: if isAuthenticated() && isValidClient(request.resource.data) &&
+                    request.resource.data.ownerId == request.auth.uid;
+      allow update: if (isClientOwner(clientId) || isAdmin()) &&
+                    isValidClient(request.resource.data) &&
+                    request.resource.data.ownerId == resource.data.ownerId &&
+                    request.resource.data.createdAt == resource.data.createdAt;
+    }
+
+    match /clients/{clientId}/config/agent {
+      // API route needs to read the API key.
+      // We allow public get, but not list.
+      allow get: if true;
+      allow list: if isClientOwner(clientId) || isAdmin();
+      allow create: if (isClientOwner(clientId) || isAdmin()) && isValidAgentConfig(request.resource.data);
+      allow update: if (isClientOwner(clientId) || isAdmin()) && isValidAgentConfig(request.resource.data);
+    }
+
+    match /leads/{leadId} {
+      // API route needs to create leads.
+      allow create: if true;
+      allow read: if isAdmin() || (isAuthenticated() && get(/databases/$(database)/documents/clients/$(resource.data.clientId)).data.ownerId == request.auth.uid);
+      allow update: if isAdmin() || (isAuthenticated() && get(/databases/$(database)/documents/clients/$(resource.data.clientId)).data.ownerId == request.auth.uid) &&
+                    request.resource.data.clientId == resource.data.clientId &&
+                    request.resource.data.createdAt == resource.data.createdAt;
+    }
+
+    match /campaigns/{campaignId} {
+      allow read, write: if isAdmin();
+    }
+
+    match /agentMetrics/{metricId} {
+      allow read, write: if isAdmin();
+    }
+
+    match /inboundLeads/{leadId} {
+      allow read, write: if isAdmin();
+    }
+  }
+}

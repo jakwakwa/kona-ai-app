@@ -1,0 +1,11 @@
+node_modules/
+.next/
+coverage/
+.DS_Store
+/eslint.config.mjs
+/eslint.*.json
+*.log
+.env*
+!.env.example
+/eslint
+/package-lock.json

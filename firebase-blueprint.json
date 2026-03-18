@@ -1,0 +1,70 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "A user of the platform (tenant or admin).",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "format": "email" },
+        "role": { "type": "string", "enum": ["tenant", "admin"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["email", "role", "createdAt"]
+    },
+    "Client": {
+      "title": "Client",
+      "description": "A business tenant using the platform.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "ownerId": { "type": "string", "description": "UID of the tenant user" },
+        "subscriptionActive": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "ownerId", "subscriptionActive", "createdAt"]
+    },
+    "AgentConfig": {
+      "title": "AgentConfig",
+      "description": "Configuration for the client's AI agent.",
+      "type": "object",
+      "properties": {
+        "geminiApiKey": { "type": "string" },
+        "systemInstruction": { "type": "string" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["geminiApiKey", "systemInstruction", "updatedAt"]
+    },
+    "Lead": {
+      "title": "Lead",
+      "description": "A lead captured by the AI agent.",
+      "type": "object",
+      "properties": {
+        "clientId": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "phone": { "type": "string" },
+        "status": { "type": "string", "enum": ["new", "contacted", "qualified"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["clientId", "name", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "User profiles."
+    },
+    "/clients/{clientId}": {
+      "schema": { "$ref": "#/entities/Client" },
+      "description": "Client tenants."
+    },
+    "/clients/{clientId}/config/agent": {
+      "schema": { "$ref": "#/entities/AgentConfig" },
+      "description": "Agent configuration for a client."
+    },
+    "/leads/{leadId}": {
+      "schema": { "$ref": "#/entities/Lead" },
+      "description": "Leads captured by agents."
+    }
+  }
+}
