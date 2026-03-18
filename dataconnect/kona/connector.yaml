@@ -1,0 +1,17 @@
+connectorId: kona
+generate:
+  javascriptSdk:
+    - outputDir: ../../lib/dataconnect-generated
+      package: "@dataconnect/generated"
+      packageJsonDir: ../..
+      react: true
+      angular: false
+    - outputDir: ../../src/dataconnect-generated
+      package: "@dataconnect/generated"
+      packageJsonDir: ../..
+      react: true
+      angular: false
+  adminNodeSdk:
+    - outputDir: ../../src/dataconnect-admin-generated
+      package: "@dataconnect/admin-generated"
+      packageJsonDir: ../..

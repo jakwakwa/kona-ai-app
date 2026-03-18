@@ -4,10 +4,10 @@ overview: Replace the current Firestore data model and rules with the agreed Dat
 todos:
   - id: todo-1773870822283-v75yuniek
     content: Schema — Write full dataconnect/schema/schema.gql; run firebase dataconnect:sdk:generate (or equivalent) and fix any schema errors.
-    status: pending
+    status: completed
   - id: todo-1773870829615-xmbyuowd4
     content: Connector — Add production connector with queries/mutations and @auth; generate SDK.
-    status: pending
+    status: in_progress
   - id: todo-1773870835815-sasf8vran
     content: Data — If needed, one-time Firestore export and map into Data Connect (or start fresh).
     status: pending

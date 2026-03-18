@@ -1,17 +1,17 @@
-extend type Movie {
+extend type Client {
   """
-  ✨ List `Review` objects in a one-to-many relationship (where `Review`.`movie` is this object).
+  ✨ List `ClientAiBotConfig` objects in a one-to-many relationship (where `ClientAiBotConfig`.`client` is this object).
   """
-  reviews_on_movie(
+  clientAiBotConfigs_on_client(
     """
     Filter condition to narrow down the query results.
     """
-    where: Review_Filter
+    where: ClientAiBotConfig_Filter
 
     """
     Order the query results by specific fields.
     """
-    orderBy: [Review_Order!]
+    orderBy: [ClientAiBotConfig_Order!]
 
     """
     Number of rows to skip before starting to return the results.
@@ -31,25 +31,21 @@ extend type Movie {
     """
     Filter condition to apply to the groups of aggregate queries.
     """
-    having: Review_Having
-  ): [Review!]! @fdc_generated(from: "Review.movie", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+    having: ClientAiBotConfig_Having
+  ): [ClientAiBotConfig!]! @fdc_generated(from: "ClientAiBotConfig.client", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
   """
-  ✨ List `MovieMetadata` objects in a one-to-one relationship (where `MovieMetadata`.`movie` is this object).
+  ✨ List `ClientAiBotPerformanceEvent` objects in a one-to-many relationship (where `ClientAiBotPerformanceEvent`.`client` is this object).
   """
-  movieMetadata_on_movie: MovieMetadata @fdc_generated(from: "MovieMetadata.movie", purpose: QUERY_SINGLE_ONE_TO_ONE)
-  """
-  ✨ List `User` objects using `Review` as the join table (a `Review` object exists where its `movie` is this and its `user` is that).
-  """
-  users_via_Review(
+  clientAiBotPerformanceEvents_on_client(
     """
     Filter condition to narrow down the query results.
     """
-    where: Review_Filter
+    where: ClientAiBotPerformanceEvent_Filter
 
     """
     Order the query results by specific fields.
     """
-    orderBy: [Review_Order!]
+    orderBy: [ClientAiBotPerformanceEvent_Order!]
 
     """
     Number of rows to skip before starting to return the results.
@@ -69,275 +65,210 @@ extend type Movie {
     """
     Filter condition to apply to the groups of aggregate queries.
     """
-    having: Review_Having
-  ): [User!]! @fdc_generated(from: "Review", purpose: QUERY_MULTIPLE_MANY_TO_MANY)
+    having: ClientAiBotPerformanceEvent_Having
+  ): [ClientAiBotPerformanceEvent!]! @fdc_generated(from: "ClientAiBotPerformanceEvent.client", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `ClientConversation` objects in a one-to-many relationship (where `ClientConversation`.`client` is this object).
+  """
+  clientConversations_on_client(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: ClientConversation_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [ClientConversation_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: ClientConversation_Having
+  ): [ClientConversation!]! @fdc_generated(from: "ClientConversation.client", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `ClientInboundContact` objects in a one-to-many relationship (where `ClientInboundContact`.`client` is this object).
+  """
+  clientInboundContacts_on_client(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: ClientInboundContact_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [ClientInboundContact_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: ClientInboundContact_Having
+  ): [ClientInboundContact!]! @fdc_generated(from: "ClientInboundContact.client", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
   """
   Implicit metadata field that cannot be written. It provides extra information about query results.
   """
-  _metadata: _Metadata @fdc_generated(from: "Movie", purpose: METADATA_FIELD)
+  _metadata: _Metadata @fdc_generated(from: "Client", purpose: METADATA_FIELD)
   """
-  ✨ Count the number of rows in the `Movie` table.
+  ✨ Count the number of rows in the `Client` table.
   """
-  _count: Int! @fdc_generated(from: "Movie.", purpose: QUERY_COUNT)
+  _count: Int! @fdc_generated(from: "Client.", purpose: QUERY_COUNT)
   """
-  ✨ Count the number of rows in the `Movie` table where the `genre` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  ✨ Count the number of rows in the `Client` table where the `clientName` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
   """
-  genre_count(
+  clientName_count(
     """
     Set to true to count the number of distinct values.
     """
     distinct: Boolean = false
-  ): Int! @fdc_generated(from: "Movie.genre", purpose: QUERY_COUNT)
+  ): Int! @fdc_generated(from: "Client.clientName", purpose: QUERY_COUNT)
   """
-  ✨ Count the number of rows in the `Movie` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  ✨ Count the number of rows in the `Client` table where the `companyName` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  companyName_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Client.companyName", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Client` table where the `convertedFromInboundContactId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  convertedFromInboundContactId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Client.convertedFromInboundContactId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Client` table where the `convertedFromOutboundContactId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  convertedFromOutboundContactId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Client.convertedFromOutboundContactId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Client` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  createdAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Client.createdAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Client` table where the `email` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  email_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Client.email", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Client` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
   """
   id_count(
     """
     Set to true to count the number of distinct values.
     """
     distinct: Boolean = false
-  ): Int! @fdc_generated(from: "Movie.id", purpose: QUERY_COUNT)
+  ): Int! @fdc_generated(from: "Client.id", purpose: QUERY_COUNT)
   """
-  ✨ Count the number of rows in the `Movie` table where the `imageUrl` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  ✨ Count the number of rows in the `Client` table where the `industry` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
   """
-  imageUrl_count(
+  industry_count(
     """
     Set to true to count the number of distinct values.
     """
     distinct: Boolean = false
-  ): Int! @fdc_generated(from: "Movie.imageUrl", purpose: QUERY_COUNT)
+  ): Int! @fdc_generated(from: "Client.industry", purpose: QUERY_COUNT)
   """
-  ✨ Count the number of rows in the `Movie` table where the `title` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  ✨ Count the number of rows in the `Client` table where the `linkedAuthUid` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
   """
-  title_count(
+  linkedAuthUid_count(
     """
     Set to true to count the number of distinct values.
     """
     distinct: Boolean = false
-  ): Int! @fdc_generated(from: "Movie.title", purpose: QUERY_COUNT)
+  ): Int! @fdc_generated(from: "Client.linkedAuthUid", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Client` table where the `paddleSubscriptionId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  paddleSubscriptionId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Client.paddleSubscriptionId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Client` table where the `subscriptionStatus` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  subscriptionStatus_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Client.subscriptionStatus", purpose: QUERY_COUNT)
+  """
+  ✨ Minimum of the `createdAt` field in the `Client` table.
+  """
+  createdAt_min: Timestamp @fdc_generated(from: "Client.createdAt", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `createdAt` field in the `Client` table.
+  """
+  createdAt_max: Timestamp @fdc_generated(from: "Client.createdAt", purpose: QUERY_MAX)
   """
   A generated field that is used for caching results in SDKs.
   """
-  _id: ID! @fdc_generated(from: "Movie.id", purpose: GLOBAL_ID)
+  _id: ID! @fdc_generated(from: "Client.id", purpose: GLOBAL_ID)
 }
-extend type MovieMetadata {
+extend type ClientAiBotConfig {
   """
-  Implicit metadata field that cannot be written. It provides extra information about query results.
+  ✨ List `ClientConversation` objects in a one-to-many relationship (where `ClientConversation`.`clientAiBotConfig` is this object).
   """
-  _metadata: _Metadata @fdc_generated(from: "MovieMetadata", purpose: METADATA_FIELD)
-  """
-  ✨ Count the number of rows in the `MovieMetadata` table.
-  """
-  _count: Int! @fdc_generated(from: "MovieMetadata.", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `MovieMetadata` table where the `description` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  description_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "MovieMetadata.description", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `MovieMetadata` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  id_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "MovieMetadata.id", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `MovieMetadata` table where the `movieId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  movieId_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "MovieMetadata.movieId", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `MovieMetadata` table where the `rating` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  rating_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "MovieMetadata.rating", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `MovieMetadata` table where the `releaseYear` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  releaseYear_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "MovieMetadata.releaseYear", purpose: QUERY_COUNT)
-  """
-  ✨ Sum the `rating` field in the `MovieMetadata` table.
-  """
-  rating_sum(
-    """
-    Set to true to sum the distinct values.
-    """
-    distinct: Boolean = false
-  ): Float @fdc_generated(from: "MovieMetadata.rating", purpose: QUERY_SUM)
-  """
-  ✨ Sum the `releaseYear` field in the `MovieMetadata` table.
-  """
-  releaseYear_sum(
-    """
-    Set to true to sum the distinct values.
-    """
-    distinct: Boolean = false
-  ): Int @fdc_generated(from: "MovieMetadata.releaseYear", purpose: QUERY_SUM)
-  """
-  ✨ Average the `rating` field in the `MovieMetadata` table.
-  """
-  rating_avg(
-    """
-    Set to true to average the distinct values.
-    """
-    distinct: Boolean = false
-  ): Float @fdc_generated(from: "MovieMetadata.rating", purpose: QUERY_AVG)
-  """
-  ✨ Average the `releaseYear` field in the `MovieMetadata` table.
-  """
-  releaseYear_avg(
-    """
-    Set to true to average the distinct values.
-    """
-    distinct: Boolean = false
-  ): Float @fdc_generated(from: "MovieMetadata.releaseYear", purpose: QUERY_AVG)
-  """
-  ✨ Minimum of the `rating` field in the `MovieMetadata` table.
-  """
-  rating_min: Float @fdc_generated(from: "MovieMetadata.rating", purpose: QUERY_MIN)
-  """
-  ✨ Minimum of the `releaseYear` field in the `MovieMetadata` table.
-  """
-  releaseYear_min: Int @fdc_generated(from: "MovieMetadata.releaseYear", purpose: QUERY_MIN)
-  """
-  ✨ Maximum of the `rating` field in the `MovieMetadata` table.
-  """
-  rating_max: Float @fdc_generated(from: "MovieMetadata.rating", purpose: QUERY_MAX)
-  """
-  ✨ Maximum of the `releaseYear` field in the `MovieMetadata` table.
-  """
-  releaseYear_max: Int @fdc_generated(from: "MovieMetadata.releaseYear", purpose: QUERY_MAX)
-  """
-  A generated field that is used for caching results in SDKs.
-  """
-  _id: ID! @fdc_generated(from: "MovieMetadata.id", purpose: GLOBAL_ID)
-}
-extend type Review {
-  """
-  Implicit metadata field that cannot be written. It provides extra information about query results.
-  """
-  _metadata: _Metadata @fdc_generated(from: "Review", purpose: METADATA_FIELD)
-  """
-  ✨ Count the number of rows in the `Review` table.
-  """
-  _count: Int! @fdc_generated(from: "Review.", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `Review` table where the `movieId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  movieId_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "Review.movieId", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `Review` table where the `rating` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  rating_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "Review.rating", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `Review` table where the `reviewDate` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  reviewDate_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "Review.reviewDate", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `Review` table where the `reviewText` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  reviewText_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "Review.reviewText", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `Review` table where the `userId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  userId_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "Review.userId", purpose: QUERY_COUNT)
-  """
-  ✨ Sum the `rating` field in the `Review` table.
-  """
-  rating_sum(
-    """
-    Set to true to sum the distinct values.
-    """
-    distinct: Boolean = false
-  ): Int @fdc_generated(from: "Review.rating", purpose: QUERY_SUM)
-  """
-  ✨ Average the `rating` field in the `Review` table.
-  """
-  rating_avg(
-    """
-    Set to true to average the distinct values.
-    """
-    distinct: Boolean = false
-  ): Float @fdc_generated(from: "Review.rating", purpose: QUERY_AVG)
-  """
-  ✨ Minimum of the `rating` field in the `Review` table.
-  """
-  rating_min: Int @fdc_generated(from: "Review.rating", purpose: QUERY_MIN)
-  """
-  ✨ Minimum of the `reviewDate` field in the `Review` table.
-  """
-  reviewDate_min: Date @fdc_generated(from: "Review.reviewDate", purpose: QUERY_MIN)
-  """
-  ✨ Maximum of the `rating` field in the `Review` table.
-  """
-  rating_max: Int @fdc_generated(from: "Review.rating", purpose: QUERY_MAX)
-  """
-  ✨ Maximum of the `reviewDate` field in the `Review` table.
-  """
-  reviewDate_max: Date @fdc_generated(from: "Review.reviewDate", purpose: QUERY_MAX)
-  """
-  A generated field that is used for caching results in SDKs.
-  """
-  _id: ID! @fdc_generated(from: "Review.movieId,userId", purpose: GLOBAL_ID)
-}
-extend type User {
-  """
-  ✨ List `Review` objects in a one-to-many relationship (where `Review`.`user` is this object).
-  """
-  reviews_on_user(
+  clientConversations_on_clientAiBotConfig(
     """
     Filter condition to narrow down the query results.
     """
-    where: Review_Filter
+    where: ClientConversation_Filter
 
     """
     Order the query results by specific fields.
     """
-    orderBy: [Review_Order!]
+    orderBy: [ClientConversation_Order!]
 
     """
     Number of rows to skip before starting to return the results.
@@ -357,21 +288,431 @@ extend type User {
     """
     Filter condition to apply to the groups of aggregate queries.
     """
-    having: Review_Having
-  ): [Review!]! @fdc_generated(from: "Review.user", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+    having: ClientConversation_Having
+  ): [ClientConversation!]! @fdc_generated(from: "ClientConversation.clientAiBotConfig", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
   """
-  ✨ List `Movie` objects using `Review` as the join table (a `Review` object exists where its `user` is this and its `movie` is that).
+  Implicit metadata field that cannot be written. It provides extra information about query results.
   """
-  movies_via_Review(
+  _metadata: _Metadata @fdc_generated(from: "ClientAiBotConfig", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `ClientAiBotConfig` table.
+  """
+  _count: Int! @fdc_generated(from: "ClientAiBotConfig.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientAiBotConfig` table where the `accessToken` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  accessToken_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientAiBotConfig.accessToken", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientAiBotConfig` table where the `aiModelApiKey` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  aiModelApiKey_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientAiBotConfig.aiModelApiKey", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientAiBotConfig` table where the `botName` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  botName_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientAiBotConfig.botName", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientAiBotConfig` table where the `clientId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  clientId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientAiBotConfig.clientId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientAiBotConfig` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  createdAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientAiBotConfig.createdAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientAiBotConfig` table where the `customInstructions` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  customInstructions_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientAiBotConfig.customInstructions", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientAiBotConfig` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientAiBotConfig.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientAiBotConfig` table where the `knowledgeBaseJson` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  knowledgeBaseJson_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientAiBotConfig.knowledgeBaseJson", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientAiBotConfig` table where the `schedulingApiKey` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  schedulingApiKey_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientAiBotConfig.schedulingApiKey", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientAiBotConfig` table where the `welcomeMessage` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  welcomeMessage_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientAiBotConfig.welcomeMessage", purpose: QUERY_COUNT)
+  """
+  ✨ Minimum of the `createdAt` field in the `ClientAiBotConfig` table.
+  """
+  createdAt_min: Timestamp @fdc_generated(from: "ClientAiBotConfig.createdAt", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `knowledgeBaseJson` field in the `ClientAiBotConfig` table.
+  """
+  knowledgeBaseJson_min: Any @fdc_generated(from: "ClientAiBotConfig.knowledgeBaseJson", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `createdAt` field in the `ClientAiBotConfig` table.
+  """
+  createdAt_max: Timestamp @fdc_generated(from: "ClientAiBotConfig.createdAt", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `knowledgeBaseJson` field in the `ClientAiBotConfig` table.
+  """
+  knowledgeBaseJson_max: Any @fdc_generated(from: "ClientAiBotConfig.knowledgeBaseJson", purpose: QUERY_MAX)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "ClientAiBotConfig.id", purpose: GLOBAL_ID)
+}
+extend type ClientAiBotPerformanceEvent {
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "ClientAiBotPerformanceEvent", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `ClientAiBotPerformanceEvent` table.
+  """
+  _count: Int! @fdc_generated(from: "ClientAiBotPerformanceEvent.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientAiBotPerformanceEvent` table where the `clientId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  clientId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientAiBotPerformanceEvent.clientId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientAiBotPerformanceEvent` table where the `clientInboundContactId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  clientInboundContactId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientAiBotPerformanceEvent.clientInboundContactId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientAiBotPerformanceEvent` table where the `eventType` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  eventType_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientAiBotPerformanceEvent.eventType", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientAiBotPerformanceEvent` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientAiBotPerformanceEvent.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientAiBotPerformanceEvent` table where the `messageCount` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  messageCount_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientAiBotPerformanceEvent.messageCount", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientAiBotPerformanceEvent` table where the `metadata` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  metadata_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientAiBotPerformanceEvent.metadata", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientAiBotPerformanceEvent` table where the `occurredAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  occurredAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientAiBotPerformanceEvent.occurredAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientAiBotPerformanceEvent` table where the `sessionDurationMs` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  sessionDurationMs_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientAiBotPerformanceEvent.sessionDurationMs", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientAiBotPerformanceEvent` table where the `tokensUsed` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  tokensUsed_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientAiBotPerformanceEvent.tokensUsed", purpose: QUERY_COUNT)
+  """
+  ✨ Sum the `messageCount` field in the `ClientAiBotPerformanceEvent` table.
+  """
+  messageCount_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Int @fdc_generated(from: "ClientAiBotPerformanceEvent.messageCount", purpose: QUERY_SUM)
+  """
+  ✨ Sum the `sessionDurationMs` field in the `ClientAiBotPerformanceEvent` table.
+  """
+  sessionDurationMs_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Int @fdc_generated(from: "ClientAiBotPerformanceEvent.sessionDurationMs", purpose: QUERY_SUM)
+  """
+  ✨ Sum the `tokensUsed` field in the `ClientAiBotPerformanceEvent` table.
+  """
+  tokensUsed_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Int @fdc_generated(from: "ClientAiBotPerformanceEvent.tokensUsed", purpose: QUERY_SUM)
+  """
+  ✨ Average the `messageCount` field in the `ClientAiBotPerformanceEvent` table.
+  """
+  messageCount_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "ClientAiBotPerformanceEvent.messageCount", purpose: QUERY_AVG)
+  """
+  ✨ Average the `sessionDurationMs` field in the `ClientAiBotPerformanceEvent` table.
+  """
+  sessionDurationMs_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "ClientAiBotPerformanceEvent.sessionDurationMs", purpose: QUERY_AVG)
+  """
+  ✨ Average the `tokensUsed` field in the `ClientAiBotPerformanceEvent` table.
+  """
+  tokensUsed_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "ClientAiBotPerformanceEvent.tokensUsed", purpose: QUERY_AVG)
+  """
+  ✨ Minimum of the `messageCount` field in the `ClientAiBotPerformanceEvent` table.
+  """
+  messageCount_min: Int @fdc_generated(from: "ClientAiBotPerformanceEvent.messageCount", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `metadata` field in the `ClientAiBotPerformanceEvent` table.
+  """
+  metadata_min: Any @fdc_generated(from: "ClientAiBotPerformanceEvent.metadata", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `occurredAt` field in the `ClientAiBotPerformanceEvent` table.
+  """
+  occurredAt_min: Timestamp @fdc_generated(from: "ClientAiBotPerformanceEvent.occurredAt", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `sessionDurationMs` field in the `ClientAiBotPerformanceEvent` table.
+  """
+  sessionDurationMs_min: Int @fdc_generated(from: "ClientAiBotPerformanceEvent.sessionDurationMs", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `tokensUsed` field in the `ClientAiBotPerformanceEvent` table.
+  """
+  tokensUsed_min: Int @fdc_generated(from: "ClientAiBotPerformanceEvent.tokensUsed", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `messageCount` field in the `ClientAiBotPerformanceEvent` table.
+  """
+  messageCount_max: Int @fdc_generated(from: "ClientAiBotPerformanceEvent.messageCount", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `metadata` field in the `ClientAiBotPerformanceEvent` table.
+  """
+  metadata_max: Any @fdc_generated(from: "ClientAiBotPerformanceEvent.metadata", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `occurredAt` field in the `ClientAiBotPerformanceEvent` table.
+  """
+  occurredAt_max: Timestamp @fdc_generated(from: "ClientAiBotPerformanceEvent.occurredAt", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `sessionDurationMs` field in the `ClientAiBotPerformanceEvent` table.
+  """
+  sessionDurationMs_max: Int @fdc_generated(from: "ClientAiBotPerformanceEvent.sessionDurationMs", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `tokensUsed` field in the `ClientAiBotPerformanceEvent` table.
+  """
+  tokensUsed_max: Int @fdc_generated(from: "ClientAiBotPerformanceEvent.tokensUsed", purpose: QUERY_MAX)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "ClientAiBotPerformanceEvent.id", purpose: GLOBAL_ID)
+}
+extend type ClientConversation {
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "ClientConversation", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `ClientConversation` table.
+  """
+  _count: Int! @fdc_generated(from: "ClientConversation.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientConversation` table where the `accessToken` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  accessToken_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientConversation.accessToken", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientConversation` table where the `clientAiBotConfigId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  clientAiBotConfigId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientConversation.clientAiBotConfigId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientConversation` table where the `clientId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  clientId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientConversation.clientId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientConversation` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  createdAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientConversation.createdAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientConversation` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientConversation.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientConversation` table where the `messages` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  messages_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientConversation.messages", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientConversation` table where the `updatedAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  updatedAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientConversation.updatedAt", purpose: QUERY_COUNT)
+  """
+  ✨ Minimum of the `createdAt` field in the `ClientConversation` table.
+  """
+  createdAt_min: Timestamp @fdc_generated(from: "ClientConversation.createdAt", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `messages` field in the `ClientConversation` table.
+  """
+  messages_min: Any @fdc_generated(from: "ClientConversation.messages", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `updatedAt` field in the `ClientConversation` table.
+  """
+  updatedAt_min: Timestamp @fdc_generated(from: "ClientConversation.updatedAt", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `createdAt` field in the `ClientConversation` table.
+  """
+  createdAt_max: Timestamp @fdc_generated(from: "ClientConversation.createdAt", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `messages` field in the `ClientConversation` table.
+  """
+  messages_max: Any @fdc_generated(from: "ClientConversation.messages", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `updatedAt` field in the `ClientConversation` table.
+  """
+  updatedAt_max: Timestamp @fdc_generated(from: "ClientConversation.updatedAt", purpose: QUERY_MAX)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "ClientConversation.id", purpose: GLOBAL_ID)
+}
+extend type ClientInboundContact {
+  """
+  ✨ List `ClientAiBotPerformanceEvent` objects in a one-to-many relationship (where `ClientAiBotPerformanceEvent`.`clientInboundContact` is this object).
+  """
+  clientAiBotPerformanceEvents_on_clientInboundContact(
     """
     Filter condition to narrow down the query results.
     """
-    where: Review_Filter
+    where: ClientAiBotPerformanceEvent_Filter
 
     """
     Order the query results by specific fields.
     """
-    orderBy: [Review_Order!]
+    orderBy: [ClientAiBotPerformanceEvent_Order!]
 
     """
     Number of rows to skip before starting to return the results.
@@ -391,36 +732,1009 @@ extend type User {
     """
     Filter condition to apply to the groups of aggregate queries.
     """
-    having: Review_Having
-  ): [Movie!]! @fdc_generated(from: "Review", purpose: QUERY_MULTIPLE_MANY_TO_MANY)
+    having: ClientAiBotPerformanceEvent_Having
+  ): [ClientAiBotPerformanceEvent!]! @fdc_generated(from: "ClientAiBotPerformanceEvent.clientInboundContact", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
   """
   Implicit metadata field that cannot be written. It provides extra information about query results.
   """
-  _metadata: _Metadata @fdc_generated(from: "User", purpose: METADATA_FIELD)
+  _metadata: _Metadata @fdc_generated(from: "ClientInboundContact", purpose: METADATA_FIELD)
   """
-  ✨ Count the number of rows in the `User` table.
+  ✨ Count the number of rows in the `ClientInboundContact` table.
   """
-  _count: Int! @fdc_generated(from: "User.", purpose: QUERY_COUNT)
+  _count: Int! @fdc_generated(from: "ClientInboundContact.", purpose: QUERY_COUNT)
   """
-  ✨ Count the number of rows in the `User` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  ✨ Count the number of rows in the `ClientInboundContact` table where the `clientId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  clientId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientInboundContact.clientId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientInboundContact` table where the `companyName` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  companyName_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientInboundContact.companyName", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientInboundContact` table where the `contactEmail` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  contactEmail_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientInboundContact.contactEmail", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientInboundContact` table where the `contactStatus` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  contactStatus_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientInboundContact.contactStatus", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientInboundContact` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  createdAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientInboundContact.createdAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientInboundContact` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
   """
   id_count(
     """
     Set to true to count the number of distinct values.
     """
     distinct: Boolean = false
-  ): Int! @fdc_generated(from: "User.id", purpose: QUERY_COUNT)
+  ): Int! @fdc_generated(from: "ClientInboundContact.id", purpose: QUERY_COUNT)
   """
-  ✨ Count the number of rows in the `User` table where the `username` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  ✨ Count the number of rows in the `ClientInboundContact` table where the `identifiedPainPoints` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
   """
-  username_count(
+  identifiedPainPoints_count(
     """
     Set to true to count the number of distinct values.
     """
     distinct: Boolean = false
-  ): Int! @fdc_generated(from: "User.username", purpose: QUERY_COUNT)
+  ): Int! @fdc_generated(from: "ClientInboundContact.identifiedPainPoints", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientInboundContact` table where the `initialPitchDraft` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  initialPitchDraft_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientInboundContact.initialPitchDraft", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ClientInboundContact` table where the `websiteUrl` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  websiteUrl_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ClientInboundContact.websiteUrl", purpose: QUERY_COUNT)
+  """
+  ✨ Minimum of the `createdAt` field in the `ClientInboundContact` table.
+  """
+  createdAt_min: Timestamp @fdc_generated(from: "ClientInboundContact.createdAt", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `createdAt` field in the `ClientInboundContact` table.
+  """
+  createdAt_max: Timestamp @fdc_generated(from: "ClientInboundContact.createdAt", purpose: QUERY_MAX)
   """
   A generated field that is used for caching results in SDKs.
   """
-  _id: ID! @fdc_generated(from: "User.id", purpose: GLOBAL_ID)
+  _id: ID! @fdc_generated(from: "ClientInboundContact.id", purpose: GLOBAL_ID)
+}
+extend type PlatformAgentActivity {
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "PlatformAgentActivity", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `PlatformAgentActivity` table.
+  """
+  _count: Int! @fdc_generated(from: "PlatformAgentActivity.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformAgentActivity` table where the `action` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  action_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformAgentActivity.action", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformAgentActivity` table where the `agentType` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  agentType_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformAgentActivity.agentType", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformAgentActivity` table where the `durationMs` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  durationMs_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformAgentActivity.durationMs", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformAgentActivity` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformAgentActivity.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformAgentActivity` table where the `metadata` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  metadata_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformAgentActivity.metadata", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformAgentActivity` table where the `occurredAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  occurredAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformAgentActivity.occurredAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformAgentActivity` table where the `outcome` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  outcome_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformAgentActivity.outcome", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformAgentActivity` table where the `platformInboundContactId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  platformInboundContactId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformAgentActivity.platformInboundContactId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformAgentActivity` table where the `platformOutboundContactId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  platformOutboundContactId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformAgentActivity.platformOutboundContactId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformAgentActivity` table where the `platformOutboundOutreachEventId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  platformOutboundOutreachEventId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformAgentActivity.platformOutboundOutreachEventId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformAgentActivity` table where the `targetUrl` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  targetUrl_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformAgentActivity.targetUrl", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformAgentActivity` table where the `tokensUsed` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  tokensUsed_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformAgentActivity.tokensUsed", purpose: QUERY_COUNT)
+  """
+  ✨ Sum the `durationMs` field in the `PlatformAgentActivity` table.
+  """
+  durationMs_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Int @fdc_generated(from: "PlatformAgentActivity.durationMs", purpose: QUERY_SUM)
+  """
+  ✨ Sum the `tokensUsed` field in the `PlatformAgentActivity` table.
+  """
+  tokensUsed_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Int @fdc_generated(from: "PlatformAgentActivity.tokensUsed", purpose: QUERY_SUM)
+  """
+  ✨ Average the `durationMs` field in the `PlatformAgentActivity` table.
+  """
+  durationMs_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "PlatformAgentActivity.durationMs", purpose: QUERY_AVG)
+  """
+  ✨ Average the `tokensUsed` field in the `PlatformAgentActivity` table.
+  """
+  tokensUsed_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "PlatformAgentActivity.tokensUsed", purpose: QUERY_AVG)
+  """
+  ✨ Minimum of the `durationMs` field in the `PlatformAgentActivity` table.
+  """
+  durationMs_min: Int @fdc_generated(from: "PlatformAgentActivity.durationMs", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `metadata` field in the `PlatformAgentActivity` table.
+  """
+  metadata_min: Any @fdc_generated(from: "PlatformAgentActivity.metadata", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `occurredAt` field in the `PlatformAgentActivity` table.
+  """
+  occurredAt_min: Timestamp @fdc_generated(from: "PlatformAgentActivity.occurredAt", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `tokensUsed` field in the `PlatformAgentActivity` table.
+  """
+  tokensUsed_min: Int @fdc_generated(from: "PlatformAgentActivity.tokensUsed", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `durationMs` field in the `PlatformAgentActivity` table.
+  """
+  durationMs_max: Int @fdc_generated(from: "PlatformAgentActivity.durationMs", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `metadata` field in the `PlatformAgentActivity` table.
+  """
+  metadata_max: Any @fdc_generated(from: "PlatformAgentActivity.metadata", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `occurredAt` field in the `PlatformAgentActivity` table.
+  """
+  occurredAt_max: Timestamp @fdc_generated(from: "PlatformAgentActivity.occurredAt", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `tokensUsed` field in the `PlatformAgentActivity` table.
+  """
+  tokensUsed_max: Int @fdc_generated(from: "PlatformAgentActivity.tokensUsed", purpose: QUERY_MAX)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "PlatformAgentActivity.id", purpose: GLOBAL_ID)
+}
+extend type PlatformChatbotConfig {
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "PlatformChatbotConfig", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `PlatformChatbotConfig` table.
+  """
+  _count: Int! @fdc_generated(from: "PlatformChatbotConfig.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformChatbotConfig` table where the `aiModelApiKey` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  aiModelApiKey_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformChatbotConfig.aiModelApiKey", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformChatbotConfig` table where the `botName` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  botName_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformChatbotConfig.botName", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformChatbotConfig` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  createdAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformChatbotConfig.createdAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformChatbotConfig` table where the `customInstructions` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  customInstructions_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformChatbotConfig.customInstructions", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformChatbotConfig` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformChatbotConfig.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformChatbotConfig` table where the `knowledgeBaseJson` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  knowledgeBaseJson_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformChatbotConfig.knowledgeBaseJson", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformChatbotConfig` table where the `platformOwnerId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  platformOwnerId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformChatbotConfig.platformOwnerId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformChatbotConfig` table where the `schedulingApiKey` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  schedulingApiKey_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformChatbotConfig.schedulingApiKey", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformChatbotConfig` table where the `welcomeMessage` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  welcomeMessage_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformChatbotConfig.welcomeMessage", purpose: QUERY_COUNT)
+  """
+  ✨ Minimum of the `createdAt` field in the `PlatformChatbotConfig` table.
+  """
+  createdAt_min: Timestamp @fdc_generated(from: "PlatformChatbotConfig.createdAt", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `knowledgeBaseJson` field in the `PlatformChatbotConfig` table.
+  """
+  knowledgeBaseJson_min: Any @fdc_generated(from: "PlatformChatbotConfig.knowledgeBaseJson", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `createdAt` field in the `PlatformChatbotConfig` table.
+  """
+  createdAt_max: Timestamp @fdc_generated(from: "PlatformChatbotConfig.createdAt", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `knowledgeBaseJson` field in the `PlatformChatbotConfig` table.
+  """
+  knowledgeBaseJson_max: Any @fdc_generated(from: "PlatformChatbotConfig.knowledgeBaseJson", purpose: QUERY_MAX)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "PlatformChatbotConfig.id", purpose: GLOBAL_ID)
+}
+extend type PlatformInboundContact {
+  """
+  ✨ List `Client` objects in a one-to-many relationship (where `Client`.`convertedFromInboundContact` is this object).
+  """
+  clients_on_convertedFromInboundContact(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Client_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Client_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Client_Having
+  ): [Client!]! @fdc_generated(from: "Client.convertedFromInboundContact", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `PlatformAgentActivity` objects in a one-to-many relationship (where `PlatformAgentActivity`.`platformInboundContact` is this object).
+  """
+  platformAgentActivities_on_platformInboundContact(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: PlatformAgentActivity_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [PlatformAgentActivity_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: PlatformAgentActivity_Having
+  ): [PlatformAgentActivity!]! @fdc_generated(from: "PlatformAgentActivity.platformInboundContact", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "PlatformInboundContact", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `PlatformInboundContact` table.
+  """
+  _count: Int! @fdc_generated(from: "PlatformInboundContact.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformInboundContact` table where the `companyName` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  companyName_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformInboundContact.companyName", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformInboundContact` table where the `contactEmail` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  contactEmail_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformInboundContact.contactEmail", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformInboundContact` table where the `contactStatus` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  contactStatus_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformInboundContact.contactStatus", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformInboundContact` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  createdAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformInboundContact.createdAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformInboundContact` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformInboundContact.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformInboundContact` table where the `identifiedPainPoints` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  identifiedPainPoints_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformInboundContact.identifiedPainPoints", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformInboundContact` table where the `initialPitchDraft` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  initialPitchDraft_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformInboundContact.initialPitchDraft", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformInboundContact` table where the `nativeAgent` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  nativeAgent_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformInboundContact.nativeAgent", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformInboundContact` table where the `websiteUrl` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  websiteUrl_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformInboundContact.websiteUrl", purpose: QUERY_COUNT)
+  """
+  ✨ Minimum of the `createdAt` field in the `PlatformInboundContact` table.
+  """
+  createdAt_min: Timestamp @fdc_generated(from: "PlatformInboundContact.createdAt", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `createdAt` field in the `PlatformInboundContact` table.
+  """
+  createdAt_max: Timestamp @fdc_generated(from: "PlatformInboundContact.createdAt", purpose: QUERY_MAX)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "PlatformInboundContact.id", purpose: GLOBAL_ID)
+}
+extend type PlatformOutboundContact {
+  """
+  ✨ List `Client` objects in a one-to-many relationship (where `Client`.`convertedFromOutboundContact` is this object).
+  """
+  clients_on_convertedFromOutboundContact(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Client_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Client_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Client_Having
+  ): [Client!]! @fdc_generated(from: "Client.convertedFromOutboundContact", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `PlatformAgentActivity` objects in a one-to-many relationship (where `PlatformAgentActivity`.`platformOutboundContact` is this object).
+  """
+  platformAgentActivities_on_platformOutboundContact(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: PlatformAgentActivity_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [PlatformAgentActivity_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: PlatformAgentActivity_Having
+  ): [PlatformAgentActivity!]! @fdc_generated(from: "PlatformAgentActivity.platformOutboundContact", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `PlatformOutboundOutreachEvent` objects in a one-to-many relationship (where `PlatformOutboundOutreachEvent`.`platformOutboundContact` is this object).
+  """
+  platformOutboundOutreachEvents_on_platformOutboundContact(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: PlatformOutboundOutreachEvent_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [PlatformOutboundOutreachEvent_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: PlatformOutboundOutreachEvent_Having
+  ): [PlatformOutboundOutreachEvent!]! @fdc_generated(from: "PlatformOutboundOutreachEvent.platformOutboundContact", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "PlatformOutboundContact", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `PlatformOutboundContact` table.
+  """
+  _count: Int! @fdc_generated(from: "PlatformOutboundContact.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformOutboundContact` table where the `aiDetectionDetails` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  aiDetectionDetails_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformOutboundContact.aiDetectionDetails", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformOutboundContact` table where the `auditDate` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  auditDate_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformOutboundContact.auditDate", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformOutboundContact` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  createdAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformOutboundContact.createdAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformOutboundContact` table where the `hasExistingAI` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  hasExistingAI_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformOutboundContact.hasExistingAI", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformOutboundContact` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformOutboundContact.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformOutboundContact` table where the `scrapedData` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  scrapedData_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformOutboundContact.scrapedData", purpose: QUERY_COUNT)
+  """
+  ✨ Minimum of the `aiDetectionDetails` field in the `PlatformOutboundContact` table.
+  """
+  aiDetectionDetails_min: Any @fdc_generated(from: "PlatformOutboundContact.aiDetectionDetails", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `auditDate` field in the `PlatformOutboundContact` table.
+  """
+  auditDate_min: Date @fdc_generated(from: "PlatformOutboundContact.auditDate", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `createdAt` field in the `PlatformOutboundContact` table.
+  """
+  createdAt_min: Timestamp @fdc_generated(from: "PlatformOutboundContact.createdAt", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `scrapedData` field in the `PlatformOutboundContact` table.
+  """
+  scrapedData_min: Any @fdc_generated(from: "PlatformOutboundContact.scrapedData", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `aiDetectionDetails` field in the `PlatformOutboundContact` table.
+  """
+  aiDetectionDetails_max: Any @fdc_generated(from: "PlatformOutboundContact.aiDetectionDetails", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `auditDate` field in the `PlatformOutboundContact` table.
+  """
+  auditDate_max: Date @fdc_generated(from: "PlatformOutboundContact.auditDate", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `createdAt` field in the `PlatformOutboundContact` table.
+  """
+  createdAt_max: Timestamp @fdc_generated(from: "PlatformOutboundContact.createdAt", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `scrapedData` field in the `PlatformOutboundContact` table.
+  """
+  scrapedData_max: Any @fdc_generated(from: "PlatformOutboundContact.scrapedData", purpose: QUERY_MAX)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "PlatformOutboundContact.id", purpose: GLOBAL_ID)
+}
+extend type PlatformOutboundOutreachEvent {
+  """
+  ✨ List `PlatformAgentActivity` objects in a one-to-many relationship (where `PlatformAgentActivity`.`platformOutboundOutreachEvent` is this object).
+  """
+  platformAgentActivities_on_platformOutboundOutreachEvent(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: PlatformAgentActivity_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [PlatformAgentActivity_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: PlatformAgentActivity_Having
+  ): [PlatformAgentActivity!]! @fdc_generated(from: "PlatformAgentActivity.platformOutboundOutreachEvent", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "PlatformOutboundOutreachEvent", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `PlatformOutboundOutreachEvent` table.
+  """
+  _count: Int! @fdc_generated(from: "PlatformOutboundOutreachEvent.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformOutboundOutreachEvent` table where the `adminNotes` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  adminNotes_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformOutboundOutreachEvent.adminNotes", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformOutboundOutreachEvent` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  createdAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformOutboundOutreachEvent.createdAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformOutboundOutreachEvent` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformOutboundOutreachEvent.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformOutboundOutreachEvent` table where the `messageContent` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  messageContent_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformOutboundOutreachEvent.messageContent", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformOutboundOutreachEvent` table where the `outreachType` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  outreachType_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformOutboundOutreachEvent.outreachType", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformOutboundOutreachEvent` table where the `platformOutboundContactId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  platformOutboundContactId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformOutboundOutreachEvent.platformOutboundContactId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformOutboundOutreachEvent` table where the `sendDate` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  sendDate_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformOutboundOutreachEvent.sendDate", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformOutboundOutreachEvent` table where the `status` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  status_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformOutboundOutreachEvent.status", purpose: QUERY_COUNT)
+  """
+  ✨ Minimum of the `createdAt` field in the `PlatformOutboundOutreachEvent` table.
+  """
+  createdAt_min: Timestamp @fdc_generated(from: "PlatformOutboundOutreachEvent.createdAt", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `sendDate` field in the `PlatformOutboundOutreachEvent` table.
+  """
+  sendDate_min: Date @fdc_generated(from: "PlatformOutboundOutreachEvent.sendDate", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `createdAt` field in the `PlatformOutboundOutreachEvent` table.
+  """
+  createdAt_max: Timestamp @fdc_generated(from: "PlatformOutboundOutreachEvent.createdAt", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `sendDate` field in the `PlatformOutboundOutreachEvent` table.
+  """
+  sendDate_max: Date @fdc_generated(from: "PlatformOutboundOutreachEvent.sendDate", purpose: QUERY_MAX)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "PlatformOutboundOutreachEvent.id", purpose: GLOBAL_ID)
+}
+extend type PlatformOwner {
+  """
+  ✨ List `PlatformChatbotConfig` objects in a one-to-many relationship (where `PlatformChatbotConfig`.`platformOwner` is this object).
+  """
+  platformChatbotConfigs_on_platformOwner(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: PlatformChatbotConfig_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [PlatformChatbotConfig_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: PlatformChatbotConfig_Having
+  ): [PlatformChatbotConfig!]! @fdc_generated(from: "PlatformChatbotConfig.platformOwner", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "PlatformOwner", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `PlatformOwner` table.
+  """
+  _count: Int! @fdc_generated(from: "PlatformOwner.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformOwner` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  createdAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformOwner.createdAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformOwner` table where the `displayName` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  displayName_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformOwner.displayName", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformOwner` table where the `email` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  email_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformOwner.email", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `PlatformOwner` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformOwner.id", purpose: QUERY_COUNT)
+  """
+  ✨ Minimum of the `createdAt` field in the `PlatformOwner` table.
+  """
+  createdAt_min: Timestamp @fdc_generated(from: "PlatformOwner.createdAt", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `createdAt` field in the `PlatformOwner` table.
+  """
+  createdAt_max: Timestamp @fdc_generated(from: "PlatformOwner.createdAt", purpose: QUERY_MAX)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "PlatformOwner.id", purpose: GLOBAL_ID)
 }

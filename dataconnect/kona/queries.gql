@@ -1,0 +1,13 @@
+# Kona production connector — queries (minimal for schema-phase SDK generate)
+
+query GetClientByLinkedAuthUid($authUid: String!) @auth(level: USER) {
+  clients(where: { linkedAuthUid: { eq: $authUid } }, limit: 1) {
+    id
+    companyName
+    clientName
+    email
+    subscriptionStatus
+    paddleSubscriptionId
+    linkedAuthUid
+  }
+}

@@ -1,72 +1,23 @@
 const { validateAdminArgs } = require('firebase-admin/data-connect');
 
 const connectorConfig = {
-  connector: 'example',
+  connector: 'kona',
   serviceId: 'jacobkotzee',
   location: 'europe-west1'
 };
 exports.connectorConfig = connectorConfig;
 
-function createMovie(dcOrVarsOrOptions, varsOrOptions, options) {
+function getClientByLinkedAuthUid(dcOrVarsOrOptions, varsOrOptions, options) {
   const { dc: dcInstance, vars: inputVars, options: inputOpts} = validateAdminArgs(connectorConfig, dcOrVarsOrOptions, varsOrOptions, options, true, true);
   dcInstance.useGen(true);
-  return dcInstance.executeMutation('CreateMovie', inputVars, inputOpts);
+  return dcInstance.executeQuery('GetClientByLinkedAuthUid', inputVars, inputOpts);
 }
-exports.createMovie = createMovie;
+exports.getClientByLinkedAuthUid = getClientByLinkedAuthUid;
 
-function upsertUser(dcOrVarsOrOptions, varsOrOptions, options) {
-  const { dc: dcInstance, vars: inputVars, options: inputOpts} = validateAdminArgs(connectorConfig, dcOrVarsOrOptions, varsOrOptions, options, true, true);
-  dcInstance.useGen(true);
-  return dcInstance.executeMutation('UpsertUser', inputVars, inputOpts);
-}
-exports.upsertUser = upsertUser;
-
-function addReview(dcOrVarsOrOptions, varsOrOptions, options) {
-  const { dc: dcInstance, vars: inputVars, options: inputOpts} = validateAdminArgs(connectorConfig, dcOrVarsOrOptions, varsOrOptions, options, true, true);
-  dcInstance.useGen(true);
-  return dcInstance.executeMutation('AddReview', inputVars, inputOpts);
-}
-exports.addReview = addReview;
-
-function deleteReview(dcOrVarsOrOptions, varsOrOptions, options) {
-  const { dc: dcInstance, vars: inputVars, options: inputOpts} = validateAdminArgs(connectorConfig, dcOrVarsOrOptions, varsOrOptions, options, true, true);
-  dcInstance.useGen(true);
-  return dcInstance.executeMutation('DeleteReview', inputVars, inputOpts);
-}
-exports.deleteReview = deleteReview;
-
-function listMovies(dcOrOptions, options) {
-  const { dc: dcInstance, options: inputOpts} = validateAdminArgs(connectorConfig, dcOrOptions, options, undefined);
-  dcInstance.useGen(true);
-  return dcInstance.executeQuery('ListMovies', undefined, inputOpts);
-}
-exports.listMovies = listMovies;
-
-function listUsers(dcOrOptions, options) {
-  const { dc: dcInstance, options: inputOpts} = validateAdminArgs(connectorConfig, dcOrOptions, options, undefined);
-  dcInstance.useGen(true);
-  return dcInstance.executeQuery('ListUsers', undefined, inputOpts);
-}
-exports.listUsers = listUsers;
-
-function listUserReviews(dcOrOptions, options) {
-  const { dc: dcInstance, options: inputOpts} = validateAdminArgs(connectorConfig, dcOrOptions, options, undefined);
-  dcInstance.useGen(true);
-  return dcInstance.executeQuery('ListUserReviews', undefined, inputOpts);
-}
-exports.listUserReviews = listUserReviews;
-
-function getMovieById(dcOrVarsOrOptions, varsOrOptions, options) {
-  const { dc: dcInstance, vars: inputVars, options: inputOpts} = validateAdminArgs(connectorConfig, dcOrVarsOrOptions, varsOrOptions, options, true, true);
-  dcInstance.useGen(true);
-  return dcInstance.executeQuery('GetMovieById', inputVars, inputOpts);
-}
-exports.getMovieById = getMovieById;
-
-function searchMovie(dcOrVarsOrOptions, varsOrOptions, options) {
+function upsertPlatformOwner(dcOrVarsOrOptions, varsOrOptions, options) {
   const { dc: dcInstance, vars: inputVars, options: inputOpts} = validateAdminArgs(connectorConfig, dcOrVarsOrOptions, varsOrOptions, options, true, false);
   dcInstance.useGen(true);
-  return dcInstance.executeQuery('SearchMovie', inputVars, inputOpts);
+  return dcInstance.executeMutation('UpsertPlatformOwner', inputVars, inputOpts);
 }
-exports.searchMovie = searchMovie;
+exports.upsertPlatformOwner = upsertPlatformOwner;
 

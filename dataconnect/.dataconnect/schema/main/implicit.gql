@@ -1,26 +1,68 @@
-extend type Movie {
+extend type Client {
   """
-  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  ✨ Implicit foreign key field based on `Client`.`convertedFromInboundContact`. It must match the value of `PlatformInboundContact`.`id`. See `@ref` for how to customize it.
   """
-  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Movie", purpose: IMPLICIT_KEY_FIELD)
+  convertedFromInboundContactId: UUID @fdc_generated(from: "Client.convertedFromInboundContact", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `Client`.`convertedFromOutboundContact`. It must match the value of `PlatformOutboundContact`.`id`. See `@ref` for how to customize it.
+  """
+  convertedFromOutboundContactId: UUID @fdc_generated(from: "Client.convertedFromOutboundContact", purpose: IMPLICIT_REF_FIELD)
 }
-extend type MovieMetadata {
+extend type ClientAiBotConfig {
   """
-  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  ✨ Implicit foreign key field based on `ClientAiBotConfig`.`client`. It must match the value of `Client`.`id`. See `@ref` for how to customize it.
   """
-  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "MovieMetadata", purpose: IMPLICIT_KEY_FIELD)
-  """
-  ✨ Implicit foreign key field based on `MovieMetadata`.`movie`. It must match the value of `Movie`.`id`. See `@ref` for how to customize it.
-  """
-  movieId: UUID! @fdc_generated(from: "MovieMetadata.movie", purpose: IMPLICIT_REF_FIELD)
+  clientId: UUID! @fdc_generated(from: "ClientAiBotConfig.client", purpose: IMPLICIT_REF_FIELD)
 }
-extend type Review {
+extend type ClientAiBotPerformanceEvent {
   """
-  ✨ Implicit foreign key field based on `Review`.`movie`. It must match the value of `Movie`.`id`. See `@ref` for how to customize it.
+  ✨ Implicit foreign key field based on `ClientAiBotPerformanceEvent`.`client`. It must match the value of `Client`.`id`. See `@ref` for how to customize it.
   """
-  movieId: UUID! @fdc_generated(from: "Review.movie", purpose: IMPLICIT_REF_FIELD)
+  clientId: UUID! @fdc_generated(from: "ClientAiBotPerformanceEvent.client", purpose: IMPLICIT_REF_FIELD)
   """
-  ✨ Implicit foreign key field based on `Review`.`user`. It must match the value of `User`.`id`. See `@ref` for how to customize it.
+  ✨ Implicit foreign key field based on `ClientAiBotPerformanceEvent`.`clientInboundContact`. It must match the value of `ClientInboundContact`.`id`. See `@ref` for how to customize it.
   """
-  userId: String! @fdc_generated(from: "Review.user", purpose: IMPLICIT_REF_FIELD)
+  clientInboundContactId: UUID @fdc_generated(from: "ClientAiBotPerformanceEvent.clientInboundContact", purpose: IMPLICIT_REF_FIELD)
+}
+extend type ClientConversation {
+  """
+  ✨ Implicit foreign key field based on `ClientConversation`.`clientAiBotConfig`. It must match the value of `ClientAiBotConfig`.`id`. See `@ref` for how to customize it.
+  """
+  clientAiBotConfigId: UUID @fdc_generated(from: "ClientConversation.clientAiBotConfig", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `ClientConversation`.`client`. It must match the value of `Client`.`id`. See `@ref` for how to customize it.
+  """
+  clientId: UUID! @fdc_generated(from: "ClientConversation.client", purpose: IMPLICIT_REF_FIELD)
+}
+extend type ClientInboundContact {
+  """
+  ✨ Implicit foreign key field based on `ClientInboundContact`.`client`. It must match the value of `Client`.`id`. See `@ref` for how to customize it.
+  """
+  clientId: UUID! @fdc_generated(from: "ClientInboundContact.client", purpose: IMPLICIT_REF_FIELD)
+}
+extend type PlatformAgentActivity {
+  """
+  ✨ Implicit foreign key field based on `PlatformAgentActivity`.`platformInboundContact`. It must match the value of `PlatformInboundContact`.`id`. See `@ref` for how to customize it.
+  """
+  platformInboundContactId: UUID @fdc_generated(from: "PlatformAgentActivity.platformInboundContact", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `PlatformAgentActivity`.`platformOutboundContact`. It must match the value of `PlatformOutboundContact`.`id`. See `@ref` for how to customize it.
+  """
+  platformOutboundContactId: UUID @fdc_generated(from: "PlatformAgentActivity.platformOutboundContact", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `PlatformAgentActivity`.`platformOutboundOutreachEvent`. It must match the value of `PlatformOutboundOutreachEvent`.`id`. See `@ref` for how to customize it.
+  """
+  platformOutboundOutreachEventId: UUID @fdc_generated(from: "PlatformAgentActivity.platformOutboundOutreachEvent", purpose: IMPLICIT_REF_FIELD)
+}
+extend type PlatformChatbotConfig {
+  """
+  ✨ Implicit foreign key field based on `PlatformChatbotConfig`.`platformOwner`. It must match the value of `PlatformOwner`.`id`. See `@ref` for how to customize it.
+  """
+  platformOwnerId: String @fdc_generated(from: "PlatformChatbotConfig.platformOwner", purpose: IMPLICIT_REF_FIELD)
+}
+extend type PlatformOutboundOutreachEvent {
+  """
+  ✨ Implicit foreign key field based on `PlatformOutboundOutreachEvent`.`platformOutboundContact`. It must match the value of `PlatformOutboundContact`.`id`. See `@ref` for how to customize it.
+  """
+  platformOutboundContactId: UUID! @fdc_generated(from: "PlatformOutboundOutreachEvent.platformOutboundContact", purpose: IMPLICIT_REF_FIELD)
 }

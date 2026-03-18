@@ -1,152 +1,404 @@
 extend type Mutation {
   """
-  ✨ Insert a single `Movie` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  ✨ Insert a single `Client` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
-  movie_insert(
+  client_insert(
     """
     Data object to insert into the table.
     """
-    data: Movie_Data!
-  ): Movie_KeyOutput! @fdc_generated(from: "Movie", purpose: INSERT_SINGLE)
+    data: Client_Data!
+  ): Client_KeyOutput! @fdc_generated(from: "Client", purpose: INSERT_SINGLE)
   """
-  ✨ Insert a single `MovieMetadata` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  ✨ Insert a single `ClientAiBotConfig` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
-  movieMetadata_insert(
+  clientAiBotConfig_insert(
     """
     Data object to insert into the table.
     """
-    data: MovieMetadata_Data!
-  ): MovieMetadata_KeyOutput! @fdc_generated(from: "MovieMetadata", purpose: INSERT_SINGLE)
+    data: ClientAiBotConfig_Data!
+  ): ClientAiBotConfig_KeyOutput! @fdc_generated(from: "ClientAiBotConfig", purpose: INSERT_SINGLE)
   """
-  ✨ Insert a single `Review` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  ✨ Insert a single `ClientAiBotPerformanceEvent` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
-  review_insert(
+  clientAiBotPerformanceEvent_insert(
     """
     Data object to insert into the table.
     """
-    data: Review_Data!
-  ): Review_KeyOutput! @fdc_generated(from: "Review", purpose: INSERT_SINGLE)
+    data: ClientAiBotPerformanceEvent_Data!
+  ): ClientAiBotPerformanceEvent_KeyOutput! @fdc_generated(from: "ClientAiBotPerformanceEvent", purpose: INSERT_SINGLE)
   """
-  ✨ Insert a single `User` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  ✨ Insert a single `ClientConversation` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
-  user_insert(
+  clientConversation_insert(
     """
     Data object to insert into the table.
     """
-    data: User_Data!
-  ): User_KeyOutput! @fdc_generated(from: "User", purpose: INSERT_SINGLE)
+    data: ClientConversation_Data!
+  ): ClientConversation_KeyOutput! @fdc_generated(from: "ClientConversation", purpose: INSERT_SINGLE)
   """
-  ✨ Insert `Movie` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  ✨ Insert a single `ClientInboundContact` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
-  movie_insertMany(
+  clientInboundContact_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: ClientInboundContact_Data!
+  ): ClientInboundContact_KeyOutput! @fdc_generated(from: "ClientInboundContact", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `PlatformAgentActivity` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  platformAgentActivity_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: PlatformAgentActivity_Data!
+  ): PlatformAgentActivity_KeyOutput! @fdc_generated(from: "PlatformAgentActivity", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `PlatformChatbotConfig` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  platformChatbotConfig_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: PlatformChatbotConfig_Data!
+  ): PlatformChatbotConfig_KeyOutput! @fdc_generated(from: "PlatformChatbotConfig", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `PlatformInboundContact` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  platformInboundContact_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: PlatformInboundContact_Data!
+  ): PlatformInboundContact_KeyOutput! @fdc_generated(from: "PlatformInboundContact", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `PlatformOutboundContact` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  platformOutboundContact_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: PlatformOutboundContact_Data!
+  ): PlatformOutboundContact_KeyOutput! @fdc_generated(from: "PlatformOutboundContact", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `PlatformOutboundOutreachEvent` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  platformOutboundOutreachEvent_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: PlatformOutboundOutreachEvent_Data!
+  ): PlatformOutboundOutreachEvent_KeyOutput! @fdc_generated(from: "PlatformOutboundOutreachEvent", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `PlatformOwner` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  platformOwner_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: PlatformOwner_Data!
+  ): PlatformOwner_KeyOutput! @fdc_generated(from: "PlatformOwner", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert `Client` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  client_insertMany(
     """
     List of data objects to insert into the table.
     """
-    data: [Movie_Data!]!
-  ): [Movie_KeyOutput!]! @fdc_generated(from: "Movie", purpose: INSERT_MULTIPLE)
+    data: [Client_Data!]!
+  ): [Client_KeyOutput!]! @fdc_generated(from: "Client", purpose: INSERT_MULTIPLE)
   """
-  ✨ Insert `MovieMetadata` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  ✨ Insert `ClientAiBotConfig` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
-  movieMetadata_insertMany(
+  clientAiBotConfig_insertMany(
     """
     List of data objects to insert into the table.
     """
-    data: [MovieMetadata_Data!]!
-  ): [MovieMetadata_KeyOutput!]! @fdc_generated(from: "MovieMetadata", purpose: INSERT_MULTIPLE)
+    data: [ClientAiBotConfig_Data!]!
+  ): [ClientAiBotConfig_KeyOutput!]! @fdc_generated(from: "ClientAiBotConfig", purpose: INSERT_MULTIPLE)
   """
-  ✨ Insert `Review` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  ✨ Insert `ClientAiBotPerformanceEvent` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
-  review_insertMany(
+  clientAiBotPerformanceEvent_insertMany(
     """
     List of data objects to insert into the table.
     """
-    data: [Review_Data!]!
-  ): [Review_KeyOutput!]! @fdc_generated(from: "Review", purpose: INSERT_MULTIPLE)
+    data: [ClientAiBotPerformanceEvent_Data!]!
+  ): [ClientAiBotPerformanceEvent_KeyOutput!]! @fdc_generated(from: "ClientAiBotPerformanceEvent", purpose: INSERT_MULTIPLE)
   """
-  ✨ Insert `User` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  ✨ Insert `ClientConversation` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
-  user_insertMany(
+  clientConversation_insertMany(
     """
     List of data objects to insert into the table.
     """
-    data: [User_Data!]!
-  ): [User_KeyOutput!]! @fdc_generated(from: "User", purpose: INSERT_MULTIPLE)
+    data: [ClientConversation_Data!]!
+  ): [ClientConversation_KeyOutput!]! @fdc_generated(from: "ClientConversation", purpose: INSERT_MULTIPLE)
   """
-  ✨ Insert or update a single `Movie` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Movie`.
+  ✨ Insert `ClientInboundContact` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
-  movie_upsert(
+  clientInboundContact_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [ClientInboundContact_Data!]!
+  ): [ClientInboundContact_KeyOutput!]! @fdc_generated(from: "ClientInboundContact", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `PlatformAgentActivity` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  platformAgentActivity_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [PlatformAgentActivity_Data!]!
+  ): [PlatformAgentActivity_KeyOutput!]! @fdc_generated(from: "PlatformAgentActivity", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `PlatformChatbotConfig` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  platformChatbotConfig_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [PlatformChatbotConfig_Data!]!
+  ): [PlatformChatbotConfig_KeyOutput!]! @fdc_generated(from: "PlatformChatbotConfig", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `PlatformInboundContact` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  platformInboundContact_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [PlatformInboundContact_Data!]!
+  ): [PlatformInboundContact_KeyOutput!]! @fdc_generated(from: "PlatformInboundContact", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `PlatformOutboundContact` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  platformOutboundContact_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [PlatformOutboundContact_Data!]!
+  ): [PlatformOutboundContact_KeyOutput!]! @fdc_generated(from: "PlatformOutboundContact", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `PlatformOutboundOutreachEvent` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  platformOutboundOutreachEvent_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [PlatformOutboundOutreachEvent_Data!]!
+  ): [PlatformOutboundOutreachEvent_KeyOutput!]! @fdc_generated(from: "PlatformOutboundOutreachEvent", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `PlatformOwner` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  platformOwner_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [PlatformOwner_Data!]!
+  ): [PlatformOwner_KeyOutput!]! @fdc_generated(from: "PlatformOwner", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert or update a single `Client` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Client`.
+  """
+  client_upsert(
     """
     Data object to insert or update if it already exists.
     """
-    data: Movie_Data!
-  ): Movie_KeyOutput! @fdc_generated(from: "Movie", purpose: UPSERT_SINGLE)
+    data: Client_Data!
+  ): Client_KeyOutput! @fdc_generated(from: "Client", purpose: UPSERT_SINGLE)
   """
-  ✨ Insert or update a single `MovieMetadata` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `MovieMetadata`.
+  ✨ Insert or update a single `ClientAiBotConfig` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `ClientAiBotConfig`.
   """
-  movieMetadata_upsert(
+  clientAiBotConfig_upsert(
     """
     Data object to insert or update if it already exists.
     """
-    data: MovieMetadata_Data!
-  ): MovieMetadata_KeyOutput! @fdc_generated(from: "MovieMetadata", purpose: UPSERT_SINGLE)
+    data: ClientAiBotConfig_Data!
+  ): ClientAiBotConfig_KeyOutput! @fdc_generated(from: "ClientAiBotConfig", purpose: UPSERT_SINGLE)
   """
-  ✨ Insert or update a single `Review` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Review`.
+  ✨ Insert or update a single `ClientAiBotPerformanceEvent` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `ClientAiBotPerformanceEvent`.
   """
-  review_upsert(
+  clientAiBotPerformanceEvent_upsert(
     """
     Data object to insert or update if it already exists.
     """
-    data: Review_Data!
-  ): Review_KeyOutput! @fdc_generated(from: "Review", purpose: UPSERT_SINGLE)
+    data: ClientAiBotPerformanceEvent_Data!
+  ): ClientAiBotPerformanceEvent_KeyOutput! @fdc_generated(from: "ClientAiBotPerformanceEvent", purpose: UPSERT_SINGLE)
   """
-  ✨ Insert or update a single `User` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `User`.
+  ✨ Insert or update a single `ClientConversation` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `ClientConversation`.
   """
-  user_upsert(
+  clientConversation_upsert(
     """
     Data object to insert or update if it already exists.
     """
-    data: User_Data!
-  ): User_KeyOutput! @fdc_generated(from: "User", purpose: UPSERT_SINGLE)
+    data: ClientConversation_Data!
+  ): ClientConversation_KeyOutput! @fdc_generated(from: "ClientConversation", purpose: UPSERT_SINGLE)
   """
-  ✨ Insert or update `Movie` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Movie`.
+  ✨ Insert or update a single `ClientInboundContact` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `ClientInboundContact`.
   """
-  movie_upsertMany(
+  clientInboundContact_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: ClientInboundContact_Data!
+  ): ClientInboundContact_KeyOutput! @fdc_generated(from: "ClientInboundContact", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `PlatformAgentActivity` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `PlatformAgentActivity`.
+  """
+  platformAgentActivity_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: PlatformAgentActivity_Data!
+  ): PlatformAgentActivity_KeyOutput! @fdc_generated(from: "PlatformAgentActivity", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `PlatformChatbotConfig` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `PlatformChatbotConfig`.
+  """
+  platformChatbotConfig_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: PlatformChatbotConfig_Data!
+  ): PlatformChatbotConfig_KeyOutput! @fdc_generated(from: "PlatformChatbotConfig", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `PlatformInboundContact` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `PlatformInboundContact`.
+  """
+  platformInboundContact_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: PlatformInboundContact_Data!
+  ): PlatformInboundContact_KeyOutput! @fdc_generated(from: "PlatformInboundContact", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `PlatformOutboundContact` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `PlatformOutboundContact`.
+  """
+  platformOutboundContact_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: PlatformOutboundContact_Data!
+  ): PlatformOutboundContact_KeyOutput! @fdc_generated(from: "PlatformOutboundContact", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `PlatformOutboundOutreachEvent` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `PlatformOutboundOutreachEvent`.
+  """
+  platformOutboundOutreachEvent_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: PlatformOutboundOutreachEvent_Data!
+  ): PlatformOutboundOutreachEvent_KeyOutput! @fdc_generated(from: "PlatformOutboundOutreachEvent", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `PlatformOwner` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `PlatformOwner`.
+  """
+  platformOwner_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: PlatformOwner_Data!
+  ): PlatformOwner_KeyOutput! @fdc_generated(from: "PlatformOwner", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update `Client` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Client`.
+  """
+  client_upsertMany(
     """
     List of data objects to insert or update if it already exists.
     """
-    data: [Movie_Data!]!
-  ): [Movie_KeyOutput!]! @fdc_generated(from: "Movie", purpose: UPSERT_MULTIPLE)
+    data: [Client_Data!]!
+  ): [Client_KeyOutput!]! @fdc_generated(from: "Client", purpose: UPSERT_MULTIPLE)
   """
-  ✨ Insert or update `MovieMetadata` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `MovieMetadata`.
+  ✨ Insert or update `ClientAiBotConfig` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `ClientAiBotConfig`.
   """
-  movieMetadata_upsertMany(
+  clientAiBotConfig_upsertMany(
     """
     List of data objects to insert or update if it already exists.
     """
-    data: [MovieMetadata_Data!]!
-  ): [MovieMetadata_KeyOutput!]! @fdc_generated(from: "MovieMetadata", purpose: UPSERT_MULTIPLE)
+    data: [ClientAiBotConfig_Data!]!
+  ): [ClientAiBotConfig_KeyOutput!]! @fdc_generated(from: "ClientAiBotConfig", purpose: UPSERT_MULTIPLE)
   """
-  ✨ Insert or update `Review` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Review`.
+  ✨ Insert or update `ClientAiBotPerformanceEvent` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `ClientAiBotPerformanceEvent`.
   """
-  review_upsertMany(
+  clientAiBotPerformanceEvent_upsertMany(
     """
     List of data objects to insert or update if it already exists.
     """
-    data: [Review_Data!]!
-  ): [Review_KeyOutput!]! @fdc_generated(from: "Review", purpose: UPSERT_MULTIPLE)
+    data: [ClientAiBotPerformanceEvent_Data!]!
+  ): [ClientAiBotPerformanceEvent_KeyOutput!]! @fdc_generated(from: "ClientAiBotPerformanceEvent", purpose: UPSERT_MULTIPLE)
   """
-  ✨ Insert or update `User` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `User`.
+  ✨ Insert or update `ClientConversation` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `ClientConversation`.
   """
-  user_upsertMany(
+  clientConversation_upsertMany(
     """
     List of data objects to insert or update if it already exists.
     """
-    data: [User_Data!]!
-  ): [User_KeyOutput!]! @fdc_generated(from: "User", purpose: UPSERT_MULTIPLE)
+    data: [ClientConversation_Data!]!
+  ): [ClientConversation_KeyOutput!]! @fdc_generated(from: "ClientConversation", purpose: UPSERT_MULTIPLE)
   """
-  ✨ Update a single `Movie` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Movie` or `null` if not found.
+  ✨ Insert or update `ClientInboundContact` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `ClientInboundContact`.
   """
-  movie_update(
+  clientInboundContact_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [ClientInboundContact_Data!]!
+  ): [ClientInboundContact_KeyOutput!]! @fdc_generated(from: "ClientInboundContact", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `PlatformAgentActivity` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `PlatformAgentActivity`.
+  """
+  platformAgentActivity_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [PlatformAgentActivity_Data!]!
+  ): [PlatformAgentActivity_KeyOutput!]! @fdc_generated(from: "PlatformAgentActivity", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `PlatformChatbotConfig` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `PlatformChatbotConfig`.
+  """
+  platformChatbotConfig_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [PlatformChatbotConfig_Data!]!
+  ): [PlatformChatbotConfig_KeyOutput!]! @fdc_generated(from: "PlatformChatbotConfig", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `PlatformInboundContact` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `PlatformInboundContact`.
+  """
+  platformInboundContact_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [PlatformInboundContact_Data!]!
+  ): [PlatformInboundContact_KeyOutput!]! @fdc_generated(from: "PlatformInboundContact", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `PlatformOutboundContact` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `PlatformOutboundContact`.
+  """
+  platformOutboundContact_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [PlatformOutboundContact_Data!]!
+  ): [PlatformOutboundContact_KeyOutput!]! @fdc_generated(from: "PlatformOutboundContact", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `PlatformOutboundOutreachEvent` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `PlatformOutboundOutreachEvent`.
+  """
+  platformOutboundOutreachEvent_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [PlatformOutboundOutreachEvent_Data!]!
+  ): [PlatformOutboundOutreachEvent_KeyOutput!]! @fdc_generated(from: "PlatformOutboundOutreachEvent", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `PlatformOwner` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `PlatformOwner`.
+  """
+  platformOwner_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [PlatformOwner_Data!]!
+  ): [PlatformOwner_KeyOutput!]! @fdc_generated(from: "PlatformOwner", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Update a single `Client` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Client` or `null` if not found.
+  """
+  client_update(
     """
     The unique ID of the object.
     """
@@ -155,22 +407,22 @@ extend type Mutation {
     """
     The key used to identify the object.
     """
-    key: Movie_Key
+    key: Client_Key
 
     """
     Fetch the first row based on the filters and ordering.
     """
-    first: Movie_FirstRow
+    first: Client_FirstRow
 
     """
     Data object containing fields to be updated.
     """
-    data: Movie_Data!
-  ): Movie_KeyOutput @fdc_generated(from: "Movie", purpose: UPDATE_SINGLE)
+    data: Client_Data!
+  ): Client_KeyOutput @fdc_generated(from: "Client", purpose: UPDATE_SINGLE)
   """
-  ✨ Update a single `MovieMetadata` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `MovieMetadata` or `null` if not found.
+  ✨ Update a single `ClientAiBotConfig` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `ClientAiBotConfig` or `null` if not found.
   """
-  movieMetadata_update(
+  clientAiBotConfig_update(
     """
     The unique ID of the object.
     """
@@ -179,41 +431,214 @@ extend type Mutation {
     """
     The key used to identify the object.
     """
-    key: MovieMetadata_Key
+    key: ClientAiBotConfig_Key
 
     """
     Fetch the first row based on the filters and ordering.
     """
-    first: MovieMetadata_FirstRow
+    first: ClientAiBotConfig_FirstRow
 
     """
     Data object containing fields to be updated.
     """
-    data: MovieMetadata_Data!
-  ): MovieMetadata_KeyOutput @fdc_generated(from: "MovieMetadata", purpose: UPDATE_SINGLE)
+    data: ClientAiBotConfig_Data!
+  ): ClientAiBotConfig_KeyOutput @fdc_generated(from: "ClientAiBotConfig", purpose: UPDATE_SINGLE)
   """
-  ✨ Update a single `Review` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Review` or `null` if not found.
+  ✨ Update a single `ClientAiBotPerformanceEvent` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `ClientAiBotPerformanceEvent` or `null` if not found.
   """
-  review_update(
+  clientAiBotPerformanceEvent_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
     """
     The key used to identify the object.
     """
-    key: Review_Key
+    key: ClientAiBotPerformanceEvent_Key
 
     """
     Fetch the first row based on the filters and ordering.
     """
-    first: Review_FirstRow
+    first: ClientAiBotPerformanceEvent_FirstRow
 
     """
     Data object containing fields to be updated.
     """
-    data: Review_Data!
-  ): Review_KeyOutput @fdc_generated(from: "Review", purpose: UPDATE_SINGLE)
+    data: ClientAiBotPerformanceEvent_Data!
+  ): ClientAiBotPerformanceEvent_KeyOutput @fdc_generated(from: "ClientAiBotPerformanceEvent", purpose: UPDATE_SINGLE)
   """
-  ✨ Update a single `User` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `User` or `null` if not found.
+  ✨ Update a single `ClientConversation` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `ClientConversation` or `null` if not found.
   """
-  user_update(
+  clientConversation_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: ClientConversation_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: ClientConversation_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: ClientConversation_Data!
+  ): ClientConversation_KeyOutput @fdc_generated(from: "ClientConversation", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `ClientInboundContact` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `ClientInboundContact` or `null` if not found.
+  """
+  clientInboundContact_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: ClientInboundContact_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: ClientInboundContact_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: ClientInboundContact_Data!
+  ): ClientInboundContact_KeyOutput @fdc_generated(from: "ClientInboundContact", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `PlatformAgentActivity` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `PlatformAgentActivity` or `null` if not found.
+  """
+  platformAgentActivity_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: PlatformAgentActivity_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: PlatformAgentActivity_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: PlatformAgentActivity_Data!
+  ): PlatformAgentActivity_KeyOutput @fdc_generated(from: "PlatformAgentActivity", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `PlatformChatbotConfig` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `PlatformChatbotConfig` or `null` if not found.
+  """
+  platformChatbotConfig_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: PlatformChatbotConfig_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: PlatformChatbotConfig_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: PlatformChatbotConfig_Data!
+  ): PlatformChatbotConfig_KeyOutput @fdc_generated(from: "PlatformChatbotConfig", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `PlatformInboundContact` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `PlatformInboundContact` or `null` if not found.
+  """
+  platformInboundContact_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: PlatformInboundContact_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: PlatformInboundContact_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: PlatformInboundContact_Data!
+  ): PlatformInboundContact_KeyOutput @fdc_generated(from: "PlatformInboundContact", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `PlatformOutboundContact` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `PlatformOutboundContact` or `null` if not found.
+  """
+  platformOutboundContact_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: PlatformOutboundContact_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: PlatformOutboundContact_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: PlatformOutboundContact_Data!
+  ): PlatformOutboundContact_KeyOutput @fdc_generated(from: "PlatformOutboundContact", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `PlatformOutboundOutreachEvent` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `PlatformOutboundOutreachEvent` or `null` if not found.
+  """
+  platformOutboundOutreachEvent_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: PlatformOutboundOutreachEvent_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: PlatformOutboundOutreachEvent_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: PlatformOutboundOutreachEvent_Data!
+  ): PlatformOutboundOutreachEvent_KeyOutput @fdc_generated(from: "PlatformOutboundOutreachEvent", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `PlatformOwner` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `PlatformOwner` or `null` if not found.
+  """
+  platformOwner_update(
     """
     The unique ID of the object.
     """
@@ -227,26 +652,26 @@ extend type Mutation {
     """
     The key used to identify the object.
     """
-    key: User_Key
+    key: PlatformOwner_Key
 
     """
     Fetch the first row based on the filters and ordering.
     """
-    first: User_FirstRow
+    first: PlatformOwner_FirstRow
 
     """
     Data object containing fields to be updated.
     """
-    data: User_Data!
-  ): User_KeyOutput @fdc_generated(from: "User", purpose: UPDATE_SINGLE)
+    data: PlatformOwner_Data!
+  ): PlatformOwner_KeyOutput @fdc_generated(from: "PlatformOwner", purpose: UPDATE_SINGLE)
   """
-  ✨ Update `Movie` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  ✨ Update `Client` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
   """
-  movie_updateMany(
+  client_updateMany(
     """
     Filter condition to specify which rows to update.
     """
-    where: Movie_Filter
+    where: Client_Filter
 
     """
     Set to true to update all rows.
@@ -256,16 +681,16 @@ extend type Mutation {
     """
     Data object containing fields to update.
     """
-    data: Movie_Data!
-  ): Int! @fdc_generated(from: "Movie", purpose: UPDATE_MULTIPLE)
+    data: Client_Data!
+  ): Int! @fdc_generated(from: "Client", purpose: UPDATE_MULTIPLE)
   """
-  ✨ Update `MovieMetadata` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  ✨ Update `ClientAiBotConfig` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
   """
-  movieMetadata_updateMany(
+  clientAiBotConfig_updateMany(
     """
     Filter condition to specify which rows to update.
     """
-    where: MovieMetadata_Filter
+    where: ClientAiBotConfig_Filter
 
     """
     Set to true to update all rows.
@@ -275,16 +700,16 @@ extend type Mutation {
     """
     Data object containing fields to update.
     """
-    data: MovieMetadata_Data!
-  ): Int! @fdc_generated(from: "MovieMetadata", purpose: UPDATE_MULTIPLE)
+    data: ClientAiBotConfig_Data!
+  ): Int! @fdc_generated(from: "ClientAiBotConfig", purpose: UPDATE_MULTIPLE)
   """
-  ✨ Update `Review` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  ✨ Update `ClientAiBotPerformanceEvent` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
   """
-  review_updateMany(
+  clientAiBotPerformanceEvent_updateMany(
     """
     Filter condition to specify which rows to update.
     """
-    where: Review_Filter
+    where: ClientAiBotPerformanceEvent_Filter
 
     """
     Set to true to update all rows.
@@ -294,16 +719,16 @@ extend type Mutation {
     """
     Data object containing fields to update.
     """
-    data: Review_Data!
-  ): Int! @fdc_generated(from: "Review", purpose: UPDATE_MULTIPLE)
+    data: ClientAiBotPerformanceEvent_Data!
+  ): Int! @fdc_generated(from: "ClientAiBotPerformanceEvent", purpose: UPDATE_MULTIPLE)
   """
-  ✨ Update `User` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  ✨ Update `ClientConversation` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
   """
-  user_updateMany(
+  clientConversation_updateMany(
     """
     Filter condition to specify which rows to update.
     """
-    where: User_Filter
+    where: ClientConversation_Filter
 
     """
     Set to true to update all rows.
@@ -313,12 +738,145 @@ extend type Mutation {
     """
     Data object containing fields to update.
     """
-    data: User_Data!
-  ): Int! @fdc_generated(from: "User", purpose: UPDATE_MULTIPLE)
+    data: ClientConversation_Data!
+  ): Int! @fdc_generated(from: "ClientConversation", purpose: UPDATE_MULTIPLE)
   """
-  ✨ Delete a single `Movie` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  ✨ Update `ClientInboundContact` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
   """
-  movie_delete(
+  clientInboundContact_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: ClientInboundContact_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: ClientInboundContact_Data!
+  ): Int! @fdc_generated(from: "ClientInboundContact", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `PlatformAgentActivity` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  platformAgentActivity_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: PlatformAgentActivity_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: PlatformAgentActivity_Data!
+  ): Int! @fdc_generated(from: "PlatformAgentActivity", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `PlatformChatbotConfig` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  platformChatbotConfig_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: PlatformChatbotConfig_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: PlatformChatbotConfig_Data!
+  ): Int! @fdc_generated(from: "PlatformChatbotConfig", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `PlatformInboundContact` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  platformInboundContact_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: PlatformInboundContact_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: PlatformInboundContact_Data!
+  ): Int! @fdc_generated(from: "PlatformInboundContact", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `PlatformOutboundContact` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  platformOutboundContact_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: PlatformOutboundContact_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: PlatformOutboundContact_Data!
+  ): Int! @fdc_generated(from: "PlatformOutboundContact", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `PlatformOutboundOutreachEvent` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  platformOutboundOutreachEvent_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: PlatformOutboundOutreachEvent_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: PlatformOutboundOutreachEvent_Data!
+  ): Int! @fdc_generated(from: "PlatformOutboundOutreachEvent", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `PlatformOwner` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  platformOwner_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: PlatformOwner_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: PlatformOwner_Data!
+  ): Int! @fdc_generated(from: "PlatformOwner", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Delete a single `Client` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  client_delete(
     """
     The unique ID of the object.
     """
@@ -327,17 +885,17 @@ extend type Mutation {
     """
     The key used to identify the object.
     """
-    key: Movie_Key
+    key: Client_Key
 
     """
     Fetch the first row based on the filters and ordering.
     """
-    first: Movie_FirstRow
-  ): Movie_KeyOutput @fdc_generated(from: "Movie", purpose: DELETE_SINGLE)
+    first: Client_FirstRow
+  ): Client_KeyOutput @fdc_generated(from: "Client", purpose: DELETE_SINGLE)
   """
-  ✨ Delete a single `MovieMetadata` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  ✨ Delete a single `ClientAiBotConfig` based on `id`, `key` or `first` and return its key (or `null` if not found).
   """
-  movieMetadata_delete(
+  clientAiBotConfig_delete(
     """
     The unique ID of the object.
     """
@@ -346,31 +904,169 @@ extend type Mutation {
     """
     The key used to identify the object.
     """
-    key: MovieMetadata_Key
+    key: ClientAiBotConfig_Key
 
     """
     Fetch the first row based on the filters and ordering.
     """
-    first: MovieMetadata_FirstRow
-  ): MovieMetadata_KeyOutput @fdc_generated(from: "MovieMetadata", purpose: DELETE_SINGLE)
+    first: ClientAiBotConfig_FirstRow
+  ): ClientAiBotConfig_KeyOutput @fdc_generated(from: "ClientAiBotConfig", purpose: DELETE_SINGLE)
   """
-  ✨ Delete a single `Review` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  ✨ Delete a single `ClientAiBotPerformanceEvent` based on `id`, `key` or `first` and return its key (or `null` if not found).
   """
-  review_delete(
+  clientAiBotPerformanceEvent_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
     """
     The key used to identify the object.
     """
-    key: Review_Key
+    key: ClientAiBotPerformanceEvent_Key
 
     """
     Fetch the first row based on the filters and ordering.
     """
-    first: Review_FirstRow
-  ): Review_KeyOutput @fdc_generated(from: "Review", purpose: DELETE_SINGLE)
+    first: ClientAiBotPerformanceEvent_FirstRow
+  ): ClientAiBotPerformanceEvent_KeyOutput @fdc_generated(from: "ClientAiBotPerformanceEvent", purpose: DELETE_SINGLE)
   """
-  ✨ Delete a single `User` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  ✨ Delete a single `ClientConversation` based on `id`, `key` or `first` and return its key (or `null` if not found).
   """
-  user_delete(
+  clientConversation_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: ClientConversation_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: ClientConversation_FirstRow
+  ): ClientConversation_KeyOutput @fdc_generated(from: "ClientConversation", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `ClientInboundContact` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  clientInboundContact_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: ClientInboundContact_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: ClientInboundContact_FirstRow
+  ): ClientInboundContact_KeyOutput @fdc_generated(from: "ClientInboundContact", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `PlatformAgentActivity` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  platformAgentActivity_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: PlatformAgentActivity_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: PlatformAgentActivity_FirstRow
+  ): PlatformAgentActivity_KeyOutput @fdc_generated(from: "PlatformAgentActivity", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `PlatformChatbotConfig` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  platformChatbotConfig_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: PlatformChatbotConfig_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: PlatformChatbotConfig_FirstRow
+  ): PlatformChatbotConfig_KeyOutput @fdc_generated(from: "PlatformChatbotConfig", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `PlatformInboundContact` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  platformInboundContact_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: PlatformInboundContact_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: PlatformInboundContact_FirstRow
+  ): PlatformInboundContact_KeyOutput @fdc_generated(from: "PlatformInboundContact", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `PlatformOutboundContact` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  platformOutboundContact_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: PlatformOutboundContact_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: PlatformOutboundContact_FirstRow
+  ): PlatformOutboundContact_KeyOutput @fdc_generated(from: "PlatformOutboundContact", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `PlatformOutboundOutreachEvent` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  platformOutboundOutreachEvent_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: PlatformOutboundOutreachEvent_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: PlatformOutboundOutreachEvent_FirstRow
+  ): PlatformOutboundOutreachEvent_KeyOutput @fdc_generated(from: "PlatformOutboundOutreachEvent", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `PlatformOwner` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  platformOwner_delete(
     """
     The unique ID of the object.
     """
@@ -384,67 +1080,165 @@ extend type Mutation {
     """
     The key used to identify the object.
     """
-    key: User_Key
+    key: PlatformOwner_Key
 
     """
     Fetch the first row based on the filters and ordering.
     """
-    first: User_FirstRow
-  ): User_KeyOutput @fdc_generated(from: "User", purpose: DELETE_SINGLE)
+    first: PlatformOwner_FirstRow
+  ): PlatformOwner_KeyOutput @fdc_generated(from: "PlatformOwner", purpose: DELETE_SINGLE)
   """
-  ✨ Delete `Movie` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  ✨ Delete `Client` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
   """
-  movie_deleteMany(
+  client_deleteMany(
     """
     Filter condition to specify which rows to delete.
     """
-    where: Movie_Filter
+    where: Client_Filter
 
     """
     Set to true to delete all rows.
     """
     all: Boolean = false
-  ): Int! @fdc_generated(from: "Movie", purpose: DELETE_MULTIPLE)
+  ): Int! @fdc_generated(from: "Client", purpose: DELETE_MULTIPLE)
   """
-  ✨ Delete `MovieMetadata` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  ✨ Delete `ClientAiBotConfig` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
   """
-  movieMetadata_deleteMany(
+  clientAiBotConfig_deleteMany(
     """
     Filter condition to specify which rows to delete.
     """
-    where: MovieMetadata_Filter
+    where: ClientAiBotConfig_Filter
 
     """
     Set to true to delete all rows.
     """
     all: Boolean = false
-  ): Int! @fdc_generated(from: "MovieMetadata", purpose: DELETE_MULTIPLE)
+  ): Int! @fdc_generated(from: "ClientAiBotConfig", purpose: DELETE_MULTIPLE)
   """
-  ✨ Delete `Review` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  ✨ Delete `ClientAiBotPerformanceEvent` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
   """
-  review_deleteMany(
+  clientAiBotPerformanceEvent_deleteMany(
     """
     Filter condition to specify which rows to delete.
     """
-    where: Review_Filter
+    where: ClientAiBotPerformanceEvent_Filter
 
     """
     Set to true to delete all rows.
     """
     all: Boolean = false
-  ): Int! @fdc_generated(from: "Review", purpose: DELETE_MULTIPLE)
+  ): Int! @fdc_generated(from: "ClientAiBotPerformanceEvent", purpose: DELETE_MULTIPLE)
   """
-  ✨ Delete `User` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  ✨ Delete `ClientConversation` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
   """
-  user_deleteMany(
+  clientConversation_deleteMany(
     """
     Filter condition to specify which rows to delete.
     """
-    where: User_Filter
+    where: ClientConversation_Filter
 
     """
     Set to true to delete all rows.
     """
     all: Boolean = false
-  ): Int! @fdc_generated(from: "User", purpose: DELETE_MULTIPLE)
+  ): Int! @fdc_generated(from: "ClientConversation", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `ClientInboundContact` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  clientInboundContact_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: ClientInboundContact_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "ClientInboundContact", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `PlatformAgentActivity` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  platformAgentActivity_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: PlatformAgentActivity_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformAgentActivity", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `PlatformChatbotConfig` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  platformChatbotConfig_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: PlatformChatbotConfig_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformChatbotConfig", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `PlatformInboundContact` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  platformInboundContact_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: PlatformInboundContact_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformInboundContact", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `PlatformOutboundContact` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  platformOutboundContact_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: PlatformOutboundContact_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformOutboundContact", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `PlatformOutboundOutreachEvent` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  platformOutboundOutreachEvent_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: PlatformOutboundOutreachEvent_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformOutboundOutreachEvent", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `PlatformOwner` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  platformOwner_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: PlatformOwner_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "PlatformOwner", purpose: DELETE_MULTIPLE)
 }

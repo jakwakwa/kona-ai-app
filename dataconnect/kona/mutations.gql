@@ -1,0 +1,5 @@
+# Kona production connector — mutations (minimal for schema-phase SDK generate)
+
+mutation UpsertPlatformOwner($email: String, $displayName: String) @auth(level: USER) {
+  platformOwner_upsert(data: { id_expr: "auth.uid", email: $email, displayName: $displayName })
+}

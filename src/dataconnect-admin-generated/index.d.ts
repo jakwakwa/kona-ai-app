@@ -8,178 +8,93 @@ export type Int64String = string;
 export type DateString = string;
 
 
-export interface AddReviewData {
-  review_upsert: Review_Key;
-}
-
-export interface AddReviewVariables {
-  movieId: UUIDString;
-  rating: number;
-  reviewText: string;
-}
-
-export interface CreateMovieData {
-  movie_insert: Movie_Key;
-}
-
-export interface CreateMovieVariables {
-  title: string;
-  genre: string;
-  imageUrl: string;
-}
-
-export interface DeleteReviewData {
-  review_delete?: Review_Key | null;
-}
-
-export interface DeleteReviewVariables {
-  movieId: UUIDString;
-}
-
-export interface GetMovieByIdData {
-  movie?: {
-    id: UUIDString;
-    title: string;
-    imageUrl: string;
-    genre?: string | null;
-    metadata?: {
-      rating?: number | null;
-      releaseYear?: number | null;
-      description?: string | null;
-    };
-      reviews: ({
-        reviewText?: string | null;
-        reviewDate: DateString;
-        rating?: number | null;
-        user: {
-          id: string;
-          username: string;
-        } & User_Key;
-      })[];
-  } & Movie_Key;
-}
-
-export interface GetMovieByIdVariables {
+export interface ClientAiBotConfig_Key {
   id: UUIDString;
+  __typename?: 'ClientAiBotConfig_Key';
 }
 
-export interface ListMoviesData {
-  movies: ({
-    id: UUIDString;
-    title: string;
-    imageUrl: string;
-    genre?: string | null;
-  } & Movie_Key)[];
-}
-
-export interface ListUserReviewsData {
-  user?: {
-    id: string;
-    username: string;
-    reviews: ({
-      rating?: number | null;
-      reviewDate: DateString;
-      reviewText?: string | null;
-      movie: {
-        id: UUIDString;
-        title: string;
-      } & Movie_Key;
-    })[];
-  } & User_Key;
-}
-
-export interface ListUsersData {
-  users: ({
-    id: string;
-    username: string;
-  } & User_Key)[];
-}
-
-export interface MovieMetadata_Key {
+export interface ClientAiBotPerformanceEvent_Key {
   id: UUIDString;
-  __typename?: 'MovieMetadata_Key';
+  __typename?: 'ClientAiBotPerformanceEvent_Key';
 }
 
-export interface Movie_Key {
+export interface ClientConversation_Key {
   id: UUIDString;
-  __typename?: 'Movie_Key';
+  __typename?: 'ClientConversation_Key';
 }
 
-export interface Review_Key {
-  userId: string;
-  movieId: UUIDString;
-  __typename?: 'Review_Key';
+export interface ClientInboundContact_Key {
+  id: UUIDString;
+  __typename?: 'ClientInboundContact_Key';
 }
 
-export interface SearchMovieData {
-  movies: ({
+export interface Client_Key {
+  id: UUIDString;
+  __typename?: 'Client_Key';
+}
+
+export interface GetClientByLinkedAuthUidData {
+  clients: ({
     id: UUIDString;
-    title: string;
-    genre?: string | null;
-    imageUrl: string;
-  } & Movie_Key)[];
+    companyName?: string | null;
+    clientName?: string | null;
+    email?: string | null;
+    subscriptionStatus?: string | null;
+    paddleSubscriptionId?: string | null;
+    linkedAuthUid: string;
+  } & Client_Key)[];
 }
 
-export interface SearchMovieVariables {
-  titleInput?: string | null;
-  genre?: string | null;
+export interface GetClientByLinkedAuthUidVariables {
+  authUid: string;
 }
 
-export interface UpsertUserData {
-  user_upsert: User_Key;
+export interface PlatformAgentActivity_Key {
+  id: UUIDString;
+  __typename?: 'PlatformAgentActivity_Key';
 }
 
-export interface UpsertUserVariables {
-  username: string;
+export interface PlatformChatbotConfig_Key {
+  id: UUIDString;
+  __typename?: 'PlatformChatbotConfig_Key';
 }
 
-export interface User_Key {
+export interface PlatformInboundContact_Key {
+  id: UUIDString;
+  __typename?: 'PlatformInboundContact_Key';
+}
+
+export interface PlatformOutboundContact_Key {
+  id: UUIDString;
+  __typename?: 'PlatformOutboundContact_Key';
+}
+
+export interface PlatformOutboundOutreachEvent_Key {
+  id: UUIDString;
+  __typename?: 'PlatformOutboundOutreachEvent_Key';
+}
+
+export interface PlatformOwner_Key {
   id: string;
-  __typename?: 'User_Key';
+  __typename?: 'PlatformOwner_Key';
 }
 
-/** Generated Node Admin SDK operation action function for the 'CreateMovie' Mutation. Allow users to execute without passing in DataConnect. */
-export function createMovie(dc: DataConnect, vars: CreateMovieVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<CreateMovieData>>;
-/** Generated Node Admin SDK operation action function for the 'CreateMovie' Mutation. Allow users to pass in custom DataConnect instances. */
-export function createMovie(vars: CreateMovieVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<CreateMovieData>>;
+export interface UpsertPlatformOwnerData {
+  platformOwner_upsert: PlatformOwner_Key;
+}
 
-/** Generated Node Admin SDK operation action function for the 'UpsertUser' Mutation. Allow users to execute without passing in DataConnect. */
-export function upsertUser(dc: DataConnect, vars: UpsertUserVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<UpsertUserData>>;
-/** Generated Node Admin SDK operation action function for the 'UpsertUser' Mutation. Allow users to pass in custom DataConnect instances. */
-export function upsertUser(vars: UpsertUserVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<UpsertUserData>>;
+export interface UpsertPlatformOwnerVariables {
+  email?: string | null;
+  displayName?: string | null;
+}
 
-/** Generated Node Admin SDK operation action function for the 'AddReview' Mutation. Allow users to execute without passing in DataConnect. */
-export function addReview(dc: DataConnect, vars: AddReviewVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<AddReviewData>>;
-/** Generated Node Admin SDK operation action function for the 'AddReview' Mutation. Allow users to pass in custom DataConnect instances. */
-export function addReview(vars: AddReviewVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<AddReviewData>>;
+/** Generated Node Admin SDK operation action function for the 'GetClientByLinkedAuthUid' Query. Allow users to execute without passing in DataConnect. */
+export function getClientByLinkedAuthUid(dc: DataConnect, vars: GetClientByLinkedAuthUidVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<GetClientByLinkedAuthUidData>>;
+/** Generated Node Admin SDK operation action function for the 'GetClientByLinkedAuthUid' Query. Allow users to pass in custom DataConnect instances. */
+export function getClientByLinkedAuthUid(vars: GetClientByLinkedAuthUidVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<GetClientByLinkedAuthUidData>>;
 
-/** Generated Node Admin SDK operation action function for the 'DeleteReview' Mutation. Allow users to execute without passing in DataConnect. */
-export function deleteReview(dc: DataConnect, vars: DeleteReviewVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<DeleteReviewData>>;
-/** Generated Node Admin SDK operation action function for the 'DeleteReview' Mutation. Allow users to pass in custom DataConnect instances. */
-export function deleteReview(vars: DeleteReviewVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<DeleteReviewData>>;
-
-/** Generated Node Admin SDK operation action function for the 'ListMovies' Query. Allow users to execute without passing in DataConnect. */
-export function listMovies(dc: DataConnect, options?: OperationOptions): Promise<ExecuteOperationResponse<ListMoviesData>>;
-/** Generated Node Admin SDK operation action function for the 'ListMovies' Query. Allow users to pass in custom DataConnect instances. */
-export function listMovies(options?: OperationOptions): Promise<ExecuteOperationResponse<ListMoviesData>>;
-
-/** Generated Node Admin SDK operation action function for the 'ListUsers' Query. Allow users to execute without passing in DataConnect. */
-export function listUsers(dc: DataConnect, options?: OperationOptions): Promise<ExecuteOperationResponse<ListUsersData>>;
-/** Generated Node Admin SDK operation action function for the 'ListUsers' Query. Allow users to pass in custom DataConnect instances. */
-export function listUsers(options?: OperationOptions): Promise<ExecuteOperationResponse<ListUsersData>>;
-
-/** Generated Node Admin SDK operation action function for the 'ListUserReviews' Query. Allow users to execute without passing in DataConnect. */
-export function listUserReviews(dc: DataConnect, options?: OperationOptions): Promise<ExecuteOperationResponse<ListUserReviewsData>>;
-/** Generated Node Admin SDK operation action function for the 'ListUserReviews' Query. Allow users to pass in custom DataConnect instances. */
-export function listUserReviews(options?: OperationOptions): Promise<ExecuteOperationResponse<ListUserReviewsData>>;
-
-/** Generated Node Admin SDK operation action function for the 'GetMovieById' Query. Allow users to execute without passing in DataConnect. */
-export function getMovieById(dc: DataConnect, vars: GetMovieByIdVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<GetMovieByIdData>>;
-/** Generated Node Admin SDK operation action function for the 'GetMovieById' Query. Allow users to pass in custom DataConnect instances. */
-export function getMovieById(vars: GetMovieByIdVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<GetMovieByIdData>>;
-
-/** Generated Node Admin SDK operation action function for the 'SearchMovie' Query. Allow users to execute without passing in DataConnect. */
-export function searchMovie(dc: DataConnect, vars?: SearchMovieVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<SearchMovieData>>;
-/** Generated Node Admin SDK operation action function for the 'SearchMovie' Query. Allow users to pass in custom DataConnect instances. */
-export function searchMovie(vars?: SearchMovieVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<SearchMovieData>>;
+/** Generated Node Admin SDK operation action function for the 'UpsertPlatformOwner' Mutation. Allow users to execute without passing in DataConnect. */
+export function upsertPlatformOwner(dc: DataConnect, vars?: UpsertPlatformOwnerVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<UpsertPlatformOwnerData>>;
+/** Generated Node Admin SDK operation action function for the 'UpsertPlatformOwner' Mutation. Allow users to pass in custom DataConnect instances. */
+export function upsertPlatformOwner(vars?: UpsertPlatformOwnerVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<UpsertPlatformOwnerData>>;
 

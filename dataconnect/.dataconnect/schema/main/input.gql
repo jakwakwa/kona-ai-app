@@ -1,130 +1,284 @@
 """
-✨ `Movie_KeyOutput` returns the primary key fields of table type `Movie`.
+✨ `Client_KeyOutput` returns the primary key fields of table type `Client`.
 
-It has the same format as `Movie_Key`, but is only used as mutation return value.
+It has the same format as `Client_Key`, but is only used as mutation return value.
 """
-scalar Movie_KeyOutput
+scalar Client_KeyOutput
 """
-✨ `MovieMetadata_KeyOutput` returns the primary key fields of table type `MovieMetadata`.
+✨ `ClientAiBotConfig_KeyOutput` returns the primary key fields of table type `ClientAiBotConfig`.
 
-It has the same format as `MovieMetadata_Key`, but is only used as mutation return value.
+It has the same format as `ClientAiBotConfig_Key`, but is only used as mutation return value.
 """
-scalar MovieMetadata_KeyOutput
+scalar ClientAiBotConfig_KeyOutput
 """
-✨ `Review_KeyOutput` returns the primary key fields of table type `Review`.
+✨ `ClientAiBotPerformanceEvent_KeyOutput` returns the primary key fields of table type `ClientAiBotPerformanceEvent`.
 
-It has the same format as `Review_Key`, but is only used as mutation return value.
+It has the same format as `ClientAiBotPerformanceEvent_Key`, but is only used as mutation return value.
 """
-scalar Review_KeyOutput
+scalar ClientAiBotPerformanceEvent_KeyOutput
 """
-✨ `User_KeyOutput` returns the primary key fields of table type `User`.
+✨ `ClientConversation_KeyOutput` returns the primary key fields of table type `ClientConversation`.
 
-It has the same format as `User_Key`, but is only used as mutation return value.
+It has the same format as `ClientConversation_Key`, but is only used as mutation return value.
 """
-scalar User_KeyOutput
+scalar ClientConversation_KeyOutput
 """
-✨ Generated data input type for table 'Movie'. It includes all necessary fields for creating or upserting rows into table.
+✨ `ClientInboundContact_KeyOutput` returns the primary key fields of table type `ClientInboundContact`.
+
+It has the same format as `ClientInboundContact_Key`, but is only used as mutation return value.
 """
-input Movie_Data {
+scalar ClientInboundContact_KeyOutput
+"""
+✨ `PlatformAgentActivity_KeyOutput` returns the primary key fields of table type `PlatformAgentActivity`.
+
+It has the same format as `PlatformAgentActivity_Key`, but is only used as mutation return value.
+"""
+scalar PlatformAgentActivity_KeyOutput
+"""
+✨ `PlatformChatbotConfig_KeyOutput` returns the primary key fields of table type `PlatformChatbotConfig`.
+
+It has the same format as `PlatformChatbotConfig_Key`, but is only used as mutation return value.
+"""
+scalar PlatformChatbotConfig_KeyOutput
+"""
+✨ `PlatformInboundContact_KeyOutput` returns the primary key fields of table type `PlatformInboundContact`.
+
+It has the same format as `PlatformInboundContact_Key`, but is only used as mutation return value.
+"""
+scalar PlatformInboundContact_KeyOutput
+"""
+✨ `PlatformOutboundContact_KeyOutput` returns the primary key fields of table type `PlatformOutboundContact`.
+
+It has the same format as `PlatformOutboundContact_Key`, but is only used as mutation return value.
+"""
+scalar PlatformOutboundContact_KeyOutput
+"""
+✨ `PlatformOutboundOutreachEvent_KeyOutput` returns the primary key fields of table type `PlatformOutboundOutreachEvent`.
+
+It has the same format as `PlatformOutboundOutreachEvent_Key`, but is only used as mutation return value.
+"""
+scalar PlatformOutboundOutreachEvent_KeyOutput
+"""
+✨ `PlatformOwner_KeyOutput` returns the primary key fields of table type `PlatformOwner`.
+
+It has the same format as `PlatformOwner_Key`, but is only used as mutation return value.
+"""
+scalar PlatformOwner_KeyOutput
+"""
+✨ Generated data input type for table 'Client'. It includes all necessary fields for creating or upserting rows into table.
+"""
+input Client_Data {
   """
-  ✨ Generated from Field `Movie`.`id` of type `UUID!`
+  ✨ Generated from Field `Client`.`id` of type `UUID!`
   """
   id: UUID
   """
-  ✨ `_expr` server value variant of `id` (✨ Generated from Field `Movie`.`id` of type `UUID!`)
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `Client`.`id` of type `UUID!`)
   """
   id_expr: UUID_Expr
   """
-  ✨ Generated from Field `Movie`.`genre` of type `String`
+  ✨ Generated from Field `Client`.`convertedFromInboundContactId` of type `UUID`
   """
-  genre: String
+  convertedFromInboundContactId: UUID
   """
-  ✨ `_expr` server value variant of `genre` (✨ Generated from Field `Movie`.`genre` of type `String`)
+  ✨ `_expr` server value variant of `convertedFromInboundContactId` (✨ Generated from Field `Client`.`convertedFromInboundContactId` of type `UUID`)
   """
-  genre_expr: String_Expr
+  convertedFromInboundContactId_expr: UUID_Expr
   """
-  ✨ Generated from Field `Movie`.`imageUrl` of type `String!`
+  ✨ Generated from Field `Client`.`convertedFromOutboundContactId` of type `UUID`
   """
-  imageUrl: String
+  convertedFromOutboundContactId: UUID
   """
-  ✨ `_expr` server value variant of `imageUrl` (✨ Generated from Field `Movie`.`imageUrl` of type `String!`)
+  ✨ `_expr` server value variant of `convertedFromOutboundContactId` (✨ Generated from Field `Client`.`convertedFromOutboundContactId` of type `UUID`)
   """
-  imageUrl_expr: String_Expr
+  convertedFromOutboundContactId_expr: UUID_Expr
   """
-  ✨ Generated from Field `Movie`.`title` of type `String!`
+  ✨ Generated from Field `Client`.`convertedFromInboundContact` of type `PlatformInboundContact`
   """
-  title: String
+  convertedFromInboundContact: PlatformInboundContact_Key
   """
-  ✨ `_expr` server value variant of `title` (✨ Generated from Field `Movie`.`title` of type `String!`)
+  ✨ Generated from Field `Client`.`convertedFromOutboundContact` of type `PlatformOutboundContact`
   """
-  title_expr: String_Expr
+  convertedFromOutboundContact: PlatformOutboundContact_Key
+  """
+  ✨ Generated from Field `Client`.`clientName` of type `String`
+  """
+  clientName: String
+  """
+  ✨ `_expr` server value variant of `clientName` (✨ Generated from Field `Client`.`clientName` of type `String`)
+  """
+  clientName_expr: String_Expr
+  """
+  ✨ Generated from Field `Client`.`companyName` of type `String`
+  """
+  companyName: String
+  """
+  ✨ `_expr` server value variant of `companyName` (✨ Generated from Field `Client`.`companyName` of type `String`)
+  """
+  companyName_expr: String_Expr
+  """
+  ✨ Generated from Field `Client`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp
+  """
+  ✨ `_expr` server value variant of `createdAt` (✨ Generated from Field `Client`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_expr: Timestamp_Expr
+  """
+  ✨ `_time` server value variant of `createdAt` (✨ Generated from Field `Client`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_time: Timestamp_Relative
+  """
+  ✨ `_update` server value variant of `createdAt` (✨ Generated from Field `Client`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_update: [Timestamp_Update!]
+  """
+  ✨ Generated from Field `Client`.`email` of type `String`
+  """
+  email: String
+  """
+  ✨ `_expr` server value variant of `email` (✨ Generated from Field `Client`.`email` of type `String`)
+  """
+  email_expr: String_Expr
+  """
+  ✨ Generated from Field `Client`.`industry` of type `String`
+  """
+  industry: String
+  """
+  ✨ `_expr` server value variant of `industry` (✨ Generated from Field `Client`.`industry` of type `String`)
+  """
+  industry_expr: String_Expr
+  """
+  ✨ Generated from Field `Client`.`linkedAuthUid` of type `String!`
+  """
+  linkedAuthUid: String
+  """
+  ✨ `_expr` server value variant of `linkedAuthUid` (✨ Generated from Field `Client`.`linkedAuthUid` of type `String!`)
+  """
+  linkedAuthUid_expr: String_Expr
+  """
+  ✨ Generated from Field `Client`.`paddleSubscriptionId` of type `String`
+  """
+  paddleSubscriptionId: String
+  """
+  ✨ `_expr` server value variant of `paddleSubscriptionId` (✨ Generated from Field `Client`.`paddleSubscriptionId` of type `String`)
+  """
+  paddleSubscriptionId_expr: String_Expr
+  """
+  ✨ Generated from Field `Client`.`subscriptionStatus` of type `String`
+  """
+  subscriptionStatus: String
+  """
+  ✨ `_expr` server value variant of `subscriptionStatus` (✨ Generated from Field `Client`.`subscriptionStatus` of type `String`)
+  """
+  subscriptionStatus_expr: String_Expr
 }
 """
-✨ Generated filter input type for table 'Movie'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+✨ Generated filter input type for table 'Client'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
 """
-input Movie_Filter {
+input Client_Filter {
   """
   Apply multiple filter conditions using `AND` logic.
   """
-  _and: [Movie_Filter!]
+  _and: [Client_Filter!]
   """
   Negate the result of the provided filter condition.
   """
-  _not: Movie_Filter
+  _not: Client_Filter
   """
   Apply multiple filter conditions using `OR` logic.
   """
-  _or: [Movie_Filter!]
+  _or: [Client_Filter!]
   """
-  ✨ Generated from Field `Movie`.`id` of type `UUID!`
+  ✨ Generated from Field `Client`.`id` of type `UUID!`
   """
   id: UUID_Filter
   """
-  ✨ Generated from Field `Movie`.`genre` of type `String`
+  ✨ Generated from Field `Client`.`convertedFromInboundContactId` of type `UUID`
   """
-  genre: String_Filter
+  convertedFromInboundContactId: UUID_Filter
   """
-  ✨ Generated from Field `Movie`.`imageUrl` of type `String!`
+  ✨ Generated from Field `Client`.`convertedFromOutboundContactId` of type `UUID`
   """
-  imageUrl: String_Filter
+  convertedFromOutboundContactId: UUID_Filter
   """
-  ✨ Generated from Field `Movie`.`title` of type `String!`
+  ✨ Generated from Field `Client`.`convertedFromInboundContact` of type `PlatformInboundContact`
   """
-  title: String_Filter
+  convertedFromInboundContact: PlatformInboundContact_Filter
   """
-  ✨ Generated from Field `Movie`.`reviews_on_movie` of type `[Review!]!`
+  ✨ Generated from Field `Client`.`convertedFromOutboundContact` of type `PlatformOutboundContact`
   """
-  reviews_on_movie: Review_ListFilter
+  convertedFromOutboundContact: PlatformOutboundContact_Filter
   """
-  ✨ Generated from Field `Movie`.`movieMetadata_on_movie` of type `MovieMetadata`
+  ✨ Generated from Field `Client`.`clientName` of type `String`
   """
-  movieMetadata_on_movie: MovieMetadata_Filter
+  clientName: String_Filter
   """
-  ✨ Generated from Field `Movie`.`users_via_Review` of type `[User!]!`
+  ✨ Generated from Field `Client`.`companyName` of type `String`
   """
-  users_via_Review: User_ListFilter
+  companyName: String_Filter
+  """
+  ✨ Generated from Field `Client`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp_Filter
+  """
+  ✨ Generated from Field `Client`.`email` of type `String`
+  """
+  email: String_Filter
+  """
+  ✨ Generated from Field `Client`.`industry` of type `String`
+  """
+  industry: String_Filter
+  """
+  ✨ Generated from Field `Client`.`linkedAuthUid` of type `String!`
+  """
+  linkedAuthUid: String_Filter
+  """
+  ✨ Generated from Field `Client`.`paddleSubscriptionId` of type `String`
+  """
+  paddleSubscriptionId: String_Filter
+  """
+  ✨ Generated from Field `Client`.`subscriptionStatus` of type `String`
+  """
+  subscriptionStatus: String_Filter
+  """
+  ✨ Generated from Field `Client`.`clientAiBotConfigs_on_client` of type `[ClientAiBotConfig!]!`
+  """
+  clientAiBotConfigs_on_client: ClientAiBotConfig_ListFilter
+  """
+  ✨ Generated from Field `Client`.`clientAiBotPerformanceEvents_on_client` of type `[ClientAiBotPerformanceEvent!]!`
+  """
+  clientAiBotPerformanceEvents_on_client: ClientAiBotPerformanceEvent_ListFilter
+  """
+  ✨ Generated from Field `Client`.`clientConversations_on_client` of type `[ClientConversation!]!`
+  """
+  clientConversations_on_client: ClientConversation_ListFilter
+  """
+  ✨ Generated from Field `Client`.`clientInboundContacts_on_client` of type `[ClientInboundContact!]!`
+  """
+  clientInboundContacts_on_client: ClientInboundContact_ListFilter
 }
 """
-✨ Generated first-row input type for table 'Movie'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+✨ Generated first-row input type for table 'Client'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
 """
-input Movie_FirstRow {
+input Client_FirstRow {
   """
   Order the result by the specified fields.
   """
-  orderBy: [Movie_Order!]
+  orderBy: [Client_Order!]
   """
   Filters rows based on the specified conditions.
   """
-  where: Movie_Filter
+  where: Client_Filter
 }
 """
-✨ Generated having input type for table 'Movie'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+✨ Generated having input type for table 'Client'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
 """
-input Movie_Having {
+input Client_Having {
   """
   Apply multiple Having conditions using `AND` logic.
   """
-  _and: [Movie_Having!]
+  _and: [Client_Having!]
   """
   Whether to apply DISTINCT to the aggregate function.
   """
@@ -132,49 +286,85 @@ input Movie_Having {
   """
   Negate the result of the provided Having condition.
   """
-  _not: Movie_Having
+  _not: Client_Having
   """
   Apply multiple Having conditions using `OR` logic.
   """
-  _or: [Movie_Having!]
+  _or: [Client_Having!]
   """
-  ✨ Generated from Field `Movie`.`_count` of type `Int!`
+  ✨ Generated from Field `Client`.`_count` of type `Int!`
   """
   _count: Int_Filter
   """
-  ✨ Generated from Field `Movie`.`genre_count` of type `Int!`
+  ✨ Generated from Field `Client`.`clientName_count` of type `Int!`
   """
-  genre_count: Int_Filter
+  clientName_count: Int_Filter
   """
-  ✨ Generated from Field `Movie`.`id_count` of type `Int!`
+  ✨ Generated from Field `Client`.`companyName_count` of type `Int!`
+  """
+  companyName_count: Int_Filter
+  """
+  ✨ Generated from Field `Client`.`convertedFromInboundContactId_count` of type `Int!`
+  """
+  convertedFromInboundContactId_count: Int_Filter
+  """
+  ✨ Generated from Field `Client`.`convertedFromOutboundContactId_count` of type `Int!`
+  """
+  convertedFromOutboundContactId_count: Int_Filter
+  """
+  ✨ Generated from Field `Client`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: Int_Filter
+  """
+  ✨ Generated from Field `Client`.`email_count` of type `Int!`
+  """
+  email_count: Int_Filter
+  """
+  ✨ Generated from Field `Client`.`id_count` of type `Int!`
   """
   id_count: Int_Filter
   """
-  ✨ Generated from Field `Movie`.`imageUrl_count` of type `Int!`
+  ✨ Generated from Field `Client`.`industry_count` of type `Int!`
   """
-  imageUrl_count: Int_Filter
+  industry_count: Int_Filter
   """
-  ✨ Generated from Field `Movie`.`title_count` of type `Int!`
+  ✨ Generated from Field `Client`.`linkedAuthUid_count` of type `Int!`
   """
-  title_count: Int_Filter
+  linkedAuthUid_count: Int_Filter
+  """
+  ✨ Generated from Field `Client`.`paddleSubscriptionId_count` of type `Int!`
+  """
+  paddleSubscriptionId_count: Int_Filter
+  """
+  ✨ Generated from Field `Client`.`subscriptionStatus_count` of type `Int!`
+  """
+  subscriptionStatus_count: Int_Filter
+  """
+  ✨ Generated from Field `Client`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `Client`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: Timestamp_Filter
 }
 """
-✨ Generated key input type for table 'Movie'. It represents the primary key fields used to uniquely identify a row in the table.
+✨ Generated key input type for table 'Client'. It represents the primary key fields used to uniquely identify a row in the table.
 """
-input Movie_Key {
+input Client_Key {
   """
-  ✨ Generated from Field `Movie`.`id` of type `UUID!`
+  ✨ Generated from Field `Client`.`id` of type `UUID!`
   """
   id: UUID
   """
-  ✨ `_expr` server value variant of `id` (✨ Generated from Field `Movie`.`id` of type `UUID!`)
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `Client`.`id` of type `UUID!`)
   """
   id_expr: UUID_Expr
 }
 """
-✨ Generated list filter input type for table 'Movie'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+✨ Generated list filter input type for table 'Client'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
 """
-input Movie_ListFilter {
+input Client_ListFilter {
   """
   The desired number of objects that match the condition (defaults to at least one).
   """
@@ -182,168 +372,304 @@ input Movie_ListFilter {
   """
   Condition of the related objects to filter for.
   """
-  exist: Movie_Filter
+  exist: Client_Filter
 }
 """
-✨ Generated order input type for table 'Movie'. This input defines the sorting order of rows in query results based on one or more fields.
+✨ Generated order input type for table 'Client'. This input defines the sorting order of rows in query results based on one or more fields.
 """
-input Movie_Order {
+input Client_Order {
   """
-  ✨ Generated from Field `Movie`.`id` of type `UUID!`
+  ✨ Generated from Field `Client`.`id` of type `UUID!`
   """
   id: OrderDirection
   """
-  ✨ Generated from Field `Movie`.`genre` of type `String`
+  ✨ Generated from Field `Client`.`convertedFromInboundContactId` of type `UUID`
   """
-  genre: OrderDirection
+  convertedFromInboundContactId: OrderDirection
   """
-  ✨ Generated from Field `Movie`.`imageUrl` of type `String!`
+  ✨ Generated from Field `Client`.`convertedFromOutboundContactId` of type `UUID`
   """
-  imageUrl: OrderDirection
+  convertedFromOutboundContactId: OrderDirection
   """
-  ✨ Generated from Field `Movie`.`title` of type `String!`
+  ✨ Generated from Field `Client`.`convertedFromInboundContact` of type `PlatformInboundContact`
   """
-  title: OrderDirection
+  convertedFromInboundContact: PlatformInboundContact_Order
   """
-  ✨ Generated from Field `Movie`.`_count` of type `Int!`
+  ✨ Generated from Field `Client`.`convertedFromOutboundContact` of type `PlatformOutboundContact`
+  """
+  convertedFromOutboundContact: PlatformOutboundContact_Order
+  """
+  ✨ Generated from Field `Client`.`clientName` of type `String`
+  """
+  clientName: OrderDirection
+  """
+  ✨ Generated from Field `Client`.`companyName` of type `String`
+  """
+  companyName: OrderDirection
+  """
+  ✨ Generated from Field `Client`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: OrderDirection
+  """
+  ✨ Generated from Field `Client`.`email` of type `String`
+  """
+  email: OrderDirection
+  """
+  ✨ Generated from Field `Client`.`industry` of type `String`
+  """
+  industry: OrderDirection
+  """
+  ✨ Generated from Field `Client`.`linkedAuthUid` of type `String!`
+  """
+  linkedAuthUid: OrderDirection
+  """
+  ✨ Generated from Field `Client`.`paddleSubscriptionId` of type `String`
+  """
+  paddleSubscriptionId: OrderDirection
+  """
+  ✨ Generated from Field `Client`.`subscriptionStatus` of type `String`
+  """
+  subscriptionStatus: OrderDirection
+  """
+  ✨ Generated from Field `Client`.`_count` of type `Int!`
   """
   _count: OrderDirection
   """
-  ✨ Generated from Field `Movie`.`genre_count` of type `Int!`
+  ✨ Generated from Field `Client`.`clientName_count` of type `Int!`
   """
-  genre_count: OrderDirection
+  clientName_count: OrderDirection
   """
-  ✨ Generated from Field `Movie`.`id_count` of type `Int!`
+  ✨ Generated from Field `Client`.`companyName_count` of type `Int!`
+  """
+  companyName_count: OrderDirection
+  """
+  ✨ Generated from Field `Client`.`convertedFromInboundContactId_count` of type `Int!`
+  """
+  convertedFromInboundContactId_count: OrderDirection
+  """
+  ✨ Generated from Field `Client`.`convertedFromOutboundContactId_count` of type `Int!`
+  """
+  convertedFromOutboundContactId_count: OrderDirection
+  """
+  ✨ Generated from Field `Client`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: OrderDirection
+  """
+  ✨ Generated from Field `Client`.`email_count` of type `Int!`
+  """
+  email_count: OrderDirection
+  """
+  ✨ Generated from Field `Client`.`id_count` of type `Int!`
   """
   id_count: OrderDirection
   """
-  ✨ Generated from Field `Movie`.`imageUrl_count` of type `Int!`
+  ✨ Generated from Field `Client`.`industry_count` of type `Int!`
   """
-  imageUrl_count: OrderDirection
+  industry_count: OrderDirection
   """
-  ✨ Generated from Field `Movie`.`title_count` of type `Int!`
+  ✨ Generated from Field `Client`.`linkedAuthUid_count` of type `Int!`
   """
-  title_count: OrderDirection
+  linkedAuthUid_count: OrderDirection
+  """
+  ✨ Generated from Field `Client`.`paddleSubscriptionId_count` of type `Int!`
+  """
+  paddleSubscriptionId_count: OrderDirection
+  """
+  ✨ Generated from Field `Client`.`subscriptionStatus_count` of type `Int!`
+  """
+  subscriptionStatus_count: OrderDirection
+  """
+  ✨ Generated from Field `Client`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: OrderDirection
+  """
+  ✨ Generated from Field `Client`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: OrderDirection
 }
 """
-✨ Generated data input type for table 'MovieMetadata'. It includes all necessary fields for creating or upserting rows into table.
+✨ Generated data input type for table 'ClientAiBotConfig'. It includes all necessary fields for creating or upserting rows into table.
 """
-input MovieMetadata_Data {
+input ClientAiBotConfig_Data {
   """
-  ✨ Generated from Field `MovieMetadata`.`id` of type `UUID!`
+  ✨ Generated from Field `ClientAiBotConfig`.`id` of type `UUID!`
   """
   id: UUID
   """
-  ✨ `_expr` server value variant of `id` (✨ Generated from Field `MovieMetadata`.`id` of type `UUID!`)
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `ClientAiBotConfig`.`id` of type `UUID!`)
   """
   id_expr: UUID_Expr
   """
-  ✨ Generated from Field `MovieMetadata`.`movieId` of type `UUID!`
+  ✨ Generated from Field `ClientAiBotConfig`.`clientId` of type `UUID!`
   """
-  movieId: UUID
+  clientId: UUID
   """
-  ✨ `_expr` server value variant of `movieId` (✨ Generated from Field `MovieMetadata`.`movieId` of type `UUID!`)
+  ✨ `_expr` server value variant of `clientId` (✨ Generated from Field `ClientAiBotConfig`.`clientId` of type `UUID!`)
   """
-  movieId_expr: UUID_Expr
+  clientId_expr: UUID_Expr
   """
-  ✨ Generated from Field `MovieMetadata`.`movie` of type `Movie!`
+  ✨ Generated from Field `ClientAiBotConfig`.`client` of type `Client!`
   """
-  movie: Movie_Key
+  client: Client_Key
   """
-  ✨ Generated from Field `MovieMetadata`.`description` of type `String`
+  ✨ Generated from Field `ClientAiBotConfig`.`accessToken` of type `String!`
   """
-  description: String
+  accessToken: String
   """
-  ✨ `_expr` server value variant of `description` (✨ Generated from Field `MovieMetadata`.`description` of type `String`)
+  ✨ `_expr` server value variant of `accessToken` (✨ Generated from Field `ClientAiBotConfig`.`accessToken` of type `String!`)
   """
-  description_expr: String_Expr
+  accessToken_expr: String_Expr
   """
-  ✨ Generated from Field `MovieMetadata`.`rating` of type `Float`
+  ✨ Generated from Field `ClientAiBotConfig`.`aiModelApiKey` of type `String`
   """
-  rating: Float
+  aiModelApiKey: String
   """
-  ✨ `_expr` server value variant of `rating` (✨ Generated from Field `MovieMetadata`.`rating` of type `Float`)
+  ✨ `_expr` server value variant of `aiModelApiKey` (✨ Generated from Field `ClientAiBotConfig`.`aiModelApiKey` of type `String`)
   """
-  rating_expr: Float_Expr
+  aiModelApiKey_expr: String_Expr
   """
-  ✨ `_update` server value variant of `rating` (✨ Generated from Field `MovieMetadata`.`rating` of type `Float`)
+  ✨ Generated from Field `ClientAiBotConfig`.`botName` of type `String`
   """
-  rating_update: [Float_Update!]
+  botName: String
   """
-  ✨ Generated from Field `MovieMetadata`.`releaseYear` of type `Int`
+  ✨ `_expr` server value variant of `botName` (✨ Generated from Field `ClientAiBotConfig`.`botName` of type `String`)
   """
-  releaseYear: Int
+  botName_expr: String_Expr
   """
-  ✨ `_expr` server value variant of `releaseYear` (✨ Generated from Field `MovieMetadata`.`releaseYear` of type `Int`)
+  ✨ Generated from Field `ClientAiBotConfig`.`createdAt` of type `Timestamp!`
   """
-  releaseYear_expr: Int_Expr
+  createdAt: Timestamp
   """
-  ✨ `_update` server value variant of `releaseYear` (✨ Generated from Field `MovieMetadata`.`releaseYear` of type `Int`)
+  ✨ `_expr` server value variant of `createdAt` (✨ Generated from Field `ClientAiBotConfig`.`createdAt` of type `Timestamp!`)
   """
-  releaseYear_update: [Int_Update!]
+  createdAt_expr: Timestamp_Expr
+  """
+  ✨ `_time` server value variant of `createdAt` (✨ Generated from Field `ClientAiBotConfig`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_time: Timestamp_Relative
+  """
+  ✨ `_update` server value variant of `createdAt` (✨ Generated from Field `ClientAiBotConfig`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_update: [Timestamp_Update!]
+  """
+  ✨ Generated from Field `ClientAiBotConfig`.`customInstructions` of type `String`
+  """
+  customInstructions: String
+  """
+  ✨ `_expr` server value variant of `customInstructions` (✨ Generated from Field `ClientAiBotConfig`.`customInstructions` of type `String`)
+  """
+  customInstructions_expr: String_Expr
+  """
+  ✨ Generated from Field `ClientAiBotConfig`.`knowledgeBaseJson` of type `Any`
+  """
+  knowledgeBaseJson: Any
+  """
+  ✨ `_expr` server value variant of `knowledgeBaseJson` (✨ Generated from Field `ClientAiBotConfig`.`knowledgeBaseJson` of type `Any`)
+  """
+  knowledgeBaseJson_expr: Any_Expr
+  """
+  ✨ Generated from Field `ClientAiBotConfig`.`schedulingApiKey` of type `String`
+  """
+  schedulingApiKey: String
+  """
+  ✨ `_expr` server value variant of `schedulingApiKey` (✨ Generated from Field `ClientAiBotConfig`.`schedulingApiKey` of type `String`)
+  """
+  schedulingApiKey_expr: String_Expr
+  """
+  ✨ Generated from Field `ClientAiBotConfig`.`welcomeMessage` of type `String`
+  """
+  welcomeMessage: String
+  """
+  ✨ `_expr` server value variant of `welcomeMessage` (✨ Generated from Field `ClientAiBotConfig`.`welcomeMessage` of type `String`)
+  """
+  welcomeMessage_expr: String_Expr
 }
 """
-✨ Generated filter input type for table 'MovieMetadata'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+✨ Generated filter input type for table 'ClientAiBotConfig'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
 """
-input MovieMetadata_Filter {
+input ClientAiBotConfig_Filter {
   """
   Apply multiple filter conditions using `AND` logic.
   """
-  _and: [MovieMetadata_Filter!]
+  _and: [ClientAiBotConfig_Filter!]
   """
   Negate the result of the provided filter condition.
   """
-  _not: MovieMetadata_Filter
+  _not: ClientAiBotConfig_Filter
   """
   Apply multiple filter conditions using `OR` logic.
   """
-  _or: [MovieMetadata_Filter!]
+  _or: [ClientAiBotConfig_Filter!]
   """
-  ✨ Generated from Field `MovieMetadata`.`id` of type `UUID!`
+  ✨ Generated from Field `ClientAiBotConfig`.`id` of type `UUID!`
   """
   id: UUID_Filter
   """
-  ✨ Generated from Field `MovieMetadata`.`movieId` of type `UUID!`
+  ✨ Generated from Field `ClientAiBotConfig`.`clientId` of type `UUID!`
   """
-  movieId: UUID_Filter
+  clientId: UUID_Filter
   """
-  ✨ Generated from Field `MovieMetadata`.`movie` of type `Movie!`
+  ✨ Generated from Field `ClientAiBotConfig`.`client` of type `Client!`
   """
-  movie: Movie_Filter
+  client: Client_Filter
   """
-  ✨ Generated from Field `MovieMetadata`.`description` of type `String`
+  ✨ Generated from Field `ClientAiBotConfig`.`accessToken` of type `String!`
   """
-  description: String_Filter
+  accessToken: String_Filter
   """
-  ✨ Generated from Field `MovieMetadata`.`rating` of type `Float`
+  ✨ Generated from Field `ClientAiBotConfig`.`aiModelApiKey` of type `String`
   """
-  rating: Float_Filter
+  aiModelApiKey: String_Filter
   """
-  ✨ Generated from Field `MovieMetadata`.`releaseYear` of type `Int`
+  ✨ Generated from Field `ClientAiBotConfig`.`botName` of type `String`
   """
-  releaseYear: Int_Filter
+  botName: String_Filter
+  """
+  ✨ Generated from Field `ClientAiBotConfig`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp_Filter
+  """
+  ✨ Generated from Field `ClientAiBotConfig`.`customInstructions` of type `String`
+  """
+  customInstructions: String_Filter
+  """
+  ✨ Generated from Field `ClientAiBotConfig`.`knowledgeBaseJson` of type `Any`
+  """
+  knowledgeBaseJson: Any_Filter
+  """
+  ✨ Generated from Field `ClientAiBotConfig`.`schedulingApiKey` of type `String`
+  """
+  schedulingApiKey: String_Filter
+  """
+  ✨ Generated from Field `ClientAiBotConfig`.`welcomeMessage` of type `String`
+  """
+  welcomeMessage: String_Filter
+  """
+  ✨ Generated from Field `ClientAiBotConfig`.`clientConversations_on_clientAiBotConfig` of type `[ClientConversation!]!`
+  """
+  clientConversations_on_clientAiBotConfig: ClientConversation_ListFilter
 }
 """
-✨ Generated first-row input type for table 'MovieMetadata'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+✨ Generated first-row input type for table 'ClientAiBotConfig'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
 """
-input MovieMetadata_FirstRow {
+input ClientAiBotConfig_FirstRow {
   """
   Order the result by the specified fields.
   """
-  orderBy: [MovieMetadata_Order!]
+  orderBy: [ClientAiBotConfig_Order!]
   """
   Filters rows based on the specified conditions.
   """
-  where: MovieMetadata_Filter
+  where: ClientAiBotConfig_Filter
 }
 """
-✨ Generated having input type for table 'MovieMetadata'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+✨ Generated having input type for table 'ClientAiBotConfig'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
 """
-input MovieMetadata_Having {
+input ClientAiBotConfig_Having {
   """
   Apply multiple Having conditions using `AND` logic.
   """
-  _and: [MovieMetadata_Having!]
+  _and: [ClientAiBotConfig_Having!]
   """
   Whether to apply DISTINCT to the aggregate function.
   """
@@ -351,85 +677,89 @@ input MovieMetadata_Having {
   """
   Negate the result of the provided Having condition.
   """
-  _not: MovieMetadata_Having
+  _not: ClientAiBotConfig_Having
   """
   Apply multiple Having conditions using `OR` logic.
   """
-  _or: [MovieMetadata_Having!]
+  _or: [ClientAiBotConfig_Having!]
   """
-  ✨ Generated from Field `MovieMetadata`.`_count` of type `Int!`
+  ✨ Generated from Field `ClientAiBotConfig`.`_count` of type `Int!`
   """
   _count: Int_Filter
   """
-  ✨ Generated from Field `MovieMetadata`.`description_count` of type `Int!`
+  ✨ Generated from Field `ClientAiBotConfig`.`accessToken_count` of type `Int!`
   """
-  description_count: Int_Filter
+  accessToken_count: Int_Filter
   """
-  ✨ Generated from Field `MovieMetadata`.`id_count` of type `Int!`
+  ✨ Generated from Field `ClientAiBotConfig`.`aiModelApiKey_count` of type `Int!`
+  """
+  aiModelApiKey_count: Int_Filter
+  """
+  ✨ Generated from Field `ClientAiBotConfig`.`botName_count` of type `Int!`
+  """
+  botName_count: Int_Filter
+  """
+  ✨ Generated from Field `ClientAiBotConfig`.`clientId_count` of type `Int!`
+  """
+  clientId_count: Int_Filter
+  """
+  ✨ Generated from Field `ClientAiBotConfig`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: Int_Filter
+  """
+  ✨ Generated from Field `ClientAiBotConfig`.`customInstructions_count` of type `Int!`
+  """
+  customInstructions_count: Int_Filter
+  """
+  ✨ Generated from Field `ClientAiBotConfig`.`id_count` of type `Int!`
   """
   id_count: Int_Filter
   """
-  ✨ Generated from Field `MovieMetadata`.`movieId_count` of type `Int!`
+  ✨ Generated from Field `ClientAiBotConfig`.`knowledgeBaseJson_count` of type `Int!`
   """
-  movieId_count: Int_Filter
+  knowledgeBaseJson_count: Int_Filter
   """
-  ✨ Generated from Field `MovieMetadata`.`rating_count` of type `Int!`
+  ✨ Generated from Field `ClientAiBotConfig`.`schedulingApiKey_count` of type `Int!`
   """
-  rating_count: Int_Filter
+  schedulingApiKey_count: Int_Filter
   """
-  ✨ Generated from Field `MovieMetadata`.`releaseYear_count` of type `Int!`
+  ✨ Generated from Field `ClientAiBotConfig`.`welcomeMessage_count` of type `Int!`
   """
-  releaseYear_count: Int_Filter
+  welcomeMessage_count: Int_Filter
   """
-  ✨ Generated from Field `MovieMetadata`.`rating_sum` of type `Float`
+  ✨ Generated from Field `ClientAiBotConfig`.`createdAt_min` of type `Timestamp`
   """
-  rating_sum: Float_Filter
+  createdAt_min: Timestamp_Filter
   """
-  ✨ Generated from Field `MovieMetadata`.`releaseYear_sum` of type `Int`
+  ✨ Generated from Field `ClientAiBotConfig`.`knowledgeBaseJson_min` of type `Any`
   """
-  releaseYear_sum: Int_Filter
+  knowledgeBaseJson_min: Any_Filter
   """
-  ✨ Generated from Field `MovieMetadata`.`rating_avg` of type `Float`
+  ✨ Generated from Field `ClientAiBotConfig`.`createdAt_max` of type `Timestamp`
   """
-  rating_avg: Float_Filter
+  createdAt_max: Timestamp_Filter
   """
-  ✨ Generated from Field `MovieMetadata`.`releaseYear_avg` of type `Float`
+  ✨ Generated from Field `ClientAiBotConfig`.`knowledgeBaseJson_max` of type `Any`
   """
-  releaseYear_avg: Float_Filter
-  """
-  ✨ Generated from Field `MovieMetadata`.`rating_min` of type `Float`
-  """
-  rating_min: Float_Filter
-  """
-  ✨ Generated from Field `MovieMetadata`.`releaseYear_min` of type `Int`
-  """
-  releaseYear_min: Int_Filter
-  """
-  ✨ Generated from Field `MovieMetadata`.`rating_max` of type `Float`
-  """
-  rating_max: Float_Filter
-  """
-  ✨ Generated from Field `MovieMetadata`.`releaseYear_max` of type `Int`
-  """
-  releaseYear_max: Int_Filter
+  knowledgeBaseJson_max: Any_Filter
 }
 """
-✨ Generated key input type for table 'MovieMetadata'. It represents the primary key fields used to uniquely identify a row in the table.
+✨ Generated key input type for table 'ClientAiBotConfig'. It represents the primary key fields used to uniquely identify a row in the table.
 """
-input MovieMetadata_Key {
+input ClientAiBotConfig_Key {
   """
-  ✨ Generated from Field `MovieMetadata`.`id` of type `UUID!`
+  ✨ Generated from Field `ClientAiBotConfig`.`id` of type `UUID!`
   """
   id: UUID
   """
-  ✨ `_expr` server value variant of `id` (✨ Generated from Field `MovieMetadata`.`id` of type `UUID!`)
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `ClientAiBotConfig`.`id` of type `UUID!`)
   """
   id_expr: UUID_Expr
 }
 """
-✨ Generated list filter input type for table 'MovieMetadata'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+✨ Generated list filter input type for table 'ClientAiBotConfig'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
 """
-input MovieMetadata_ListFilter {
+input ClientAiBotConfig_ListFilter {
   """
   The desired number of objects that match the condition (defaults to at least one).
   """
@@ -437,224 +767,304 @@ input MovieMetadata_ListFilter {
   """
   Condition of the related objects to filter for.
   """
-  exist: MovieMetadata_Filter
+  exist: ClientAiBotConfig_Filter
 }
 """
-✨ Generated order input type for table 'MovieMetadata'. This input defines the sorting order of rows in query results based on one or more fields.
+✨ Generated order input type for table 'ClientAiBotConfig'. This input defines the sorting order of rows in query results based on one or more fields.
 """
-input MovieMetadata_Order {
+input ClientAiBotConfig_Order {
   """
-  ✨ Generated from Field `MovieMetadata`.`id` of type `UUID!`
+  ✨ Generated from Field `ClientAiBotConfig`.`id` of type `UUID!`
   """
   id: OrderDirection
   """
-  ✨ Generated from Field `MovieMetadata`.`movieId` of type `UUID!`
+  ✨ Generated from Field `ClientAiBotConfig`.`clientId` of type `UUID!`
   """
-  movieId: OrderDirection
+  clientId: OrderDirection
   """
-  ✨ Generated from Field `MovieMetadata`.`movie` of type `Movie!`
+  ✨ Generated from Field `ClientAiBotConfig`.`client` of type `Client!`
   """
-  movie: Movie_Order
+  client: Client_Order
   """
-  ✨ Generated from Field `MovieMetadata`.`description` of type `String`
+  ✨ Generated from Field `ClientAiBotConfig`.`accessToken` of type `String!`
   """
-  description: OrderDirection
+  accessToken: OrderDirection
   """
-  ✨ Generated from Field `MovieMetadata`.`rating` of type `Float`
+  ✨ Generated from Field `ClientAiBotConfig`.`aiModelApiKey` of type `String`
   """
-  rating: OrderDirection
+  aiModelApiKey: OrderDirection
   """
-  ✨ Generated from Field `MovieMetadata`.`releaseYear` of type `Int`
+  ✨ Generated from Field `ClientAiBotConfig`.`botName` of type `String`
   """
-  releaseYear: OrderDirection
+  botName: OrderDirection
   """
-  ✨ Generated from Field `MovieMetadata`.`_count` of type `Int!`
+  ✨ Generated from Field `ClientAiBotConfig`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: OrderDirection
+  """
+  ✨ Generated from Field `ClientAiBotConfig`.`customInstructions` of type `String`
+  """
+  customInstructions: OrderDirection
+  """
+  ✨ Generated from Field `ClientAiBotConfig`.`knowledgeBaseJson` of type `Any`
+  """
+  knowledgeBaseJson: OrderDirection
+  """
+  ✨ Generated from Field `ClientAiBotConfig`.`schedulingApiKey` of type `String`
+  """
+  schedulingApiKey: OrderDirection
+  """
+  ✨ Generated from Field `ClientAiBotConfig`.`welcomeMessage` of type `String`
+  """
+  welcomeMessage: OrderDirection
+  """
+  ✨ Generated from Field `ClientAiBotConfig`.`_count` of type `Int!`
   """
   _count: OrderDirection
   """
-  ✨ Generated from Field `MovieMetadata`.`description_count` of type `Int!`
+  ✨ Generated from Field `ClientAiBotConfig`.`accessToken_count` of type `Int!`
   """
-  description_count: OrderDirection
+  accessToken_count: OrderDirection
   """
-  ✨ Generated from Field `MovieMetadata`.`id_count` of type `Int!`
+  ✨ Generated from Field `ClientAiBotConfig`.`aiModelApiKey_count` of type `Int!`
+  """
+  aiModelApiKey_count: OrderDirection
+  """
+  ✨ Generated from Field `ClientAiBotConfig`.`botName_count` of type `Int!`
+  """
+  botName_count: OrderDirection
+  """
+  ✨ Generated from Field `ClientAiBotConfig`.`clientId_count` of type `Int!`
+  """
+  clientId_count: OrderDirection
+  """
+  ✨ Generated from Field `ClientAiBotConfig`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: OrderDirection
+  """
+  ✨ Generated from Field `ClientAiBotConfig`.`customInstructions_count` of type `Int!`
+  """
+  customInstructions_count: OrderDirection
+  """
+  ✨ Generated from Field `ClientAiBotConfig`.`id_count` of type `Int!`
   """
   id_count: OrderDirection
   """
-  ✨ Generated from Field `MovieMetadata`.`movieId_count` of type `Int!`
+  ✨ Generated from Field `ClientAiBotConfig`.`knowledgeBaseJson_count` of type `Int!`
   """
-  movieId_count: OrderDirection
+  knowledgeBaseJson_count: OrderDirection
   """
-  ✨ Generated from Field `MovieMetadata`.`rating_count` of type `Int!`
+  ✨ Generated from Field `ClientAiBotConfig`.`schedulingApiKey_count` of type `Int!`
   """
-  rating_count: OrderDirection
+  schedulingApiKey_count: OrderDirection
   """
-  ✨ Generated from Field `MovieMetadata`.`releaseYear_count` of type `Int!`
+  ✨ Generated from Field `ClientAiBotConfig`.`welcomeMessage_count` of type `Int!`
   """
-  releaseYear_count: OrderDirection
+  welcomeMessage_count: OrderDirection
   """
-  ✨ Generated from Field `MovieMetadata`.`rating_sum` of type `Float`
+  ✨ Generated from Field `ClientAiBotConfig`.`createdAt_min` of type `Timestamp`
   """
-  rating_sum: OrderDirection
+  createdAt_min: OrderDirection
   """
-  ✨ Generated from Field `MovieMetadata`.`releaseYear_sum` of type `Int`
+  ✨ Generated from Field `ClientAiBotConfig`.`knowledgeBaseJson_min` of type `Any`
   """
-  releaseYear_sum: OrderDirection
+  knowledgeBaseJson_min: OrderDirection
   """
-  ✨ Generated from Field `MovieMetadata`.`rating_avg` of type `Float`
+  ✨ Generated from Field `ClientAiBotConfig`.`createdAt_max` of type `Timestamp`
   """
-  rating_avg: OrderDirection
+  createdAt_max: OrderDirection
   """
-  ✨ Generated from Field `MovieMetadata`.`releaseYear_avg` of type `Float`
+  ✨ Generated from Field `ClientAiBotConfig`.`knowledgeBaseJson_max` of type `Any`
   """
-  releaseYear_avg: OrderDirection
-  """
-  ✨ Generated from Field `MovieMetadata`.`rating_min` of type `Float`
-  """
-  rating_min: OrderDirection
-  """
-  ✨ Generated from Field `MovieMetadata`.`releaseYear_min` of type `Int`
-  """
-  releaseYear_min: OrderDirection
-  """
-  ✨ Generated from Field `MovieMetadata`.`rating_max` of type `Float`
-  """
-  rating_max: OrderDirection
-  """
-  ✨ Generated from Field `MovieMetadata`.`releaseYear_max` of type `Int`
-  """
-  releaseYear_max: OrderDirection
+  knowledgeBaseJson_max: OrderDirection
 }
 """
-✨ Generated data input type for table 'Review'. It includes all necessary fields for creating or upserting rows into table.
+✨ Generated data input type for table 'ClientAiBotPerformanceEvent'. It includes all necessary fields for creating or upserting rows into table.
 """
-input Review_Data {
+input ClientAiBotPerformanceEvent_Data {
   """
-  ✨ Generated from Field `Review`.`movieId` of type `UUID!`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`id` of type `UUID!`
   """
-  movieId: UUID
+  id: UUID
   """
-  ✨ `_expr` server value variant of `movieId` (✨ Generated from Field `Review`.`movieId` of type `UUID!`)
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `ClientAiBotPerformanceEvent`.`id` of type `UUID!`)
   """
-  movieId_expr: UUID_Expr
+  id_expr: UUID_Expr
   """
-  ✨ Generated from Field `Review`.`userId` of type `String!`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`clientId` of type `UUID!`
   """
-  userId: String
+  clientId: UUID
   """
-  ✨ `_expr` server value variant of `userId` (✨ Generated from Field `Review`.`userId` of type `String!`)
+  ✨ `_expr` server value variant of `clientId` (✨ Generated from Field `ClientAiBotPerformanceEvent`.`clientId` of type `UUID!`)
   """
-  userId_expr: String_Expr
+  clientId_expr: UUID_Expr
   """
-  ✨ Generated from Field `Review`.`movie` of type `Movie!`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`clientInboundContactId` of type `UUID`
   """
-  movie: Movie_Key
+  clientInboundContactId: UUID
   """
-  ✨ Generated from Field `Review`.`user` of type `User!`
+  ✨ `_expr` server value variant of `clientInboundContactId` (✨ Generated from Field `ClientAiBotPerformanceEvent`.`clientInboundContactId` of type `UUID`)
   """
-  user: User_Key
+  clientInboundContactId_expr: UUID_Expr
   """
-  ✨ Generated from Field `Review`.`rating` of type `Int`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`client` of type `Client!`
   """
-  rating: Int
+  client: Client_Key
   """
-  ✨ `_expr` server value variant of `rating` (✨ Generated from Field `Review`.`rating` of type `Int`)
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`clientInboundContact` of type `ClientInboundContact`
   """
-  rating_expr: Int_Expr
+  clientInboundContact: ClientInboundContact_Key
   """
-  ✨ `_update` server value variant of `rating` (✨ Generated from Field `Review`.`rating` of type `Int`)
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`eventType` of type `String`
   """
-  rating_update: [Int_Update!]
+  eventType: String
   """
-  ✨ Generated from Field `Review`.`reviewDate` of type `Date!`
+  ✨ `_expr` server value variant of `eventType` (✨ Generated from Field `ClientAiBotPerformanceEvent`.`eventType` of type `String`)
   """
-  reviewDate: Date
+  eventType_expr: String_Expr
   """
-  ✨ `_date` server value variant of `reviewDate` (✨ Generated from Field `Review`.`reviewDate` of type `Date!`)
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`messageCount` of type `Int`
   """
-  reviewDate_date: Date_Relative
+  messageCount: Int
   """
-  ✨ `_expr` server value variant of `reviewDate` (✨ Generated from Field `Review`.`reviewDate` of type `Date!`)
+  ✨ `_expr` server value variant of `messageCount` (✨ Generated from Field `ClientAiBotPerformanceEvent`.`messageCount` of type `Int`)
   """
-  reviewDate_expr: Date_Expr
+  messageCount_expr: Int_Expr
   """
-  ✨ `_update` server value variant of `reviewDate` (✨ Generated from Field `Review`.`reviewDate` of type `Date!`)
+  ✨ `_update` server value variant of `messageCount` (✨ Generated from Field `ClientAiBotPerformanceEvent`.`messageCount` of type `Int`)
   """
-  reviewDate_update: [Date_Update!]
+  messageCount_update: [Int_Update!]
   """
-  ✨ Generated from Field `Review`.`reviewText` of type `String`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`metadata` of type `Any`
   """
-  reviewText: String
+  metadata: Any
   """
-  ✨ `_expr` server value variant of `reviewText` (✨ Generated from Field `Review`.`reviewText` of type `String`)
+  ✨ `_expr` server value variant of `metadata` (✨ Generated from Field `ClientAiBotPerformanceEvent`.`metadata` of type `Any`)
   """
-  reviewText_expr: String_Expr
+  metadata_expr: Any_Expr
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`occurredAt` of type `Timestamp!`
+  """
+  occurredAt: Timestamp
+  """
+  ✨ `_expr` server value variant of `occurredAt` (✨ Generated from Field `ClientAiBotPerformanceEvent`.`occurredAt` of type `Timestamp!`)
+  """
+  occurredAt_expr: Timestamp_Expr
+  """
+  ✨ `_time` server value variant of `occurredAt` (✨ Generated from Field `ClientAiBotPerformanceEvent`.`occurredAt` of type `Timestamp!`)
+  """
+  occurredAt_time: Timestamp_Relative
+  """
+  ✨ `_update` server value variant of `occurredAt` (✨ Generated from Field `ClientAiBotPerformanceEvent`.`occurredAt` of type `Timestamp!`)
+  """
+  occurredAt_update: [Timestamp_Update!]
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`sessionDurationMs` of type `Int`
+  """
+  sessionDurationMs: Int
+  """
+  ✨ `_expr` server value variant of `sessionDurationMs` (✨ Generated from Field `ClientAiBotPerformanceEvent`.`sessionDurationMs` of type `Int`)
+  """
+  sessionDurationMs_expr: Int_Expr
+  """
+  ✨ `_update` server value variant of `sessionDurationMs` (✨ Generated from Field `ClientAiBotPerformanceEvent`.`sessionDurationMs` of type `Int`)
+  """
+  sessionDurationMs_update: [Int_Update!]
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`tokensUsed` of type `Int`
+  """
+  tokensUsed: Int
+  """
+  ✨ `_expr` server value variant of `tokensUsed` (✨ Generated from Field `ClientAiBotPerformanceEvent`.`tokensUsed` of type `Int`)
+  """
+  tokensUsed_expr: Int_Expr
+  """
+  ✨ `_update` server value variant of `tokensUsed` (✨ Generated from Field `ClientAiBotPerformanceEvent`.`tokensUsed` of type `Int`)
+  """
+  tokensUsed_update: [Int_Update!]
 }
 """
-✨ Generated filter input type for table 'Review'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+✨ Generated filter input type for table 'ClientAiBotPerformanceEvent'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
 """
-input Review_Filter {
+input ClientAiBotPerformanceEvent_Filter {
   """
   Apply multiple filter conditions using `AND` logic.
   """
-  _and: [Review_Filter!]
+  _and: [ClientAiBotPerformanceEvent_Filter!]
   """
   Negate the result of the provided filter condition.
   """
-  _not: Review_Filter
+  _not: ClientAiBotPerformanceEvent_Filter
   """
   Apply multiple filter conditions using `OR` logic.
   """
-  _or: [Review_Filter!]
+  _or: [ClientAiBotPerformanceEvent_Filter!]
   """
-  ✨ Generated from Field `Review`.`movieId` of type `UUID!`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`id` of type `UUID!`
   """
-  movieId: UUID_Filter
+  id: UUID_Filter
   """
-  ✨ Generated from Field `Review`.`userId` of type `String!`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`clientId` of type `UUID!`
   """
-  userId: String_Filter
+  clientId: UUID_Filter
   """
-  ✨ Generated from Field `Review`.`movie` of type `Movie!`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`clientInboundContactId` of type `UUID`
   """
-  movie: Movie_Filter
+  clientInboundContactId: UUID_Filter
   """
-  ✨ Generated from Field `Review`.`user` of type `User!`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`client` of type `Client!`
   """
-  user: User_Filter
+  client: Client_Filter
   """
-  ✨ Generated from Field `Review`.`rating` of type `Int`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`clientInboundContact` of type `ClientInboundContact`
   """
-  rating: Int_Filter
+  clientInboundContact: ClientInboundContact_Filter
   """
-  ✨ Generated from Field `Review`.`reviewDate` of type `Date!`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`eventType` of type `String`
   """
-  reviewDate: Date_Filter
+  eventType: String_Filter
   """
-  ✨ Generated from Field `Review`.`reviewText` of type `String`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`messageCount` of type `Int`
   """
-  reviewText: String_Filter
+  messageCount: Int_Filter
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`metadata` of type `Any`
+  """
+  metadata: Any_Filter
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`occurredAt` of type `Timestamp!`
+  """
+  occurredAt: Timestamp_Filter
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`sessionDurationMs` of type `Int`
+  """
+  sessionDurationMs: Int_Filter
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`tokensUsed` of type `Int`
+  """
+  tokensUsed: Int_Filter
 }
 """
-✨ Generated first-row input type for table 'Review'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+✨ Generated first-row input type for table 'ClientAiBotPerformanceEvent'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
 """
-input Review_FirstRow {
+input ClientAiBotPerformanceEvent_FirstRow {
   """
   Order the result by the specified fields.
   """
-  orderBy: [Review_Order!]
+  orderBy: [ClientAiBotPerformanceEvent_Order!]
   """
   Filters rows based on the specified conditions.
   """
-  where: Review_Filter
+  where: ClientAiBotPerformanceEvent_Filter
 }
 """
-✨ Generated having input type for table 'Review'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+✨ Generated having input type for table 'ClientAiBotPerformanceEvent'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
 """
-input Review_Having {
+input ClientAiBotPerformanceEvent_Having {
   """
   Apply multiple Having conditions using `AND` logic.
   """
-  _and: [Review_Having!]
+  _and: [ClientAiBotPerformanceEvent_Having!]
   """
   Whether to apply DISTINCT to the aggregate function.
   """
@@ -662,85 +1072,133 @@ input Review_Having {
   """
   Negate the result of the provided Having condition.
   """
-  _not: Review_Having
+  _not: ClientAiBotPerformanceEvent_Having
   """
   Apply multiple Having conditions using `OR` logic.
   """
-  _or: [Review_Having!]
+  _or: [ClientAiBotPerformanceEvent_Having!]
   """
-  ✨ Generated from Field `Review`.`_count` of type `Int!`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`_count` of type `Int!`
   """
   _count: Int_Filter
   """
-  ✨ Generated from Field `Review`.`movieId_count` of type `Int!`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`clientId_count` of type `Int!`
   """
-  movieId_count: Int_Filter
+  clientId_count: Int_Filter
   """
-  ✨ Generated from Field `Review`.`rating_count` of type `Int!`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`clientInboundContactId_count` of type `Int!`
   """
-  rating_count: Int_Filter
+  clientInboundContactId_count: Int_Filter
   """
-  ✨ Generated from Field `Review`.`reviewDate_count` of type `Int!`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`eventType_count` of type `Int!`
   """
-  reviewDate_count: Int_Filter
+  eventType_count: Int_Filter
   """
-  ✨ Generated from Field `Review`.`reviewText_count` of type `Int!`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`id_count` of type `Int!`
   """
-  reviewText_count: Int_Filter
+  id_count: Int_Filter
   """
-  ✨ Generated from Field `Review`.`userId_count` of type `Int!`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`messageCount_count` of type `Int!`
   """
-  userId_count: Int_Filter
+  messageCount_count: Int_Filter
   """
-  ✨ Generated from Field `Review`.`rating_sum` of type `Int`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`metadata_count` of type `Int!`
   """
-  rating_sum: Int_Filter
+  metadata_count: Int_Filter
   """
-  ✨ Generated from Field `Review`.`rating_avg` of type `Float`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`occurredAt_count` of type `Int!`
   """
-  rating_avg: Float_Filter
+  occurredAt_count: Int_Filter
   """
-  ✨ Generated from Field `Review`.`rating_min` of type `Int`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`sessionDurationMs_count` of type `Int!`
   """
-  rating_min: Int_Filter
+  sessionDurationMs_count: Int_Filter
   """
-  ✨ Generated from Field `Review`.`reviewDate_min` of type `Date`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`tokensUsed_count` of type `Int!`
   """
-  reviewDate_min: Date_Filter
+  tokensUsed_count: Int_Filter
   """
-  ✨ Generated from Field `Review`.`rating_max` of type `Int`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`messageCount_sum` of type `Int`
   """
-  rating_max: Int_Filter
+  messageCount_sum: Int_Filter
   """
-  ✨ Generated from Field `Review`.`reviewDate_max` of type `Date`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`sessionDurationMs_sum` of type `Int`
   """
-  reviewDate_max: Date_Filter
+  sessionDurationMs_sum: Int_Filter
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`tokensUsed_sum` of type `Int`
+  """
+  tokensUsed_sum: Int_Filter
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`messageCount_avg` of type `Float`
+  """
+  messageCount_avg: Float_Filter
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`sessionDurationMs_avg` of type `Float`
+  """
+  sessionDurationMs_avg: Float_Filter
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`tokensUsed_avg` of type `Float`
+  """
+  tokensUsed_avg: Float_Filter
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`messageCount_min` of type `Int`
+  """
+  messageCount_min: Int_Filter
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`metadata_min` of type `Any`
+  """
+  metadata_min: Any_Filter
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`occurredAt_min` of type `Timestamp`
+  """
+  occurredAt_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`sessionDurationMs_min` of type `Int`
+  """
+  sessionDurationMs_min: Int_Filter
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`tokensUsed_min` of type `Int`
+  """
+  tokensUsed_min: Int_Filter
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`messageCount_max` of type `Int`
+  """
+  messageCount_max: Int_Filter
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`metadata_max` of type `Any`
+  """
+  metadata_max: Any_Filter
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`occurredAt_max` of type `Timestamp`
+  """
+  occurredAt_max: Timestamp_Filter
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`sessionDurationMs_max` of type `Int`
+  """
+  sessionDurationMs_max: Int_Filter
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`tokensUsed_max` of type `Int`
+  """
+  tokensUsed_max: Int_Filter
 }
 """
-✨ Generated key input type for table 'Review'. It represents the primary key fields used to uniquely identify a row in the table.
+✨ Generated key input type for table 'ClientAiBotPerformanceEvent'. It represents the primary key fields used to uniquely identify a row in the table.
 """
-input Review_Key {
+input ClientAiBotPerformanceEvent_Key {
   """
-  ✨ Generated from Field `Review`.`movieId` of type `UUID!`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`id` of type `UUID!`
   """
-  movieId: UUID
+  id: UUID
   """
-  ✨ `_expr` server value variant of `movieId` (✨ Generated from Field `Review`.`movieId` of type `UUID!`)
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `ClientAiBotPerformanceEvent`.`id` of type `UUID!`)
   """
-  movieId_expr: UUID_Expr
-  """
-  ✨ Generated from Field `Review`.`userId` of type `String!`
-  """
-  userId: String
-  """
-  ✨ `_expr` server value variant of `userId` (✨ Generated from Field `Review`.`userId` of type `String!`)
-  """
-  userId_expr: String_Expr
+  id_expr: UUID_Expr
 }
 """
-✨ Generated list filter input type for table 'Review'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+✨ Generated list filter input type for table 'ClientAiBotPerformanceEvent'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
 """
-input Review_ListFilter {
+input ClientAiBotPerformanceEvent_ListFilter {
   """
   The desired number of objects that match the condition (defaults to at least one).
   """
@@ -748,164 +1206,2885 @@ input Review_ListFilter {
   """
   Condition of the related objects to filter for.
   """
-  exist: Review_Filter
+  exist: ClientAiBotPerformanceEvent_Filter
 }
 """
-✨ Generated order input type for table 'Review'. This input defines the sorting order of rows in query results based on one or more fields.
+✨ Generated order input type for table 'ClientAiBotPerformanceEvent'. This input defines the sorting order of rows in query results based on one or more fields.
 """
-input Review_Order {
+input ClientAiBotPerformanceEvent_Order {
   """
-  ✨ Generated from Field `Review`.`movieId` of type `UUID!`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`id` of type `UUID!`
   """
-  movieId: OrderDirection
+  id: OrderDirection
   """
-  ✨ Generated from Field `Review`.`userId` of type `String!`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`clientId` of type `UUID!`
   """
-  userId: OrderDirection
+  clientId: OrderDirection
   """
-  ✨ Generated from Field `Review`.`movie` of type `Movie!`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`clientInboundContactId` of type `UUID`
   """
-  movie: Movie_Order
+  clientInboundContactId: OrderDirection
   """
-  ✨ Generated from Field `Review`.`user` of type `User!`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`client` of type `Client!`
   """
-  user: User_Order
+  client: Client_Order
   """
-  ✨ Generated from Field `Review`.`rating` of type `Int`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`clientInboundContact` of type `ClientInboundContact`
   """
-  rating: OrderDirection
+  clientInboundContact: ClientInboundContact_Order
   """
-  ✨ Generated from Field `Review`.`reviewDate` of type `Date!`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`eventType` of type `String`
   """
-  reviewDate: OrderDirection
+  eventType: OrderDirection
   """
-  ✨ Generated from Field `Review`.`reviewText` of type `String`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`messageCount` of type `Int`
   """
-  reviewText: OrderDirection
+  messageCount: OrderDirection
   """
-  ✨ Generated from Field `Review`.`_count` of type `Int!`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`metadata` of type `Any`
+  """
+  metadata: OrderDirection
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`occurredAt` of type `Timestamp!`
+  """
+  occurredAt: OrderDirection
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`sessionDurationMs` of type `Int`
+  """
+  sessionDurationMs: OrderDirection
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`tokensUsed` of type `Int`
+  """
+  tokensUsed: OrderDirection
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`_count` of type `Int!`
   """
   _count: OrderDirection
   """
-  ✨ Generated from Field `Review`.`movieId_count` of type `Int!`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`clientId_count` of type `Int!`
   """
-  movieId_count: OrderDirection
+  clientId_count: OrderDirection
   """
-  ✨ Generated from Field `Review`.`rating_count` of type `Int!`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`clientInboundContactId_count` of type `Int!`
   """
-  rating_count: OrderDirection
+  clientInboundContactId_count: OrderDirection
   """
-  ✨ Generated from Field `Review`.`reviewDate_count` of type `Int!`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`eventType_count` of type `Int!`
   """
-  reviewDate_count: OrderDirection
+  eventType_count: OrderDirection
   """
-  ✨ Generated from Field `Review`.`reviewText_count` of type `Int!`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`id_count` of type `Int!`
   """
-  reviewText_count: OrderDirection
+  id_count: OrderDirection
   """
-  ✨ Generated from Field `Review`.`userId_count` of type `Int!`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`messageCount_count` of type `Int!`
   """
-  userId_count: OrderDirection
+  messageCount_count: OrderDirection
   """
-  ✨ Generated from Field `Review`.`rating_sum` of type `Int`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`metadata_count` of type `Int!`
   """
-  rating_sum: OrderDirection
+  metadata_count: OrderDirection
   """
-  ✨ Generated from Field `Review`.`rating_avg` of type `Float`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`occurredAt_count` of type `Int!`
   """
-  rating_avg: OrderDirection
+  occurredAt_count: OrderDirection
   """
-  ✨ Generated from Field `Review`.`rating_min` of type `Int`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`sessionDurationMs_count` of type `Int!`
   """
-  rating_min: OrderDirection
+  sessionDurationMs_count: OrderDirection
   """
-  ✨ Generated from Field `Review`.`reviewDate_min` of type `Date`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`tokensUsed_count` of type `Int!`
   """
-  reviewDate_min: OrderDirection
+  tokensUsed_count: OrderDirection
   """
-  ✨ Generated from Field `Review`.`rating_max` of type `Int`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`messageCount_sum` of type `Int`
   """
-  rating_max: OrderDirection
+  messageCount_sum: OrderDirection
   """
-  ✨ Generated from Field `Review`.`reviewDate_max` of type `Date`
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`sessionDurationMs_sum` of type `Int`
   """
-  reviewDate_max: OrderDirection
+  sessionDurationMs_sum: OrderDirection
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`tokensUsed_sum` of type `Int`
+  """
+  tokensUsed_sum: OrderDirection
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`messageCount_avg` of type `Float`
+  """
+  messageCount_avg: OrderDirection
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`sessionDurationMs_avg` of type `Float`
+  """
+  sessionDurationMs_avg: OrderDirection
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`tokensUsed_avg` of type `Float`
+  """
+  tokensUsed_avg: OrderDirection
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`messageCount_min` of type `Int`
+  """
+  messageCount_min: OrderDirection
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`metadata_min` of type `Any`
+  """
+  metadata_min: OrderDirection
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`occurredAt_min` of type `Timestamp`
+  """
+  occurredAt_min: OrderDirection
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`sessionDurationMs_min` of type `Int`
+  """
+  sessionDurationMs_min: OrderDirection
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`tokensUsed_min` of type `Int`
+  """
+  tokensUsed_min: OrderDirection
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`messageCount_max` of type `Int`
+  """
+  messageCount_max: OrderDirection
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`metadata_max` of type `Any`
+  """
+  metadata_max: OrderDirection
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`occurredAt_max` of type `Timestamp`
+  """
+  occurredAt_max: OrderDirection
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`sessionDurationMs_max` of type `Int`
+  """
+  sessionDurationMs_max: OrderDirection
+  """
+  ✨ Generated from Field `ClientAiBotPerformanceEvent`.`tokensUsed_max` of type `Int`
+  """
+  tokensUsed_max: OrderDirection
 }
 """
-✨ Generated data input type for table 'User'. It includes all necessary fields for creating or upserting rows into table.
+✨ Generated data input type for table 'ClientConversation'. It includes all necessary fields for creating or upserting rows into table.
 """
-input User_Data {
+input ClientConversation_Data {
   """
-  ✨ Generated from Field `User`.`id` of type `String!`
+  ✨ Generated from Field `ClientConversation`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `ClientConversation`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+  """
+  ✨ Generated from Field `ClientConversation`.`clientAiBotConfigId` of type `UUID`
+  """
+  clientAiBotConfigId: UUID
+  """
+  ✨ `_expr` server value variant of `clientAiBotConfigId` (✨ Generated from Field `ClientConversation`.`clientAiBotConfigId` of type `UUID`)
+  """
+  clientAiBotConfigId_expr: UUID_Expr
+  """
+  ✨ Generated from Field `ClientConversation`.`clientId` of type `UUID!`
+  """
+  clientId: UUID
+  """
+  ✨ `_expr` server value variant of `clientId` (✨ Generated from Field `ClientConversation`.`clientId` of type `UUID!`)
+  """
+  clientId_expr: UUID_Expr
+  """
+  ✨ Generated from Field `ClientConversation`.`client` of type `Client!`
+  """
+  client: Client_Key
+  """
+  ✨ Generated from Field `ClientConversation`.`clientAiBotConfig` of type `ClientAiBotConfig`
+  """
+  clientAiBotConfig: ClientAiBotConfig_Key
+  """
+  ✨ Generated from Field `ClientConversation`.`accessToken` of type `String!`
+  """
+  accessToken: String
+  """
+  ✨ `_expr` server value variant of `accessToken` (✨ Generated from Field `ClientConversation`.`accessToken` of type `String!`)
+  """
+  accessToken_expr: String_Expr
+  """
+  ✨ Generated from Field `ClientConversation`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp
+  """
+  ✨ `_expr` server value variant of `createdAt` (✨ Generated from Field `ClientConversation`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_expr: Timestamp_Expr
+  """
+  ✨ `_time` server value variant of `createdAt` (✨ Generated from Field `ClientConversation`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_time: Timestamp_Relative
+  """
+  ✨ `_update` server value variant of `createdAt` (✨ Generated from Field `ClientConversation`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_update: [Timestamp_Update!]
+  """
+  ✨ Generated from Field `ClientConversation`.`messages` of type `Any`
+  """
+  messages: Any
+  """
+  ✨ `_expr` server value variant of `messages` (✨ Generated from Field `ClientConversation`.`messages` of type `Any`)
+  """
+  messages_expr: Any_Expr
+  """
+  ✨ Generated from Field `ClientConversation`.`updatedAt` of type `Timestamp!`
+  """
+  updatedAt: Timestamp
+  """
+  ✨ `_expr` server value variant of `updatedAt` (✨ Generated from Field `ClientConversation`.`updatedAt` of type `Timestamp!`)
+  """
+  updatedAt_expr: Timestamp_Expr
+  """
+  ✨ `_time` server value variant of `updatedAt` (✨ Generated from Field `ClientConversation`.`updatedAt` of type `Timestamp!`)
+  """
+  updatedAt_time: Timestamp_Relative
+  """
+  ✨ `_update` server value variant of `updatedAt` (✨ Generated from Field `ClientConversation`.`updatedAt` of type `Timestamp!`)
+  """
+  updatedAt_update: [Timestamp_Update!]
+}
+"""
+✨ Generated filter input type for table 'ClientConversation'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input ClientConversation_Filter {
+  """
+  Apply multiple filter conditions using `AND` logic.
+  """
+  _and: [ClientConversation_Filter!]
+  """
+  Negate the result of the provided filter condition.
+  """
+  _not: ClientConversation_Filter
+  """
+  Apply multiple filter conditions using `OR` logic.
+  """
+  _or: [ClientConversation_Filter!]
+  """
+  ✨ Generated from Field `ClientConversation`.`id` of type `UUID!`
+  """
+  id: UUID_Filter
+  """
+  ✨ Generated from Field `ClientConversation`.`clientAiBotConfigId` of type `UUID`
+  """
+  clientAiBotConfigId: UUID_Filter
+  """
+  ✨ Generated from Field `ClientConversation`.`clientId` of type `UUID!`
+  """
+  clientId: UUID_Filter
+  """
+  ✨ Generated from Field `ClientConversation`.`client` of type `Client!`
+  """
+  client: Client_Filter
+  """
+  ✨ Generated from Field `ClientConversation`.`clientAiBotConfig` of type `ClientAiBotConfig`
+  """
+  clientAiBotConfig: ClientAiBotConfig_Filter
+  """
+  ✨ Generated from Field `ClientConversation`.`accessToken` of type `String!`
+  """
+  accessToken: String_Filter
+  """
+  ✨ Generated from Field `ClientConversation`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp_Filter
+  """
+  ✨ Generated from Field `ClientConversation`.`messages` of type `Any`
+  """
+  messages: Any_Filter
+  """
+  ✨ Generated from Field `ClientConversation`.`updatedAt` of type `Timestamp!`
+  """
+  updatedAt: Timestamp_Filter
+}
+"""
+✨ Generated first-row input type for table 'ClientConversation'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+"""
+input ClientConversation_FirstRow {
+  """
+  Order the result by the specified fields.
+  """
+  orderBy: [ClientConversation_Order!]
+  """
+  Filters rows based on the specified conditions.
+  """
+  where: ClientConversation_Filter
+}
+"""
+✨ Generated having input type for table 'ClientConversation'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input ClientConversation_Having {
+  """
+  Apply multiple Having conditions using `AND` logic.
+  """
+  _and: [ClientConversation_Having!]
+  """
+  Whether to apply DISTINCT to the aggregate function.
+  """
+  _distinct: Boolean
+  """
+  Negate the result of the provided Having condition.
+  """
+  _not: ClientConversation_Having
+  """
+  Apply multiple Having conditions using `OR` logic.
+  """
+  _or: [ClientConversation_Having!]
+  """
+  ✨ Generated from Field `ClientConversation`.`_count` of type `Int!`
+  """
+  _count: Int_Filter
+  """
+  ✨ Generated from Field `ClientConversation`.`accessToken_count` of type `Int!`
+  """
+  accessToken_count: Int_Filter
+  """
+  ✨ Generated from Field `ClientConversation`.`clientAiBotConfigId_count` of type `Int!`
+  """
+  clientAiBotConfigId_count: Int_Filter
+  """
+  ✨ Generated from Field `ClientConversation`.`clientId_count` of type `Int!`
+  """
+  clientId_count: Int_Filter
+  """
+  ✨ Generated from Field `ClientConversation`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: Int_Filter
+  """
+  ✨ Generated from Field `ClientConversation`.`id_count` of type `Int!`
+  """
+  id_count: Int_Filter
+  """
+  ✨ Generated from Field `ClientConversation`.`messages_count` of type `Int!`
+  """
+  messages_count: Int_Filter
+  """
+  ✨ Generated from Field `ClientConversation`.`updatedAt_count` of type `Int!`
+  """
+  updatedAt_count: Int_Filter
+  """
+  ✨ Generated from Field `ClientConversation`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `ClientConversation`.`messages_min` of type `Any`
+  """
+  messages_min: Any_Filter
+  """
+  ✨ Generated from Field `ClientConversation`.`updatedAt_min` of type `Timestamp`
+  """
+  updatedAt_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `ClientConversation`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: Timestamp_Filter
+  """
+  ✨ Generated from Field `ClientConversation`.`messages_max` of type `Any`
+  """
+  messages_max: Any_Filter
+  """
+  ✨ Generated from Field `ClientConversation`.`updatedAt_max` of type `Timestamp`
+  """
+  updatedAt_max: Timestamp_Filter
+}
+"""
+✨ Generated key input type for table 'ClientConversation'. It represents the primary key fields used to uniquely identify a row in the table.
+"""
+input ClientConversation_Key {
+  """
+  ✨ Generated from Field `ClientConversation`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `ClientConversation`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+}
+"""
+✨ Generated list filter input type for table 'ClientConversation'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+"""
+input ClientConversation_ListFilter {
+  """
+  The desired number of objects that match the condition (defaults to at least one).
+  """
+  count: Int_Filter = {gt:0}
+  """
+  Condition of the related objects to filter for.
+  """
+  exist: ClientConversation_Filter
+}
+"""
+✨ Generated order input type for table 'ClientConversation'. This input defines the sorting order of rows in query results based on one or more fields.
+"""
+input ClientConversation_Order {
+  """
+  ✨ Generated from Field `ClientConversation`.`id` of type `UUID!`
+  """
+  id: OrderDirection
+  """
+  ✨ Generated from Field `ClientConversation`.`clientAiBotConfigId` of type `UUID`
+  """
+  clientAiBotConfigId: OrderDirection
+  """
+  ✨ Generated from Field `ClientConversation`.`clientId` of type `UUID!`
+  """
+  clientId: OrderDirection
+  """
+  ✨ Generated from Field `ClientConversation`.`client` of type `Client!`
+  """
+  client: Client_Order
+  """
+  ✨ Generated from Field `ClientConversation`.`clientAiBotConfig` of type `ClientAiBotConfig`
+  """
+  clientAiBotConfig: ClientAiBotConfig_Order
+  """
+  ✨ Generated from Field `ClientConversation`.`accessToken` of type `String!`
+  """
+  accessToken: OrderDirection
+  """
+  ✨ Generated from Field `ClientConversation`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: OrderDirection
+  """
+  ✨ Generated from Field `ClientConversation`.`messages` of type `Any`
+  """
+  messages: OrderDirection
+  """
+  ✨ Generated from Field `ClientConversation`.`updatedAt` of type `Timestamp!`
+  """
+  updatedAt: OrderDirection
+  """
+  ✨ Generated from Field `ClientConversation`.`_count` of type `Int!`
+  """
+  _count: OrderDirection
+  """
+  ✨ Generated from Field `ClientConversation`.`accessToken_count` of type `Int!`
+  """
+  accessToken_count: OrderDirection
+  """
+  ✨ Generated from Field `ClientConversation`.`clientAiBotConfigId_count` of type `Int!`
+  """
+  clientAiBotConfigId_count: OrderDirection
+  """
+  ✨ Generated from Field `ClientConversation`.`clientId_count` of type `Int!`
+  """
+  clientId_count: OrderDirection
+  """
+  ✨ Generated from Field `ClientConversation`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: OrderDirection
+  """
+  ✨ Generated from Field `ClientConversation`.`id_count` of type `Int!`
+  """
+  id_count: OrderDirection
+  """
+  ✨ Generated from Field `ClientConversation`.`messages_count` of type `Int!`
+  """
+  messages_count: OrderDirection
+  """
+  ✨ Generated from Field `ClientConversation`.`updatedAt_count` of type `Int!`
+  """
+  updatedAt_count: OrderDirection
+  """
+  ✨ Generated from Field `ClientConversation`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: OrderDirection
+  """
+  ✨ Generated from Field `ClientConversation`.`messages_min` of type `Any`
+  """
+  messages_min: OrderDirection
+  """
+  ✨ Generated from Field `ClientConversation`.`updatedAt_min` of type `Timestamp`
+  """
+  updatedAt_min: OrderDirection
+  """
+  ✨ Generated from Field `ClientConversation`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: OrderDirection
+  """
+  ✨ Generated from Field `ClientConversation`.`messages_max` of type `Any`
+  """
+  messages_max: OrderDirection
+  """
+  ✨ Generated from Field `ClientConversation`.`updatedAt_max` of type `Timestamp`
+  """
+  updatedAt_max: OrderDirection
+}
+"""
+✨ Generated data input type for table 'ClientInboundContact'. It includes all necessary fields for creating or upserting rows into table.
+"""
+input ClientInboundContact_Data {
+  """
+  ✨ Generated from Field `ClientInboundContact`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `ClientInboundContact`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+  """
+  ✨ Generated from Field `ClientInboundContact`.`clientId` of type `UUID!`
+  """
+  clientId: UUID
+  """
+  ✨ `_expr` server value variant of `clientId` (✨ Generated from Field `ClientInboundContact`.`clientId` of type `UUID!`)
+  """
+  clientId_expr: UUID_Expr
+  """
+  ✨ Generated from Field `ClientInboundContact`.`client` of type `Client!`
+  """
+  client: Client_Key
+  """
+  ✨ Generated from Field `ClientInboundContact`.`companyName` of type `String`
+  """
+  companyName: String
+  """
+  ✨ `_expr` server value variant of `companyName` (✨ Generated from Field `ClientInboundContact`.`companyName` of type `String`)
+  """
+  companyName_expr: String_Expr
+  """
+  ✨ Generated from Field `ClientInboundContact`.`contactEmail` of type `String`
+  """
+  contactEmail: String
+  """
+  ✨ `_expr` server value variant of `contactEmail` (✨ Generated from Field `ClientInboundContact`.`contactEmail` of type `String`)
+  """
+  contactEmail_expr: String_Expr
+  """
+  ✨ Generated from Field `ClientInboundContact`.`contactStatus` of type `String`
+  """
+  contactStatus: String
+  """
+  ✨ `_expr` server value variant of `contactStatus` (✨ Generated from Field `ClientInboundContact`.`contactStatus` of type `String`)
+  """
+  contactStatus_expr: String_Expr
+  """
+  ✨ Generated from Field `ClientInboundContact`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp
+  """
+  ✨ `_expr` server value variant of `createdAt` (✨ Generated from Field `ClientInboundContact`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_expr: Timestamp_Expr
+  """
+  ✨ `_time` server value variant of `createdAt` (✨ Generated from Field `ClientInboundContact`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_time: Timestamp_Relative
+  """
+  ✨ `_update` server value variant of `createdAt` (✨ Generated from Field `ClientInboundContact`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_update: [Timestamp_Update!]
+  """
+  ✨ Generated from Field `ClientInboundContact`.`identifiedPainPoints` of type `String`
+  """
+  identifiedPainPoints: String
+  """
+  ✨ `_expr` server value variant of `identifiedPainPoints` (✨ Generated from Field `ClientInboundContact`.`identifiedPainPoints` of type `String`)
+  """
+  identifiedPainPoints_expr: String_Expr
+  """
+  ✨ Generated from Field `ClientInboundContact`.`initialPitchDraft` of type `String`
+  """
+  initialPitchDraft: String
+  """
+  ✨ `_expr` server value variant of `initialPitchDraft` (✨ Generated from Field `ClientInboundContact`.`initialPitchDraft` of type `String`)
+  """
+  initialPitchDraft_expr: String_Expr
+  """
+  ✨ Generated from Field `ClientInboundContact`.`websiteUrl` of type `String`
+  """
+  websiteUrl: String
+  """
+  ✨ `_expr` server value variant of `websiteUrl` (✨ Generated from Field `ClientInboundContact`.`websiteUrl` of type `String`)
+  """
+  websiteUrl_expr: String_Expr
+}
+"""
+✨ Generated filter input type for table 'ClientInboundContact'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input ClientInboundContact_Filter {
+  """
+  Apply multiple filter conditions using `AND` logic.
+  """
+  _and: [ClientInboundContact_Filter!]
+  """
+  Negate the result of the provided filter condition.
+  """
+  _not: ClientInboundContact_Filter
+  """
+  Apply multiple filter conditions using `OR` logic.
+  """
+  _or: [ClientInboundContact_Filter!]
+  """
+  ✨ Generated from Field `ClientInboundContact`.`id` of type `UUID!`
+  """
+  id: UUID_Filter
+  """
+  ✨ Generated from Field `ClientInboundContact`.`clientId` of type `UUID!`
+  """
+  clientId: UUID_Filter
+  """
+  ✨ Generated from Field `ClientInboundContact`.`client` of type `Client!`
+  """
+  client: Client_Filter
+  """
+  ✨ Generated from Field `ClientInboundContact`.`companyName` of type `String`
+  """
+  companyName: String_Filter
+  """
+  ✨ Generated from Field `ClientInboundContact`.`contactEmail` of type `String`
+  """
+  contactEmail: String_Filter
+  """
+  ✨ Generated from Field `ClientInboundContact`.`contactStatus` of type `String`
+  """
+  contactStatus: String_Filter
+  """
+  ✨ Generated from Field `ClientInboundContact`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp_Filter
+  """
+  ✨ Generated from Field `ClientInboundContact`.`identifiedPainPoints` of type `String`
+  """
+  identifiedPainPoints: String_Filter
+  """
+  ✨ Generated from Field `ClientInboundContact`.`initialPitchDraft` of type `String`
+  """
+  initialPitchDraft: String_Filter
+  """
+  ✨ Generated from Field `ClientInboundContact`.`websiteUrl` of type `String`
+  """
+  websiteUrl: String_Filter
+  """
+  ✨ Generated from Field `ClientInboundContact`.`clientAiBotPerformanceEvents_on_clientInboundContact` of type `[ClientAiBotPerformanceEvent!]!`
+  """
+  clientAiBotPerformanceEvents_on_clientInboundContact: ClientAiBotPerformanceEvent_ListFilter
+}
+"""
+✨ Generated first-row input type for table 'ClientInboundContact'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+"""
+input ClientInboundContact_FirstRow {
+  """
+  Order the result by the specified fields.
+  """
+  orderBy: [ClientInboundContact_Order!]
+  """
+  Filters rows based on the specified conditions.
+  """
+  where: ClientInboundContact_Filter
+}
+"""
+✨ Generated having input type for table 'ClientInboundContact'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input ClientInboundContact_Having {
+  """
+  Apply multiple Having conditions using `AND` logic.
+  """
+  _and: [ClientInboundContact_Having!]
+  """
+  Whether to apply DISTINCT to the aggregate function.
+  """
+  _distinct: Boolean
+  """
+  Negate the result of the provided Having condition.
+  """
+  _not: ClientInboundContact_Having
+  """
+  Apply multiple Having conditions using `OR` logic.
+  """
+  _or: [ClientInboundContact_Having!]
+  """
+  ✨ Generated from Field `ClientInboundContact`.`_count` of type `Int!`
+  """
+  _count: Int_Filter
+  """
+  ✨ Generated from Field `ClientInboundContact`.`clientId_count` of type `Int!`
+  """
+  clientId_count: Int_Filter
+  """
+  ✨ Generated from Field `ClientInboundContact`.`companyName_count` of type `Int!`
+  """
+  companyName_count: Int_Filter
+  """
+  ✨ Generated from Field `ClientInboundContact`.`contactEmail_count` of type `Int!`
+  """
+  contactEmail_count: Int_Filter
+  """
+  ✨ Generated from Field `ClientInboundContact`.`contactStatus_count` of type `Int!`
+  """
+  contactStatus_count: Int_Filter
+  """
+  ✨ Generated from Field `ClientInboundContact`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: Int_Filter
+  """
+  ✨ Generated from Field `ClientInboundContact`.`id_count` of type `Int!`
+  """
+  id_count: Int_Filter
+  """
+  ✨ Generated from Field `ClientInboundContact`.`identifiedPainPoints_count` of type `Int!`
+  """
+  identifiedPainPoints_count: Int_Filter
+  """
+  ✨ Generated from Field `ClientInboundContact`.`initialPitchDraft_count` of type `Int!`
+  """
+  initialPitchDraft_count: Int_Filter
+  """
+  ✨ Generated from Field `ClientInboundContact`.`websiteUrl_count` of type `Int!`
+  """
+  websiteUrl_count: Int_Filter
+  """
+  ✨ Generated from Field `ClientInboundContact`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `ClientInboundContact`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: Timestamp_Filter
+}
+"""
+✨ Generated key input type for table 'ClientInboundContact'. It represents the primary key fields used to uniquely identify a row in the table.
+"""
+input ClientInboundContact_Key {
+  """
+  ✨ Generated from Field `ClientInboundContact`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `ClientInboundContact`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+}
+"""
+✨ Generated list filter input type for table 'ClientInboundContact'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+"""
+input ClientInboundContact_ListFilter {
+  """
+  The desired number of objects that match the condition (defaults to at least one).
+  """
+  count: Int_Filter = {gt:0}
+  """
+  Condition of the related objects to filter for.
+  """
+  exist: ClientInboundContact_Filter
+}
+"""
+✨ Generated order input type for table 'ClientInboundContact'. This input defines the sorting order of rows in query results based on one or more fields.
+"""
+input ClientInboundContact_Order {
+  """
+  ✨ Generated from Field `ClientInboundContact`.`id` of type `UUID!`
+  """
+  id: OrderDirection
+  """
+  ✨ Generated from Field `ClientInboundContact`.`clientId` of type `UUID!`
+  """
+  clientId: OrderDirection
+  """
+  ✨ Generated from Field `ClientInboundContact`.`client` of type `Client!`
+  """
+  client: Client_Order
+  """
+  ✨ Generated from Field `ClientInboundContact`.`companyName` of type `String`
+  """
+  companyName: OrderDirection
+  """
+  ✨ Generated from Field `ClientInboundContact`.`contactEmail` of type `String`
+  """
+  contactEmail: OrderDirection
+  """
+  ✨ Generated from Field `ClientInboundContact`.`contactStatus` of type `String`
+  """
+  contactStatus: OrderDirection
+  """
+  ✨ Generated from Field `ClientInboundContact`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: OrderDirection
+  """
+  ✨ Generated from Field `ClientInboundContact`.`identifiedPainPoints` of type `String`
+  """
+  identifiedPainPoints: OrderDirection
+  """
+  ✨ Generated from Field `ClientInboundContact`.`initialPitchDraft` of type `String`
+  """
+  initialPitchDraft: OrderDirection
+  """
+  ✨ Generated from Field `ClientInboundContact`.`websiteUrl` of type `String`
+  """
+  websiteUrl: OrderDirection
+  """
+  ✨ Generated from Field `ClientInboundContact`.`_count` of type `Int!`
+  """
+  _count: OrderDirection
+  """
+  ✨ Generated from Field `ClientInboundContact`.`clientId_count` of type `Int!`
+  """
+  clientId_count: OrderDirection
+  """
+  ✨ Generated from Field `ClientInboundContact`.`companyName_count` of type `Int!`
+  """
+  companyName_count: OrderDirection
+  """
+  ✨ Generated from Field `ClientInboundContact`.`contactEmail_count` of type `Int!`
+  """
+  contactEmail_count: OrderDirection
+  """
+  ✨ Generated from Field `ClientInboundContact`.`contactStatus_count` of type `Int!`
+  """
+  contactStatus_count: OrderDirection
+  """
+  ✨ Generated from Field `ClientInboundContact`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: OrderDirection
+  """
+  ✨ Generated from Field `ClientInboundContact`.`id_count` of type `Int!`
+  """
+  id_count: OrderDirection
+  """
+  ✨ Generated from Field `ClientInboundContact`.`identifiedPainPoints_count` of type `Int!`
+  """
+  identifiedPainPoints_count: OrderDirection
+  """
+  ✨ Generated from Field `ClientInboundContact`.`initialPitchDraft_count` of type `Int!`
+  """
+  initialPitchDraft_count: OrderDirection
+  """
+  ✨ Generated from Field `ClientInboundContact`.`websiteUrl_count` of type `Int!`
+  """
+  websiteUrl_count: OrderDirection
+  """
+  ✨ Generated from Field `ClientInboundContact`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: OrderDirection
+  """
+  ✨ Generated from Field `ClientInboundContact`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: OrderDirection
+}
+"""
+✨ Generated data input type for table 'PlatformAgentActivity'. It includes all necessary fields for creating or upserting rows into table.
+"""
+input PlatformAgentActivity_Data {
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `PlatformAgentActivity`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`platformInboundContactId` of type `UUID`
+  """
+  platformInboundContactId: UUID
+  """
+  ✨ `_expr` server value variant of `platformInboundContactId` (✨ Generated from Field `PlatformAgentActivity`.`platformInboundContactId` of type `UUID`)
+  """
+  platformInboundContactId_expr: UUID_Expr
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`platformOutboundContactId` of type `UUID`
+  """
+  platformOutboundContactId: UUID
+  """
+  ✨ `_expr` server value variant of `platformOutboundContactId` (✨ Generated from Field `PlatformAgentActivity`.`platformOutboundContactId` of type `UUID`)
+  """
+  platformOutboundContactId_expr: UUID_Expr
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`platformOutboundOutreachEventId` of type `UUID`
+  """
+  platformOutboundOutreachEventId: UUID
+  """
+  ✨ `_expr` server value variant of `platformOutboundOutreachEventId` (✨ Generated from Field `PlatformAgentActivity`.`platformOutboundOutreachEventId` of type `UUID`)
+  """
+  platformOutboundOutreachEventId_expr: UUID_Expr
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`platformInboundContact` of type `PlatformInboundContact`
+  """
+  platformInboundContact: PlatformInboundContact_Key
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`platformOutboundContact` of type `PlatformOutboundContact`
+  """
+  platformOutboundContact: PlatformOutboundContact_Key
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`platformOutboundOutreachEvent` of type `PlatformOutboundOutreachEvent`
+  """
+  platformOutboundOutreachEvent: PlatformOutboundOutreachEvent_Key
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`action` of type `String`
+  """
+  action: String
+  """
+  ✨ `_expr` server value variant of `action` (✨ Generated from Field `PlatformAgentActivity`.`action` of type `String`)
+  """
+  action_expr: String_Expr
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`agentType` of type `String`
+  """
+  agentType: String
+  """
+  ✨ `_expr` server value variant of `agentType` (✨ Generated from Field `PlatformAgentActivity`.`agentType` of type `String`)
+  """
+  agentType_expr: String_Expr
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`durationMs` of type `Int`
+  """
+  durationMs: Int
+  """
+  ✨ `_expr` server value variant of `durationMs` (✨ Generated from Field `PlatformAgentActivity`.`durationMs` of type `Int`)
+  """
+  durationMs_expr: Int_Expr
+  """
+  ✨ `_update` server value variant of `durationMs` (✨ Generated from Field `PlatformAgentActivity`.`durationMs` of type `Int`)
+  """
+  durationMs_update: [Int_Update!]
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`metadata` of type `Any`
+  """
+  metadata: Any
+  """
+  ✨ `_expr` server value variant of `metadata` (✨ Generated from Field `PlatformAgentActivity`.`metadata` of type `Any`)
+  """
+  metadata_expr: Any_Expr
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`occurredAt` of type `Timestamp!`
+  """
+  occurredAt: Timestamp
+  """
+  ✨ `_expr` server value variant of `occurredAt` (✨ Generated from Field `PlatformAgentActivity`.`occurredAt` of type `Timestamp!`)
+  """
+  occurredAt_expr: Timestamp_Expr
+  """
+  ✨ `_time` server value variant of `occurredAt` (✨ Generated from Field `PlatformAgentActivity`.`occurredAt` of type `Timestamp!`)
+  """
+  occurredAt_time: Timestamp_Relative
+  """
+  ✨ `_update` server value variant of `occurredAt` (✨ Generated from Field `PlatformAgentActivity`.`occurredAt` of type `Timestamp!`)
+  """
+  occurredAt_update: [Timestamp_Update!]
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`outcome` of type `String`
+  """
+  outcome: String
+  """
+  ✨ `_expr` server value variant of `outcome` (✨ Generated from Field `PlatformAgentActivity`.`outcome` of type `String`)
+  """
+  outcome_expr: String_Expr
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`targetUrl` of type `String`
+  """
+  targetUrl: String
+  """
+  ✨ `_expr` server value variant of `targetUrl` (✨ Generated from Field `PlatformAgentActivity`.`targetUrl` of type `String`)
+  """
+  targetUrl_expr: String_Expr
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`tokensUsed` of type `Int`
+  """
+  tokensUsed: Int
+  """
+  ✨ `_expr` server value variant of `tokensUsed` (✨ Generated from Field `PlatformAgentActivity`.`tokensUsed` of type `Int`)
+  """
+  tokensUsed_expr: Int_Expr
+  """
+  ✨ `_update` server value variant of `tokensUsed` (✨ Generated from Field `PlatformAgentActivity`.`tokensUsed` of type `Int`)
+  """
+  tokensUsed_update: [Int_Update!]
+}
+"""
+✨ Generated filter input type for table 'PlatformAgentActivity'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input PlatformAgentActivity_Filter {
+  """
+  Apply multiple filter conditions using `AND` logic.
+  """
+  _and: [PlatformAgentActivity_Filter!]
+  """
+  Negate the result of the provided filter condition.
+  """
+  _not: PlatformAgentActivity_Filter
+  """
+  Apply multiple filter conditions using `OR` logic.
+  """
+  _or: [PlatformAgentActivity_Filter!]
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`id` of type `UUID!`
+  """
+  id: UUID_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`platformInboundContactId` of type `UUID`
+  """
+  platformInboundContactId: UUID_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`platformOutboundContactId` of type `UUID`
+  """
+  platformOutboundContactId: UUID_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`platformOutboundOutreachEventId` of type `UUID`
+  """
+  platformOutboundOutreachEventId: UUID_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`platformInboundContact` of type `PlatformInboundContact`
+  """
+  platformInboundContact: PlatformInboundContact_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`platformOutboundContact` of type `PlatformOutboundContact`
+  """
+  platformOutboundContact: PlatformOutboundContact_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`platformOutboundOutreachEvent` of type `PlatformOutboundOutreachEvent`
+  """
+  platformOutboundOutreachEvent: PlatformOutboundOutreachEvent_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`action` of type `String`
+  """
+  action: String_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`agentType` of type `String`
+  """
+  agentType: String_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`durationMs` of type `Int`
+  """
+  durationMs: Int_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`metadata` of type `Any`
+  """
+  metadata: Any_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`occurredAt` of type `Timestamp!`
+  """
+  occurredAt: Timestamp_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`outcome` of type `String`
+  """
+  outcome: String_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`targetUrl` of type `String`
+  """
+  targetUrl: String_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`tokensUsed` of type `Int`
+  """
+  tokensUsed: Int_Filter
+}
+"""
+✨ Generated first-row input type for table 'PlatformAgentActivity'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+"""
+input PlatformAgentActivity_FirstRow {
+  """
+  Order the result by the specified fields.
+  """
+  orderBy: [PlatformAgentActivity_Order!]
+  """
+  Filters rows based on the specified conditions.
+  """
+  where: PlatformAgentActivity_Filter
+}
+"""
+✨ Generated having input type for table 'PlatformAgentActivity'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input PlatformAgentActivity_Having {
+  """
+  Apply multiple Having conditions using `AND` logic.
+  """
+  _and: [PlatformAgentActivity_Having!]
+  """
+  Whether to apply DISTINCT to the aggregate function.
+  """
+  _distinct: Boolean
+  """
+  Negate the result of the provided Having condition.
+  """
+  _not: PlatformAgentActivity_Having
+  """
+  Apply multiple Having conditions using `OR` logic.
+  """
+  _or: [PlatformAgentActivity_Having!]
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`_count` of type `Int!`
+  """
+  _count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`action_count` of type `Int!`
+  """
+  action_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`agentType_count` of type `Int!`
+  """
+  agentType_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`durationMs_count` of type `Int!`
+  """
+  durationMs_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`id_count` of type `Int!`
+  """
+  id_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`metadata_count` of type `Int!`
+  """
+  metadata_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`occurredAt_count` of type `Int!`
+  """
+  occurredAt_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`outcome_count` of type `Int!`
+  """
+  outcome_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`platformInboundContactId_count` of type `Int!`
+  """
+  platformInboundContactId_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`platformOutboundContactId_count` of type `Int!`
+  """
+  platformOutboundContactId_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`platformOutboundOutreachEventId_count` of type `Int!`
+  """
+  platformOutboundOutreachEventId_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`targetUrl_count` of type `Int!`
+  """
+  targetUrl_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`tokensUsed_count` of type `Int!`
+  """
+  tokensUsed_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`durationMs_sum` of type `Int`
+  """
+  durationMs_sum: Int_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`tokensUsed_sum` of type `Int`
+  """
+  tokensUsed_sum: Int_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`durationMs_avg` of type `Float`
+  """
+  durationMs_avg: Float_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`tokensUsed_avg` of type `Float`
+  """
+  tokensUsed_avg: Float_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`durationMs_min` of type `Int`
+  """
+  durationMs_min: Int_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`metadata_min` of type `Any`
+  """
+  metadata_min: Any_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`occurredAt_min` of type `Timestamp`
+  """
+  occurredAt_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`tokensUsed_min` of type `Int`
+  """
+  tokensUsed_min: Int_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`durationMs_max` of type `Int`
+  """
+  durationMs_max: Int_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`metadata_max` of type `Any`
+  """
+  metadata_max: Any_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`occurredAt_max` of type `Timestamp`
+  """
+  occurredAt_max: Timestamp_Filter
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`tokensUsed_max` of type `Int`
+  """
+  tokensUsed_max: Int_Filter
+}
+"""
+✨ Generated key input type for table 'PlatformAgentActivity'. It represents the primary key fields used to uniquely identify a row in the table.
+"""
+input PlatformAgentActivity_Key {
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `PlatformAgentActivity`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+}
+"""
+✨ Generated list filter input type for table 'PlatformAgentActivity'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+"""
+input PlatformAgentActivity_ListFilter {
+  """
+  The desired number of objects that match the condition (defaults to at least one).
+  """
+  count: Int_Filter = {gt:0}
+  """
+  Condition of the related objects to filter for.
+  """
+  exist: PlatformAgentActivity_Filter
+}
+"""
+✨ Generated order input type for table 'PlatformAgentActivity'. This input defines the sorting order of rows in query results based on one or more fields.
+"""
+input PlatformAgentActivity_Order {
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`id` of type `UUID!`
+  """
+  id: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`platformInboundContactId` of type `UUID`
+  """
+  platformInboundContactId: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`platformOutboundContactId` of type `UUID`
+  """
+  platformOutboundContactId: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`platformOutboundOutreachEventId` of type `UUID`
+  """
+  platformOutboundOutreachEventId: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`platformInboundContact` of type `PlatformInboundContact`
+  """
+  platformInboundContact: PlatformInboundContact_Order
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`platformOutboundContact` of type `PlatformOutboundContact`
+  """
+  platformOutboundContact: PlatformOutboundContact_Order
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`platformOutboundOutreachEvent` of type `PlatformOutboundOutreachEvent`
+  """
+  platformOutboundOutreachEvent: PlatformOutboundOutreachEvent_Order
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`action` of type `String`
+  """
+  action: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`agentType` of type `String`
+  """
+  agentType: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`durationMs` of type `Int`
+  """
+  durationMs: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`metadata` of type `Any`
+  """
+  metadata: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`occurredAt` of type `Timestamp!`
+  """
+  occurredAt: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`outcome` of type `String`
+  """
+  outcome: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`targetUrl` of type `String`
+  """
+  targetUrl: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`tokensUsed` of type `Int`
+  """
+  tokensUsed: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`_count` of type `Int!`
+  """
+  _count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`action_count` of type `Int!`
+  """
+  action_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`agentType_count` of type `Int!`
+  """
+  agentType_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`durationMs_count` of type `Int!`
+  """
+  durationMs_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`id_count` of type `Int!`
+  """
+  id_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`metadata_count` of type `Int!`
+  """
+  metadata_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`occurredAt_count` of type `Int!`
+  """
+  occurredAt_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`outcome_count` of type `Int!`
+  """
+  outcome_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`platformInboundContactId_count` of type `Int!`
+  """
+  platformInboundContactId_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`platformOutboundContactId_count` of type `Int!`
+  """
+  platformOutboundContactId_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`platformOutboundOutreachEventId_count` of type `Int!`
+  """
+  platformOutboundOutreachEventId_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`targetUrl_count` of type `Int!`
+  """
+  targetUrl_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`tokensUsed_count` of type `Int!`
+  """
+  tokensUsed_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`durationMs_sum` of type `Int`
+  """
+  durationMs_sum: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`tokensUsed_sum` of type `Int`
+  """
+  tokensUsed_sum: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`durationMs_avg` of type `Float`
+  """
+  durationMs_avg: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`tokensUsed_avg` of type `Float`
+  """
+  tokensUsed_avg: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`durationMs_min` of type `Int`
+  """
+  durationMs_min: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`metadata_min` of type `Any`
+  """
+  metadata_min: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`occurredAt_min` of type `Timestamp`
+  """
+  occurredAt_min: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`tokensUsed_min` of type `Int`
+  """
+  tokensUsed_min: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`durationMs_max` of type `Int`
+  """
+  durationMs_max: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`metadata_max` of type `Any`
+  """
+  metadata_max: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`occurredAt_max` of type `Timestamp`
+  """
+  occurredAt_max: OrderDirection
+  """
+  ✨ Generated from Field `PlatformAgentActivity`.`tokensUsed_max` of type `Int`
+  """
+  tokensUsed_max: OrderDirection
+}
+"""
+✨ Generated data input type for table 'PlatformChatbotConfig'. It includes all necessary fields for creating or upserting rows into table.
+"""
+input PlatformChatbotConfig_Data {
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `PlatformChatbotConfig`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`platformOwnerId` of type `String`
+  """
+  platformOwnerId: String
+  """
+  ✨ `_expr` server value variant of `platformOwnerId` (✨ Generated from Field `PlatformChatbotConfig`.`platformOwnerId` of type `String`)
+  """
+  platformOwnerId_expr: String_Expr
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`platformOwner` of type `PlatformOwner`
+  """
+  platformOwner: PlatformOwner_Key
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`aiModelApiKey` of type `String`
+  """
+  aiModelApiKey: String
+  """
+  ✨ `_expr` server value variant of `aiModelApiKey` (✨ Generated from Field `PlatformChatbotConfig`.`aiModelApiKey` of type `String`)
+  """
+  aiModelApiKey_expr: String_Expr
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`botName` of type `String`
+  """
+  botName: String
+  """
+  ✨ `_expr` server value variant of `botName` (✨ Generated from Field `PlatformChatbotConfig`.`botName` of type `String`)
+  """
+  botName_expr: String_Expr
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp
+  """
+  ✨ `_expr` server value variant of `createdAt` (✨ Generated from Field `PlatformChatbotConfig`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_expr: Timestamp_Expr
+  """
+  ✨ `_time` server value variant of `createdAt` (✨ Generated from Field `PlatformChatbotConfig`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_time: Timestamp_Relative
+  """
+  ✨ `_update` server value variant of `createdAt` (✨ Generated from Field `PlatformChatbotConfig`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_update: [Timestamp_Update!]
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`customInstructions` of type `String`
+  """
+  customInstructions: String
+  """
+  ✨ `_expr` server value variant of `customInstructions` (✨ Generated from Field `PlatformChatbotConfig`.`customInstructions` of type `String`)
+  """
+  customInstructions_expr: String_Expr
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`knowledgeBaseJson` of type `Any`
+  """
+  knowledgeBaseJson: Any
+  """
+  ✨ `_expr` server value variant of `knowledgeBaseJson` (✨ Generated from Field `PlatformChatbotConfig`.`knowledgeBaseJson` of type `Any`)
+  """
+  knowledgeBaseJson_expr: Any_Expr
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`schedulingApiKey` of type `String`
+  """
+  schedulingApiKey: String
+  """
+  ✨ `_expr` server value variant of `schedulingApiKey` (✨ Generated from Field `PlatformChatbotConfig`.`schedulingApiKey` of type `String`)
+  """
+  schedulingApiKey_expr: String_Expr
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`welcomeMessage` of type `String`
+  """
+  welcomeMessage: String
+  """
+  ✨ `_expr` server value variant of `welcomeMessage` (✨ Generated from Field `PlatformChatbotConfig`.`welcomeMessage` of type `String`)
+  """
+  welcomeMessage_expr: String_Expr
+}
+"""
+✨ Generated filter input type for table 'PlatformChatbotConfig'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input PlatformChatbotConfig_Filter {
+  """
+  Apply multiple filter conditions using `AND` logic.
+  """
+  _and: [PlatformChatbotConfig_Filter!]
+  """
+  Negate the result of the provided filter condition.
+  """
+  _not: PlatformChatbotConfig_Filter
+  """
+  Apply multiple filter conditions using `OR` logic.
+  """
+  _or: [PlatformChatbotConfig_Filter!]
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`id` of type `UUID!`
+  """
+  id: UUID_Filter
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`platformOwnerId` of type `String`
+  """
+  platformOwnerId: String_Filter
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`platformOwner` of type `PlatformOwner`
+  """
+  platformOwner: PlatformOwner_Filter
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`aiModelApiKey` of type `String`
+  """
+  aiModelApiKey: String_Filter
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`botName` of type `String`
+  """
+  botName: String_Filter
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp_Filter
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`customInstructions` of type `String`
+  """
+  customInstructions: String_Filter
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`knowledgeBaseJson` of type `Any`
+  """
+  knowledgeBaseJson: Any_Filter
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`schedulingApiKey` of type `String`
+  """
+  schedulingApiKey: String_Filter
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`welcomeMessage` of type `String`
+  """
+  welcomeMessage: String_Filter
+}
+"""
+✨ Generated first-row input type for table 'PlatformChatbotConfig'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+"""
+input PlatformChatbotConfig_FirstRow {
+  """
+  Order the result by the specified fields.
+  """
+  orderBy: [PlatformChatbotConfig_Order!]
+  """
+  Filters rows based on the specified conditions.
+  """
+  where: PlatformChatbotConfig_Filter
+}
+"""
+✨ Generated having input type for table 'PlatformChatbotConfig'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input PlatformChatbotConfig_Having {
+  """
+  Apply multiple Having conditions using `AND` logic.
+  """
+  _and: [PlatformChatbotConfig_Having!]
+  """
+  Whether to apply DISTINCT to the aggregate function.
+  """
+  _distinct: Boolean
+  """
+  Negate the result of the provided Having condition.
+  """
+  _not: PlatformChatbotConfig_Having
+  """
+  Apply multiple Having conditions using `OR` logic.
+  """
+  _or: [PlatformChatbotConfig_Having!]
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`_count` of type `Int!`
+  """
+  _count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`aiModelApiKey_count` of type `Int!`
+  """
+  aiModelApiKey_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`botName_count` of type `Int!`
+  """
+  botName_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`customInstructions_count` of type `Int!`
+  """
+  customInstructions_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`id_count` of type `Int!`
+  """
+  id_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`knowledgeBaseJson_count` of type `Int!`
+  """
+  knowledgeBaseJson_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`platformOwnerId_count` of type `Int!`
+  """
+  platformOwnerId_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`schedulingApiKey_count` of type `Int!`
+  """
+  schedulingApiKey_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`welcomeMessage_count` of type `Int!`
+  """
+  welcomeMessage_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`knowledgeBaseJson_min` of type `Any`
+  """
+  knowledgeBaseJson_min: Any_Filter
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: Timestamp_Filter
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`knowledgeBaseJson_max` of type `Any`
+  """
+  knowledgeBaseJson_max: Any_Filter
+}
+"""
+✨ Generated key input type for table 'PlatformChatbotConfig'. It represents the primary key fields used to uniquely identify a row in the table.
+"""
+input PlatformChatbotConfig_Key {
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `PlatformChatbotConfig`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+}
+"""
+✨ Generated list filter input type for table 'PlatformChatbotConfig'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+"""
+input PlatformChatbotConfig_ListFilter {
+  """
+  The desired number of objects that match the condition (defaults to at least one).
+  """
+  count: Int_Filter = {gt:0}
+  """
+  Condition of the related objects to filter for.
+  """
+  exist: PlatformChatbotConfig_Filter
+}
+"""
+✨ Generated order input type for table 'PlatformChatbotConfig'. This input defines the sorting order of rows in query results based on one or more fields.
+"""
+input PlatformChatbotConfig_Order {
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`id` of type `UUID!`
+  """
+  id: OrderDirection
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`platformOwnerId` of type `String`
+  """
+  platformOwnerId: OrderDirection
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`platformOwner` of type `PlatformOwner`
+  """
+  platformOwner: PlatformOwner_Order
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`aiModelApiKey` of type `String`
+  """
+  aiModelApiKey: OrderDirection
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`botName` of type `String`
+  """
+  botName: OrderDirection
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: OrderDirection
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`customInstructions` of type `String`
+  """
+  customInstructions: OrderDirection
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`knowledgeBaseJson` of type `Any`
+  """
+  knowledgeBaseJson: OrderDirection
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`schedulingApiKey` of type `String`
+  """
+  schedulingApiKey: OrderDirection
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`welcomeMessage` of type `String`
+  """
+  welcomeMessage: OrderDirection
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`_count` of type `Int!`
+  """
+  _count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`aiModelApiKey_count` of type `Int!`
+  """
+  aiModelApiKey_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`botName_count` of type `Int!`
+  """
+  botName_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`customInstructions_count` of type `Int!`
+  """
+  customInstructions_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`id_count` of type `Int!`
+  """
+  id_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`knowledgeBaseJson_count` of type `Int!`
+  """
+  knowledgeBaseJson_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`platformOwnerId_count` of type `Int!`
+  """
+  platformOwnerId_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`schedulingApiKey_count` of type `Int!`
+  """
+  schedulingApiKey_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`welcomeMessage_count` of type `Int!`
+  """
+  welcomeMessage_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: OrderDirection
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`knowledgeBaseJson_min` of type `Any`
+  """
+  knowledgeBaseJson_min: OrderDirection
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: OrderDirection
+  """
+  ✨ Generated from Field `PlatformChatbotConfig`.`knowledgeBaseJson_max` of type `Any`
+  """
+  knowledgeBaseJson_max: OrderDirection
+}
+"""
+✨ Generated data input type for table 'PlatformInboundContact'. It includes all necessary fields for creating or upserting rows into table.
+"""
+input PlatformInboundContact_Data {
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `PlatformInboundContact`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`companyName` of type `String`
+  """
+  companyName: String
+  """
+  ✨ `_expr` server value variant of `companyName` (✨ Generated from Field `PlatformInboundContact`.`companyName` of type `String`)
+  """
+  companyName_expr: String_Expr
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`contactEmail` of type `String`
+  """
+  contactEmail: String
+  """
+  ✨ `_expr` server value variant of `contactEmail` (✨ Generated from Field `PlatformInboundContact`.`contactEmail` of type `String`)
+  """
+  contactEmail_expr: String_Expr
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`contactStatus` of type `String`
+  """
+  contactStatus: String
+  """
+  ✨ `_expr` server value variant of `contactStatus` (✨ Generated from Field `PlatformInboundContact`.`contactStatus` of type `String`)
+  """
+  contactStatus_expr: String_Expr
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp
+  """
+  ✨ `_expr` server value variant of `createdAt` (✨ Generated from Field `PlatformInboundContact`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_expr: Timestamp_Expr
+  """
+  ✨ `_time` server value variant of `createdAt` (✨ Generated from Field `PlatformInboundContact`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_time: Timestamp_Relative
+  """
+  ✨ `_update` server value variant of `createdAt` (✨ Generated from Field `PlatformInboundContact`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_update: [Timestamp_Update!]
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`identifiedPainPoints` of type `String`
+  """
+  identifiedPainPoints: String
+  """
+  ✨ `_expr` server value variant of `identifiedPainPoints` (✨ Generated from Field `PlatformInboundContact`.`identifiedPainPoints` of type `String`)
+  """
+  identifiedPainPoints_expr: String_Expr
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`initialPitchDraft` of type `String`
+  """
+  initialPitchDraft: String
+  """
+  ✨ `_expr` server value variant of `initialPitchDraft` (✨ Generated from Field `PlatformInboundContact`.`initialPitchDraft` of type `String`)
+  """
+  initialPitchDraft_expr: String_Expr
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`nativeAgent` of type `Boolean`
+  """
+  nativeAgent: Boolean
+  """
+  ✨ `_expr` server value variant of `nativeAgent` (✨ Generated from Field `PlatformInboundContact`.`nativeAgent` of type `Boolean`)
+  """
+  nativeAgent_expr: Boolean_Expr
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`websiteUrl` of type `String`
+  """
+  websiteUrl: String
+  """
+  ✨ `_expr` server value variant of `websiteUrl` (✨ Generated from Field `PlatformInboundContact`.`websiteUrl` of type `String`)
+  """
+  websiteUrl_expr: String_Expr
+}
+"""
+✨ Generated filter input type for table 'PlatformInboundContact'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input PlatformInboundContact_Filter {
+  """
+  Apply multiple filter conditions using `AND` logic.
+  """
+  _and: [PlatformInboundContact_Filter!]
+  """
+  Negate the result of the provided filter condition.
+  """
+  _not: PlatformInboundContact_Filter
+  """
+  Apply multiple filter conditions using `OR` logic.
+  """
+  _or: [PlatformInboundContact_Filter!]
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`id` of type `UUID!`
+  """
+  id: UUID_Filter
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`companyName` of type `String`
+  """
+  companyName: String_Filter
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`contactEmail` of type `String`
+  """
+  contactEmail: String_Filter
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`contactStatus` of type `String`
+  """
+  contactStatus: String_Filter
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp_Filter
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`identifiedPainPoints` of type `String`
+  """
+  identifiedPainPoints: String_Filter
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`initialPitchDraft` of type `String`
+  """
+  initialPitchDraft: String_Filter
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`nativeAgent` of type `Boolean`
+  """
+  nativeAgent: Boolean_Filter
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`websiteUrl` of type `String`
+  """
+  websiteUrl: String_Filter
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`clients_on_convertedFromInboundContact` of type `[Client!]!`
+  """
+  clients_on_convertedFromInboundContact: Client_ListFilter
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`platformAgentActivities_on_platformInboundContact` of type `[PlatformAgentActivity!]!`
+  """
+  platformAgentActivities_on_platformInboundContact: PlatformAgentActivity_ListFilter
+}
+"""
+✨ Generated first-row input type for table 'PlatformInboundContact'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+"""
+input PlatformInboundContact_FirstRow {
+  """
+  Order the result by the specified fields.
+  """
+  orderBy: [PlatformInboundContact_Order!]
+  """
+  Filters rows based on the specified conditions.
+  """
+  where: PlatformInboundContact_Filter
+}
+"""
+✨ Generated having input type for table 'PlatformInboundContact'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input PlatformInboundContact_Having {
+  """
+  Apply multiple Having conditions using `AND` logic.
+  """
+  _and: [PlatformInboundContact_Having!]
+  """
+  Whether to apply DISTINCT to the aggregate function.
+  """
+  _distinct: Boolean
+  """
+  Negate the result of the provided Having condition.
+  """
+  _not: PlatformInboundContact_Having
+  """
+  Apply multiple Having conditions using `OR` logic.
+  """
+  _or: [PlatformInboundContact_Having!]
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`_count` of type `Int!`
+  """
+  _count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`companyName_count` of type `Int!`
+  """
+  companyName_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`contactEmail_count` of type `Int!`
+  """
+  contactEmail_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`contactStatus_count` of type `Int!`
+  """
+  contactStatus_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`id_count` of type `Int!`
+  """
+  id_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`identifiedPainPoints_count` of type `Int!`
+  """
+  identifiedPainPoints_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`initialPitchDraft_count` of type `Int!`
+  """
+  initialPitchDraft_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`nativeAgent_count` of type `Int!`
+  """
+  nativeAgent_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`websiteUrl_count` of type `Int!`
+  """
+  websiteUrl_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: Timestamp_Filter
+}
+"""
+✨ Generated key input type for table 'PlatformInboundContact'. It represents the primary key fields used to uniquely identify a row in the table.
+"""
+input PlatformInboundContact_Key {
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `PlatformInboundContact`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+}
+"""
+✨ Generated list filter input type for table 'PlatformInboundContact'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+"""
+input PlatformInboundContact_ListFilter {
+  """
+  The desired number of objects that match the condition (defaults to at least one).
+  """
+  count: Int_Filter = {gt:0}
+  """
+  Condition of the related objects to filter for.
+  """
+  exist: PlatformInboundContact_Filter
+}
+"""
+✨ Generated order input type for table 'PlatformInboundContact'. This input defines the sorting order of rows in query results based on one or more fields.
+"""
+input PlatformInboundContact_Order {
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`id` of type `UUID!`
+  """
+  id: OrderDirection
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`companyName` of type `String`
+  """
+  companyName: OrderDirection
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`contactEmail` of type `String`
+  """
+  contactEmail: OrderDirection
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`contactStatus` of type `String`
+  """
+  contactStatus: OrderDirection
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: OrderDirection
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`identifiedPainPoints` of type `String`
+  """
+  identifiedPainPoints: OrderDirection
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`initialPitchDraft` of type `String`
+  """
+  initialPitchDraft: OrderDirection
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`nativeAgent` of type `Boolean`
+  """
+  nativeAgent: OrderDirection
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`websiteUrl` of type `String`
+  """
+  websiteUrl: OrderDirection
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`_count` of type `Int!`
+  """
+  _count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`companyName_count` of type `Int!`
+  """
+  companyName_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`contactEmail_count` of type `Int!`
+  """
+  contactEmail_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`contactStatus_count` of type `Int!`
+  """
+  contactStatus_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`id_count` of type `Int!`
+  """
+  id_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`identifiedPainPoints_count` of type `Int!`
+  """
+  identifiedPainPoints_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`initialPitchDraft_count` of type `Int!`
+  """
+  initialPitchDraft_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`nativeAgent_count` of type `Int!`
+  """
+  nativeAgent_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`websiteUrl_count` of type `Int!`
+  """
+  websiteUrl_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: OrderDirection
+  """
+  ✨ Generated from Field `PlatformInboundContact`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: OrderDirection
+}
+"""
+✨ Generated data input type for table 'PlatformOutboundContact'. It includes all necessary fields for creating or upserting rows into table.
+"""
+input PlatformOutboundContact_Data {
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `PlatformOutboundContact`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`aiDetectionDetails` of type `Any`
+  """
+  aiDetectionDetails: Any
+  """
+  ✨ `_expr` server value variant of `aiDetectionDetails` (✨ Generated from Field `PlatformOutboundContact`.`aiDetectionDetails` of type `Any`)
+  """
+  aiDetectionDetails_expr: Any_Expr
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`auditDate` of type `Date`
+  """
+  auditDate: Date
+  """
+  ✨ `_date` server value variant of `auditDate` (✨ Generated from Field `PlatformOutboundContact`.`auditDate` of type `Date`)
+  """
+  auditDate_date: Date_Relative
+  """
+  ✨ `_expr` server value variant of `auditDate` (✨ Generated from Field `PlatformOutboundContact`.`auditDate` of type `Date`)
+  """
+  auditDate_expr: Date_Expr
+  """
+  ✨ `_update` server value variant of `auditDate` (✨ Generated from Field `PlatformOutboundContact`.`auditDate` of type `Date`)
+  """
+  auditDate_update: [Date_Update!]
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp
+  """
+  ✨ `_expr` server value variant of `createdAt` (✨ Generated from Field `PlatformOutboundContact`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_expr: Timestamp_Expr
+  """
+  ✨ `_time` server value variant of `createdAt` (✨ Generated from Field `PlatformOutboundContact`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_time: Timestamp_Relative
+  """
+  ✨ `_update` server value variant of `createdAt` (✨ Generated from Field `PlatformOutboundContact`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_update: [Timestamp_Update!]
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`hasExistingAI` of type `Boolean`
+  """
+  hasExistingAI: Boolean
+  """
+  ✨ `_expr` server value variant of `hasExistingAI` (✨ Generated from Field `PlatformOutboundContact`.`hasExistingAI` of type `Boolean`)
+  """
+  hasExistingAI_expr: Boolean_Expr
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`scrapedData` of type `Any`
+  """
+  scrapedData: Any
+  """
+  ✨ `_expr` server value variant of `scrapedData` (✨ Generated from Field `PlatformOutboundContact`.`scrapedData` of type `Any`)
+  """
+  scrapedData_expr: Any_Expr
+}
+"""
+✨ Generated filter input type for table 'PlatformOutboundContact'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input PlatformOutboundContact_Filter {
+  """
+  Apply multiple filter conditions using `AND` logic.
+  """
+  _and: [PlatformOutboundContact_Filter!]
+  """
+  Negate the result of the provided filter condition.
+  """
+  _not: PlatformOutboundContact_Filter
+  """
+  Apply multiple filter conditions using `OR` logic.
+  """
+  _or: [PlatformOutboundContact_Filter!]
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`id` of type `UUID!`
+  """
+  id: UUID_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`aiDetectionDetails` of type `Any`
+  """
+  aiDetectionDetails: Any_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`auditDate` of type `Date`
+  """
+  auditDate: Date_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`hasExistingAI` of type `Boolean`
+  """
+  hasExistingAI: Boolean_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`scrapedData` of type `Any`
+  """
+  scrapedData: Any_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`clients_on_convertedFromOutboundContact` of type `[Client!]!`
+  """
+  clients_on_convertedFromOutboundContact: Client_ListFilter
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`platformAgentActivities_on_platformOutboundContact` of type `[PlatformAgentActivity!]!`
+  """
+  platformAgentActivities_on_platformOutboundContact: PlatformAgentActivity_ListFilter
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`platformOutboundOutreachEvents_on_platformOutboundContact` of type `[PlatformOutboundOutreachEvent!]!`
+  """
+  platformOutboundOutreachEvents_on_platformOutboundContact: PlatformOutboundOutreachEvent_ListFilter
+}
+"""
+✨ Generated first-row input type for table 'PlatformOutboundContact'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+"""
+input PlatformOutboundContact_FirstRow {
+  """
+  Order the result by the specified fields.
+  """
+  orderBy: [PlatformOutboundContact_Order!]
+  """
+  Filters rows based on the specified conditions.
+  """
+  where: PlatformOutboundContact_Filter
+}
+"""
+✨ Generated having input type for table 'PlatformOutboundContact'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input PlatformOutboundContact_Having {
+  """
+  Apply multiple Having conditions using `AND` logic.
+  """
+  _and: [PlatformOutboundContact_Having!]
+  """
+  Whether to apply DISTINCT to the aggregate function.
+  """
+  _distinct: Boolean
+  """
+  Negate the result of the provided Having condition.
+  """
+  _not: PlatformOutboundContact_Having
+  """
+  Apply multiple Having conditions using `OR` logic.
+  """
+  _or: [PlatformOutboundContact_Having!]
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`_count` of type `Int!`
+  """
+  _count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`aiDetectionDetails_count` of type `Int!`
+  """
+  aiDetectionDetails_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`auditDate_count` of type `Int!`
+  """
+  auditDate_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`hasExistingAI_count` of type `Int!`
+  """
+  hasExistingAI_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`id_count` of type `Int!`
+  """
+  id_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`scrapedData_count` of type `Int!`
+  """
+  scrapedData_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`aiDetectionDetails_min` of type `Any`
+  """
+  aiDetectionDetails_min: Any_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`auditDate_min` of type `Date`
+  """
+  auditDate_min: Date_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`scrapedData_min` of type `Any`
+  """
+  scrapedData_min: Any_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`aiDetectionDetails_max` of type `Any`
+  """
+  aiDetectionDetails_max: Any_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`auditDate_max` of type `Date`
+  """
+  auditDate_max: Date_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: Timestamp_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`scrapedData_max` of type `Any`
+  """
+  scrapedData_max: Any_Filter
+}
+"""
+✨ Generated key input type for table 'PlatformOutboundContact'. It represents the primary key fields used to uniquely identify a row in the table.
+"""
+input PlatformOutboundContact_Key {
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `PlatformOutboundContact`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+}
+"""
+✨ Generated list filter input type for table 'PlatformOutboundContact'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+"""
+input PlatformOutboundContact_ListFilter {
+  """
+  The desired number of objects that match the condition (defaults to at least one).
+  """
+  count: Int_Filter = {gt:0}
+  """
+  Condition of the related objects to filter for.
+  """
+  exist: PlatformOutboundContact_Filter
+}
+"""
+✨ Generated order input type for table 'PlatformOutboundContact'. This input defines the sorting order of rows in query results based on one or more fields.
+"""
+input PlatformOutboundContact_Order {
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`id` of type `UUID!`
+  """
+  id: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`aiDetectionDetails` of type `Any`
+  """
+  aiDetectionDetails: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`auditDate` of type `Date`
+  """
+  auditDate: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`hasExistingAI` of type `Boolean`
+  """
+  hasExistingAI: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`scrapedData` of type `Any`
+  """
+  scrapedData: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`_count` of type `Int!`
+  """
+  _count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`aiDetectionDetails_count` of type `Int!`
+  """
+  aiDetectionDetails_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`auditDate_count` of type `Int!`
+  """
+  auditDate_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`hasExistingAI_count` of type `Int!`
+  """
+  hasExistingAI_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`id_count` of type `Int!`
+  """
+  id_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`scrapedData_count` of type `Int!`
+  """
+  scrapedData_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`aiDetectionDetails_min` of type `Any`
+  """
+  aiDetectionDetails_min: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`auditDate_min` of type `Date`
+  """
+  auditDate_min: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`scrapedData_min` of type `Any`
+  """
+  scrapedData_min: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`aiDetectionDetails_max` of type `Any`
+  """
+  aiDetectionDetails_max: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`auditDate_max` of type `Date`
+  """
+  auditDate_max: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundContact`.`scrapedData_max` of type `Any`
+  """
+  scrapedData_max: OrderDirection
+}
+"""
+✨ Generated data input type for table 'PlatformOutboundOutreachEvent'. It includes all necessary fields for creating or upserting rows into table.
+"""
+input PlatformOutboundOutreachEvent_Data {
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `PlatformOutboundOutreachEvent`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`platformOutboundContactId` of type `UUID!`
+  """
+  platformOutboundContactId: UUID
+  """
+  ✨ `_expr` server value variant of `platformOutboundContactId` (✨ Generated from Field `PlatformOutboundOutreachEvent`.`platformOutboundContactId` of type `UUID!`)
+  """
+  platformOutboundContactId_expr: UUID_Expr
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`platformOutboundContact` of type `PlatformOutboundContact!`
+  """
+  platformOutboundContact: PlatformOutboundContact_Key
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`adminNotes` of type `String`
+  """
+  adminNotes: String
+  """
+  ✨ `_expr` server value variant of `adminNotes` (✨ Generated from Field `PlatformOutboundOutreachEvent`.`adminNotes` of type `String`)
+  """
+  adminNotes_expr: String_Expr
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp
+  """
+  ✨ `_expr` server value variant of `createdAt` (✨ Generated from Field `PlatformOutboundOutreachEvent`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_expr: Timestamp_Expr
+  """
+  ✨ `_time` server value variant of `createdAt` (✨ Generated from Field `PlatformOutboundOutreachEvent`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_time: Timestamp_Relative
+  """
+  ✨ `_update` server value variant of `createdAt` (✨ Generated from Field `PlatformOutboundOutreachEvent`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_update: [Timestamp_Update!]
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`messageContent` of type `String`
+  """
+  messageContent: String
+  """
+  ✨ `_expr` server value variant of `messageContent` (✨ Generated from Field `PlatformOutboundOutreachEvent`.`messageContent` of type `String`)
+  """
+  messageContent_expr: String_Expr
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`outreachType` of type `String`
+  """
+  outreachType: String
+  """
+  ✨ `_expr` server value variant of `outreachType` (✨ Generated from Field `PlatformOutboundOutreachEvent`.`outreachType` of type `String`)
+  """
+  outreachType_expr: String_Expr
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`sendDate` of type `Date`
+  """
+  sendDate: Date
+  """
+  ✨ `_date` server value variant of `sendDate` (✨ Generated from Field `PlatformOutboundOutreachEvent`.`sendDate` of type `Date`)
+  """
+  sendDate_date: Date_Relative
+  """
+  ✨ `_expr` server value variant of `sendDate` (✨ Generated from Field `PlatformOutboundOutreachEvent`.`sendDate` of type `Date`)
+  """
+  sendDate_expr: Date_Expr
+  """
+  ✨ `_update` server value variant of `sendDate` (✨ Generated from Field `PlatformOutboundOutreachEvent`.`sendDate` of type `Date`)
+  """
+  sendDate_update: [Date_Update!]
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`status` of type `String`
+  """
+  status: String
+  """
+  ✨ `_expr` server value variant of `status` (✨ Generated from Field `PlatformOutboundOutreachEvent`.`status` of type `String`)
+  """
+  status_expr: String_Expr
+}
+"""
+✨ Generated filter input type for table 'PlatformOutboundOutreachEvent'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input PlatformOutboundOutreachEvent_Filter {
+  """
+  Apply multiple filter conditions using `AND` logic.
+  """
+  _and: [PlatformOutboundOutreachEvent_Filter!]
+  """
+  Negate the result of the provided filter condition.
+  """
+  _not: PlatformOutboundOutreachEvent_Filter
+  """
+  Apply multiple filter conditions using `OR` logic.
+  """
+  _or: [PlatformOutboundOutreachEvent_Filter!]
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`id` of type `UUID!`
+  """
+  id: UUID_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`platformOutboundContactId` of type `UUID!`
+  """
+  platformOutboundContactId: UUID_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`platformOutboundContact` of type `PlatformOutboundContact!`
+  """
+  platformOutboundContact: PlatformOutboundContact_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`adminNotes` of type `String`
+  """
+  adminNotes: String_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`messageContent` of type `String`
+  """
+  messageContent: String_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`outreachType` of type `String`
+  """
+  outreachType: String_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`sendDate` of type `Date`
+  """
+  sendDate: Date_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`status` of type `String`
+  """
+  status: String_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`platformAgentActivities_on_platformOutboundOutreachEvent` of type `[PlatformAgentActivity!]!`
+  """
+  platformAgentActivities_on_platformOutboundOutreachEvent: PlatformAgentActivity_ListFilter
+}
+"""
+✨ Generated first-row input type for table 'PlatformOutboundOutreachEvent'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+"""
+input PlatformOutboundOutreachEvent_FirstRow {
+  """
+  Order the result by the specified fields.
+  """
+  orderBy: [PlatformOutboundOutreachEvent_Order!]
+  """
+  Filters rows based on the specified conditions.
+  """
+  where: PlatformOutboundOutreachEvent_Filter
+}
+"""
+✨ Generated having input type for table 'PlatformOutboundOutreachEvent'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input PlatformOutboundOutreachEvent_Having {
+  """
+  Apply multiple Having conditions using `AND` logic.
+  """
+  _and: [PlatformOutboundOutreachEvent_Having!]
+  """
+  Whether to apply DISTINCT to the aggregate function.
+  """
+  _distinct: Boolean
+  """
+  Negate the result of the provided Having condition.
+  """
+  _not: PlatformOutboundOutreachEvent_Having
+  """
+  Apply multiple Having conditions using `OR` logic.
+  """
+  _or: [PlatformOutboundOutreachEvent_Having!]
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`_count` of type `Int!`
+  """
+  _count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`adminNotes_count` of type `Int!`
+  """
+  adminNotes_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`id_count` of type `Int!`
+  """
+  id_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`messageContent_count` of type `Int!`
+  """
+  messageContent_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`outreachType_count` of type `Int!`
+  """
+  outreachType_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`platformOutboundContactId_count` of type `Int!`
+  """
+  platformOutboundContactId_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`sendDate_count` of type `Int!`
+  """
+  sendDate_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`status_count` of type `Int!`
+  """
+  status_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`sendDate_min` of type `Date`
+  """
+  sendDate_min: Date_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: Timestamp_Filter
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`sendDate_max` of type `Date`
+  """
+  sendDate_max: Date_Filter
+}
+"""
+✨ Generated key input type for table 'PlatformOutboundOutreachEvent'. It represents the primary key fields used to uniquely identify a row in the table.
+"""
+input PlatformOutboundOutreachEvent_Key {
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `PlatformOutboundOutreachEvent`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+}
+"""
+✨ Generated list filter input type for table 'PlatformOutboundOutreachEvent'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+"""
+input PlatformOutboundOutreachEvent_ListFilter {
+  """
+  The desired number of objects that match the condition (defaults to at least one).
+  """
+  count: Int_Filter = {gt:0}
+  """
+  Condition of the related objects to filter for.
+  """
+  exist: PlatformOutboundOutreachEvent_Filter
+}
+"""
+✨ Generated order input type for table 'PlatformOutboundOutreachEvent'. This input defines the sorting order of rows in query results based on one or more fields.
+"""
+input PlatformOutboundOutreachEvent_Order {
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`id` of type `UUID!`
+  """
+  id: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`platformOutboundContactId` of type `UUID!`
+  """
+  platformOutboundContactId: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`platformOutboundContact` of type `PlatformOutboundContact!`
+  """
+  platformOutboundContact: PlatformOutboundContact_Order
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`adminNotes` of type `String`
+  """
+  adminNotes: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`messageContent` of type `String`
+  """
+  messageContent: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`outreachType` of type `String`
+  """
+  outreachType: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`sendDate` of type `Date`
+  """
+  sendDate: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`status` of type `String`
+  """
+  status: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`_count` of type `Int!`
+  """
+  _count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`adminNotes_count` of type `Int!`
+  """
+  adminNotes_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`id_count` of type `Int!`
+  """
+  id_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`messageContent_count` of type `Int!`
+  """
+  messageContent_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`outreachType_count` of type `Int!`
+  """
+  outreachType_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`platformOutboundContactId_count` of type `Int!`
+  """
+  platformOutboundContactId_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`sendDate_count` of type `Int!`
+  """
+  sendDate_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`status_count` of type `Int!`
+  """
+  status_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`sendDate_min` of type `Date`
+  """
+  sendDate_min: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOutboundOutreachEvent`.`sendDate_max` of type `Date`
+  """
+  sendDate_max: OrderDirection
+}
+"""
+✨ Generated data input type for table 'PlatformOwner'. It includes all necessary fields for creating or upserting rows into table.
+"""
+input PlatformOwner_Data {
+  """
+  ✨ Generated from Field `PlatformOwner`.`id` of type `String!`
   """
   id: String
   """
-  ✨ `_expr` server value variant of `id` (✨ Generated from Field `User`.`id` of type `String!`)
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `PlatformOwner`.`id` of type `String!`)
   """
   id_expr: String_Expr
   """
-  ✨ Generated from Field `User`.`username` of type `String!`
+  ✨ Generated from Field `PlatformOwner`.`createdAt` of type `Timestamp!`
   """
-  username: String
+  createdAt: Timestamp
   """
-  ✨ `_expr` server value variant of `username` (✨ Generated from Field `User`.`username` of type `String!`)
+  ✨ `_expr` server value variant of `createdAt` (✨ Generated from Field `PlatformOwner`.`createdAt` of type `Timestamp!`)
   """
-  username_expr: String_Expr
+  createdAt_expr: Timestamp_Expr
+  """
+  ✨ `_time` server value variant of `createdAt` (✨ Generated from Field `PlatformOwner`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_time: Timestamp_Relative
+  """
+  ✨ `_update` server value variant of `createdAt` (✨ Generated from Field `PlatformOwner`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_update: [Timestamp_Update!]
+  """
+  ✨ Generated from Field `PlatformOwner`.`displayName` of type `String`
+  """
+  displayName: String
+  """
+  ✨ `_expr` server value variant of `displayName` (✨ Generated from Field `PlatformOwner`.`displayName` of type `String`)
+  """
+  displayName_expr: String_Expr
+  """
+  ✨ Generated from Field `PlatformOwner`.`email` of type `String`
+  """
+  email: String
+  """
+  ✨ `_expr` server value variant of `email` (✨ Generated from Field `PlatformOwner`.`email` of type `String`)
+  """
+  email_expr: String_Expr
 }
 """
-✨ Generated filter input type for table 'User'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+✨ Generated filter input type for table 'PlatformOwner'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
 """
-input User_Filter {
+input PlatformOwner_Filter {
   """
   Apply multiple filter conditions using `AND` logic.
   """
-  _and: [User_Filter!]
+  _and: [PlatformOwner_Filter!]
   """
   Negate the result of the provided filter condition.
   """
-  _not: User_Filter
+  _not: PlatformOwner_Filter
   """
   Apply multiple filter conditions using `OR` logic.
   """
-  _or: [User_Filter!]
+  _or: [PlatformOwner_Filter!]
   """
-  ✨ Generated from Field `User`.`id` of type `String!`
+  ✨ Generated from Field `PlatformOwner`.`id` of type `String!`
   """
   id: String_Filter
   """
-  ✨ Generated from Field `User`.`username` of type `String!`
+  ✨ Generated from Field `PlatformOwner`.`createdAt` of type `Timestamp!`
   """
-  username: String_Filter
+  createdAt: Timestamp_Filter
   """
-  ✨ Generated from Field `User`.`reviews_on_user` of type `[Review!]!`
+  ✨ Generated from Field `PlatformOwner`.`displayName` of type `String`
   """
-  reviews_on_user: Review_ListFilter
+  displayName: String_Filter
   """
-  ✨ Generated from Field `User`.`movies_via_Review` of type `[Movie!]!`
+  ✨ Generated from Field `PlatformOwner`.`email` of type `String`
   """
-  movies_via_Review: Movie_ListFilter
+  email: String_Filter
+  """
+  ✨ Generated from Field `PlatformOwner`.`platformChatbotConfigs_on_platformOwner` of type `[PlatformChatbotConfig!]!`
+  """
+  platformChatbotConfigs_on_platformOwner: PlatformChatbotConfig_ListFilter
 }
 """
-✨ Generated first-row input type for table 'User'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+✨ Generated first-row input type for table 'PlatformOwner'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
 """
-input User_FirstRow {
+input PlatformOwner_FirstRow {
   """
   Order the result by the specified fields.
   """
-  orderBy: [User_Order!]
+  orderBy: [PlatformOwner_Order!]
   """
   Filters rows based on the specified conditions.
   """
-  where: User_Filter
+  where: PlatformOwner_Filter
 }
 """
-✨ Generated having input type for table 'User'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+✨ Generated having input type for table 'PlatformOwner'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
 """
-input User_Having {
+input PlatformOwner_Having {
   """
   Apply multiple Having conditions using `AND` logic.
   """
-  _and: [User_Having!]
+  _and: [PlatformOwner_Having!]
   """
   Whether to apply DISTINCT to the aggregate function.
   """
@@ -913,41 +4092,57 @@ input User_Having {
   """
   Negate the result of the provided Having condition.
   """
-  _not: User_Having
+  _not: PlatformOwner_Having
   """
   Apply multiple Having conditions using `OR` logic.
   """
-  _or: [User_Having!]
+  _or: [PlatformOwner_Having!]
   """
-  ✨ Generated from Field `User`.`_count` of type `Int!`
+  ✨ Generated from Field `PlatformOwner`.`_count` of type `Int!`
   """
   _count: Int_Filter
   """
-  ✨ Generated from Field `User`.`id_count` of type `Int!`
+  ✨ Generated from Field `PlatformOwner`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformOwner`.`displayName_count` of type `Int!`
+  """
+  displayName_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformOwner`.`email_count` of type `Int!`
+  """
+  email_count: Int_Filter
+  """
+  ✨ Generated from Field `PlatformOwner`.`id_count` of type `Int!`
   """
   id_count: Int_Filter
   """
-  ✨ Generated from Field `User`.`username_count` of type `Int!`
+  ✨ Generated from Field `PlatformOwner`.`createdAt_min` of type `Timestamp`
   """
-  username_count: Int_Filter
+  createdAt_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `PlatformOwner`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: Timestamp_Filter
 }
 """
-✨ Generated key input type for table 'User'. It represents the primary key fields used to uniquely identify a row in the table.
+✨ Generated key input type for table 'PlatformOwner'. It represents the primary key fields used to uniquely identify a row in the table.
 """
-input User_Key {
+input PlatformOwner_Key {
   """
-  ✨ Generated from Field `User`.`id` of type `String!`
+  ✨ Generated from Field `PlatformOwner`.`id` of type `String!`
   """
   id: String
   """
-  ✨ `_expr` server value variant of `id` (✨ Generated from Field `User`.`id` of type `String!`)
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `PlatformOwner`.`id` of type `String!`)
   """
   id_expr: String_Expr
 }
 """
-✨ Generated list filter input type for table 'User'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+✨ Generated list filter input type for table 'PlatformOwner'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
 """
-input User_ListFilter {
+input PlatformOwner_ListFilter {
   """
   The desired number of objects that match the condition (defaults to at least one).
   """
@@ -955,30 +4150,54 @@ input User_ListFilter {
   """
   Condition of the related objects to filter for.
   """
-  exist: User_Filter
+  exist: PlatformOwner_Filter
 }
 """
-✨ Generated order input type for table 'User'. This input defines the sorting order of rows in query results based on one or more fields.
+✨ Generated order input type for table 'PlatformOwner'. This input defines the sorting order of rows in query results based on one or more fields.
 """
-input User_Order {
+input PlatformOwner_Order {
   """
-  ✨ Generated from Field `User`.`id` of type `String!`
+  ✨ Generated from Field `PlatformOwner`.`id` of type `String!`
   """
   id: OrderDirection
   """
-  ✨ Generated from Field `User`.`username` of type `String!`
+  ✨ Generated from Field `PlatformOwner`.`createdAt` of type `Timestamp!`
   """
-  username: OrderDirection
+  createdAt: OrderDirection
   """
-  ✨ Generated from Field `User`.`_count` of type `Int!`
+  ✨ Generated from Field `PlatformOwner`.`displayName` of type `String`
+  """
+  displayName: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOwner`.`email` of type `String`
+  """
+  email: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOwner`.`_count` of type `Int!`
   """
   _count: OrderDirection
   """
-  ✨ Generated from Field `User`.`id_count` of type `Int!`
+  ✨ Generated from Field `PlatformOwner`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOwner`.`displayName_count` of type `Int!`
+  """
+  displayName_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOwner`.`email_count` of type `Int!`
+  """
+  email_count: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOwner`.`id_count` of type `Int!`
   """
   id_count: OrderDirection
   """
-  ✨ Generated from Field `User`.`username_count` of type `Int!`
+  ✨ Generated from Field `PlatformOwner`.`createdAt_min` of type `Timestamp`
   """
-  username_count: OrderDirection
+  createdAt_min: OrderDirection
+  """
+  ✨ Generated from Field `PlatformOwner`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: OrderDirection
 }
