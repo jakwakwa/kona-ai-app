@@ -1,0 +1,40 @@
+---
+description: Firestore onSnapshot error handling — never throw in error callbacks
+globs: "**/*.ts, **/*.tsx"
+alwaysApply: false
+---
+
+# Firestore Error Handling
+
+When using Firestore `onSnapshot` (or similar listeners), **never throw in the error callback**. Throwing prevents `setLoading(false)` and leaves the UI stuck in a loading state.
+
+## ❌ Wrong
+
+```ts
+onSnapshot(q, (snapshot) => {
+  setData(/* ... */);
+  setLoading(false);
+}, (err) => {
+  handleFirestoreError(err, op, path); // throws — setLoading(false) never runs
+});
+```
+
+## ✅ Correct
+
+```ts
+onSnapshot(q, (snapshot) => {
+  setData(/* ... */);
+  setLoading(false);
+  setError(null);
+}, (err) => {
+  handleFirestoreError(err, op, path, { throw: false });
+  setLoading(false);
+  setError(getFriendlyMessage(err));
+});
+```
+
+## Additional Safeguards
+
+- **Loading timeout**: Add a timeout (e.g. 15s) so loading always resolves if Firestore never responds.
+- **Error UI**: Show user-facing error message and a "Try again" button.
+- **Logging only**: Use `{ throw: false }` when you want to log but not propagate.

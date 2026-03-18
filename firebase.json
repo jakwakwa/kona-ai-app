@@ -1,4 +1,7 @@
 {
+  "firestore": {
+    "rules": "firestore.rules"
+  },
   "database": {
     "rules": "database.rules.json"
   },
@@ -9,5 +12,19 @@
   },
   "dataconnect": {
     "source": "dataconnect"
+  },
+  "auth": {
+    "providers": {
+      "googleSignIn": {
+        "oAuthBrandDisplayName": "Kona AI",
+        "supportEmail": "jakwakwa@gmail.com",
+        "authorizedRedirectUris": [
+          "http://localhost:3000",
+          "http://localhost:3000/__/auth/handler",
+          "http://127.0.0.1:3000",
+          "http://127.0.0.1:3000/__/auth/handler"
+        ]
+      }
+    }
   }
 }

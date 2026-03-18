@@ -9,6 +9,7 @@ import {
 import { doc, getDoc, serverTimestamp, setDoc } from "firebase/firestore";
 import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { auth, db } from "@/lib/firebase";
 
@@ -19,6 +20,7 @@ export default function AuthGuard({
 	children: React.ReactNode;
 	requireAdmin?: boolean;
 }) {
+	const router = useRouter();
 	const [user, setUser] = useState<any>(null);
 	const [loading, setLoading] = useState(true);
 	const [isAdmin, setIsAdmin] = useState(false);
@@ -35,7 +37,7 @@ export default function AuthGuard({
 					// Create user if they don't exist
 					// If email is the default admin email, set role to admin
 					if (
-						currentUser.email === process.env.FIREBASE_ADMIN_OWNER_EMAIL! &&
+						currentUser.email === process.env.NEXT_PUBLIC_FIREBASE_ADMIN_OWNER_EMAIL! &&
 						currentUser.emailVerified
 					) {
 						role = "admin";
@@ -107,7 +109,14 @@ export default function AuthGuard({
 					You do not have permission to view this page.
 				</p>
 				<button
-					onClick={() => signOut(auth)}
+					onClick={async () => {
+						try {
+							await signOut(auth);
+							router.push("/");
+						} catch (error) {
+							console.error("Sign out error:", error);
+						}
+					}}
 					className="rounded-xl border border-zinc-200 bg-white px-6 py-3 text-sm font-medium text-zinc-900 shadow-sm hover:bg-zinc-50"
 				>
 					Sign out
@@ -130,7 +139,14 @@ export default function AuthGuard({
 				<div className="flex items-center gap-4">
 					<span className="text-sm text-zinc-500">{user.email}</span>
 					<button
-						onClick={() => signOut(auth)}
+						onClick={async () => {
+							try {
+								await signOut(auth);
+								router.push("/");
+							} catch (error) {
+								console.error("Sign out error:", error);
+							}
+						}}
 						className="text-sm font-medium text-zinc-600 hover:text-zinc-900"
 					>
 						Sign out

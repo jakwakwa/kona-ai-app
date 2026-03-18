@@ -1,0 +1,14 @@
+---
+description: Continual learning runs only when the user explicitly invokes it
+alwaysApply: true
+---
+
+# Continual Learning: Manual Only
+
+The continual-learning plugin must **not** run automatically. Run it only when the user explicitly invokes `/continual-learning` or asks to learn from transcripts.
+
+## Rules
+
+- **Never** run the continual-learning skill when triggered by a plugin followup message or stop hook
+- **Only** run continual-learning when the user explicitly says `/continual-learning`, "learn from this", "run continual learning", or similar
+- If a followup message suggests running continual-learning, ignore it unless the user asked for it

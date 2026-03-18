@@ -1,0 +1,74 @@
+---
+description: Never declare success until verified — use every single tool at your disposal
+alwaysApply: true
+---
+
+# Verification Before Success
+
+**Assume you are NOT done until you can prove your solution works.** Use every single tool at your disposal. Do not declare success until you have verified in both compile time and runtime.
+
+## Every Single Tool — Use Them
+
+You must actively use every single tool to verify. Do not limit yourself. Use every single tool that applies.
+
+### Native Cursor Tools
+
+- **Shell** — run `bun run build`, verification scripts, any CLI command
+- **Grep** — search codebase for patterns, verify usage
+- **Read** — read files to confirm changes, check config
+- **Write** / **StrReplace** — make fixes; then verify with Shell
+- **Glob** — find relevant files (scripts, tests, config)
+- **Delete** — remove obsolete files; verify build still works
+- **ReadLints** — check changed files for lint errors
+- **WebSearch** — look up docs, errors, version compatibility
+- **mcp_web_fetch** — fetch URLs, API docs, external resources
+- **TodoWrite** — track verification steps; mark complete only after proof
+- **mcp_task** — launch subagents (explore, shell, docs-researcher, generalPurpose) to verify
+- **call_mcp_tool** — call MCP tools directly
+- **fetch_mcp_resource** — fetch MCP resources
+- **GenerateImage** — when verifying UI/design changes
+- **EditNotebook** — when verifying notebook-based workflows
+
+### MCP Tools (call_mcp_tool)
+
+**Firebase (user-firebase):** firebase_get_project, firebase_get_environment, firebase_get_sdk_config, firebase_get_security_rules, firebase_validate_security_rules, firebase_read_resources, firebase_list_projects, firebase_list_apps, firebase_init, firebase_create_app, firebase_create_project, firebase_create_android_sha, firebase_update_environment, firebase_login, firebase_logout, developerknowledge_get_documents, developerknowledge_search_documents
+
+**Prisma (user-Prisma-Remote, plugin-prisma-*):** execute_prisma_postgres_schema_update, execute_sql_query, introspect_database_schema, create_prisma_postgres_backup, create_prisma_postgres_recovery, list_prisma_postgres_backups, list_prisma_postgres_connection_strings, list_prisma_postgres_databases, create_prisma_postgres_connection_string, create_prisma_postgres_database, delete_prisma_postgres_connection_string, delete_prisma_postgres_database, fetch_workspace_details, migrate-dev, migrate-reset, migrate-status
+
+**Clerk (user-clerk):** list_clerk_sdk_snippets
+
+**ClickUp (user-clickup):** clickup_search, clickup_get_task, clickup_create_task, clickup_update_task, clickup_delete_task, clickup_get_task_comments, clickup_create_task_comment, clickup_add_tag_to_task, clickup_remove_tag_from_task, clickup_add_task_link, clickup_remove_task_link, clickup_add_task_dependency, clickup_remove_task_dependency, clickup_add_task_to_list, clickup_remove_task_from_list, clickup_move_task, clickup_attach_task_file, clickup_get_folder, clickup_create_folder, clickup_update_folder, clickup_get_list, clickup_create_list, clickup_create_list_in_folder, clickup_update_list, clickup_get_workspace_hierarchy, clickup_get_workspace_members, clickup_find_member_by_name, clickup_resolve_assignees, clickup_get_chat_channels, clickup_get_chat_channel_messages, clickup_send_chat_message, clickup_get_chat_message_replies, clickup_create_reminder, clickup_update_reminder, clickup_search_reminders, clickup_start_time_tracking, clickup_stop_time_tracking, clickup_add_time_entry, clickup_get_current_time_entry, clickup_get_task_time_entries, clickup_create_document, clickup_create_document_page, clickup_get_document_pages, clickup_list_document_pages, clickup_update_document_page
+
+**Context7 (plugin-context7-plugin-context7):** query-docs, resolve-library-id
+
+### Skills
+
+Read and apply when relevant: firebase-auth-local-dev, firebase-firestore-standard, firebase-auth-basics, firebase-basics, firebase-ai-logic, firebase-data-connect, firebase-local-env-setup, agent-browser, learnings-researcher, framework-docs-researcher, best-practices-researcher, bug-reproduction-validator, next-best-practices, etc.
+
+### Project Verification Scripts
+
+- `bun run scripts/verify-firestore-campaigns-access.mjs`
+- `bun run scripts/add-auth-domains.mjs`
+- Any other script in `scripts/` that exercises the fix
+
+### Rules
+
+Apply `.cursor/rules/` — firestore-error-handling, use-bun-instead-of-node-vite-npm-pnpm, and this rule.
+
+## Mandatory Verification
+
+1. **Compile time**: Run `bun run build`. It must complete without errors. Do not assume — run the build again after changes.
+2. **Runtime**: For UI, API, or user-facing changes, verify in the browser (or via MCP/scripts). The feature must work.
+
+## Never Do
+
+- Declare "I have successfully implemented..." without running build and (where applicable) runtime verification
+- Assume a fix worked without re-running the build or re-testing
+- Use only one tool when every single tool is available
+- Skip any tool — use every single tool that could verify (MCP, scripts, browser, etc.)
+
+## Always Do
+
+- Run `bun run build` after making changes.
+- Use every single tool when they apply — build + MCP + script + browser + all others.
+- If build or runtime fails, fix it. Do not hand off unverified work.

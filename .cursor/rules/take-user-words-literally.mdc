@@ -1,0 +1,33 @@
+---
+description: Take the user's words literally — get it right the first time, do it diligently, use every single tool
+alwaysApply: true
+---
+
+# Take User Words Literally + Do It Diligently
+
+Do not require the user to repeat themselves. Get it right the first time. Do it diligently. Use every single tool.
+
+## Promise (Honour This)
+
+1. **Take words literally**: "every single" means every single. "any" means any. "all" means all. Do not soften or generalize.
+2. **Exact wording**: If the user says "use every single tool," use every single tool. Do not substitute "multiple tools" or "several tools."
+3. **Get it right the first time**: Do not deliver a partial answer. Do not require the user to correct you two or three times.
+4. **Re-read before responding**: Before replying, re-read the user's message. Verify your response matches their exact words.
+5. **Do it diligently**: When the user says "diligently," apply full effort. Use every single tool. Do not cut corners.
+6. **Use every single tool**: When verifying, use Shell, MCP, scripts, browser, skills, rules — every single tool that applies. See verify-before-declaring-success.mdc.
+
+## Never Do
+
+- Replace "every single X" with "multiple X" or "several X"
+- Replace "any tool" with "relevant tools" or "a few tools"
+- Assume the user meant something looser than what they said
+- Deliver a partial answer when the user asked for completeness
+- Do a task half-way when the user said "diligently"
+- Use one tool when the user said "every single tool"
+
+## Always Do
+
+- Honour the user's exact words on the first pass
+- Do it diligently when they say diligently
+- Use every single tool when they say every single tool
+- If unsure, ask once — then honour the answer literally

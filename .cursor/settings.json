@@ -1,0 +1,8 @@
+{
+  "plugins": {
+    "continual-learning": {
+      "enabled": true,
+      "autoRun": false
+    }
+  }
+}

@@ -25,3 +25,23 @@ Tone: Professional but warm. Use UK English (-ise endings).
 Localisation: All system prompts must include load shedding awareness and local terms ('Rands', 'bakkies', 'robots').
 
 Next Step: Once you've added this, you can drop in the first "Sprint 1: The Proxy" prompt we discussed to fix those 404s. Ready for that?
+
+---
+
+## Learned User Preferences
+
+- Take user words literally: "every single" means every single, "any" means any. Do not substitute "multiple" for "every single"
+- Get it right the first time. Do not require the user to repeat themselves two or three times
+- Do it diligently when the user says diligently — apply full effort, use every single tool, do not cut corners
+- Use every single tool when verifying — Shell, MCP, scripts, browser, skills, rules. Do not use only one when more apply
+- Never declare success until verified in compile time (bun run build) and runtime (browser when applicable)
+- Re-read the user's message before responding. Verify your response matches their exact words
+- Continual learning: run only when the user explicitly invokes /continual-learning. Never run it automatically
+
+## Learned Workspace Facts
+
+- Firestore onSnapshot: never throw in error callback. Always call setLoading(false) and setError(...) so the UI can recover
+- Firestore database ID: use NEXT_PUBLIC_FIRESTORE_DATABASE_ID or "(default)", not project ID
+- Firestore rules: env vars not supported. Use hardcoded values for admin checks
+- Verification scripts: scripts/verify-firestore-campaigns-access.mjs, scripts/add-auth-domains.mjs
+- Use bun not npm/pnpm for install and run

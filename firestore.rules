@@ -44,9 +44,10 @@ service cloud.firestore {
     }
 
     function isAdmin() {
+      let userDoc = get(/databases/$(database)/documents/users/$(request.auth.uid));
       return isAuthenticated() &&
-        (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
-          (request.auth.token.email == /PROCESS.ENV.FIREBASE_ADMIN_OWNER && request.auth.token.email_verified == true));
+        (userDoc.data != null && userDoc.data.role == 'admin' ||
+          (request.auth.token.email == 'jakwakwa@gmail.com' && request.auth.token.email_verified == true));
     }
 
     function isOwner(userId) {
@@ -140,15 +141,18 @@ service cloud.firestore {
     }
 
     match /campaigns/{campaignId} {
-      allow read, write: if isAdmin();
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
     }
 
     match /agentMetrics/{metricId} {
-      allow read, write: if isAdmin();
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
     }
 
     match /inboundLeads/{leadId} {
-      allow read, write: if isAdmin();
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
     }
   }
 }

@@ -3,11 +3,7 @@
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import {
 	collection,
-	getDocs,
 	onSnapshot,
-	orderBy,
-	query,
-	where,
 } from "firebase/firestore";
 import {
 	BarChart3,
@@ -17,15 +13,19 @@ import {
 	Mail,
 	MessageSquare,
 	Search,
-	ShieldCheck,
 	TrendingUp,
 	Users,
 } from "lucide-react";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { auth, db } from "@/lib/firebase";
+import { CEOAccessGate } from "@/components/CEOAccessGate";
+
+const OWNER_EMAIL = process.env.NEXT_PUBLIC_FIREBASE_ADMIN_OWNER_EMAIL;
 
 export default function CEODashboard() {
+	const router = useRouter();
 	const [user, setUser] = useState<any>(null);
 	const [loading, setLoading] = useState(true);
 	const [clients, setClients] = useState<any[]>([]);
@@ -38,7 +38,7 @@ export default function CEODashboard() {
 			setUser(currentUser);
 			if (
 				!currentUser ||
-				currentUser.email !== process.env.FIREBASE_ADMIN_OWNER_EMAIL!
+				currentUser.email?.toLowerCase() !== OWNER_EMAIL?.toLowerCase()
 			) {
 				setLoading(false);
 			}
@@ -47,7 +47,7 @@ export default function CEODashboard() {
 	}, []);
 
 	useEffect(() => {
-		if (!user || user.email !== process.env.FIREBASE_ADMIN_OWNER_EMAIL!) {
+		if (!user || user.email?.toLowerCase() !== OWNER_EMAIL?.toLowerCase()) {
 			return;
 		}
 
@@ -87,24 +87,8 @@ export default function CEODashboard() {
 		);
 	}
 
-	if (!user || user.email !== process.env.FIREBASE_ADMIN_OWNER_EMAIL!) {
-		return (
-			<div className="min-h-screen flex items-center justify-center bg-slate-900 text-white p-8 text-center">
-				<div>
-					<ShieldCheck className="w-16 h-16 text-red-500 mx-auto mb-6" />
-					<h1 className="text-3xl font-bold mb-4">Access Denied</h1>
-					<p className="text-slate-400 mb-8">
-						This portal is restricted to the platform CEO.
-					</p>
-					<button
-						onClick={() => signOut(auth)}
-						className="bg-slate-800 px-6 py-2 rounded-xl hover:bg-slate-700 transition-colors"
-					>
-						Sign Out
-					</button>
-				</div>
-			</div>
-		);
+	if (!user || user.email?.toLowerCase() !== OWNER_EMAIL?.toLowerCase()) {
+		return <CEOAccessGate user={user}>{null}</CEOAccessGate>;
 	}
 
 	const filteredClients = clients.filter(
@@ -167,7 +151,14 @@ export default function CEODashboard() {
 						/>
 					</div>
 					<button
-						onClick={() => signOut(auth)}
+						onClick={async () => {
+							try {
+								await signOut(auth);
+								router.push("/");
+							} catch (error) {
+								console.error("Sign out error:", error);
+							}
+						}}
 						className="text-sm font-bold text-slate-400 hover:text-white transition-colors"
 					>
 						Sign Out
